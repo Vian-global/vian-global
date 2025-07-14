@@ -2,8 +2,8 @@ import { useState, useEffect, useRef } from 'react'
 import './App.css'
 
 const heroImages = [
-  '/src/assets/hero.jpg',
-  '/src/assets/hero2.jpg',
+  '/hero.jpg',
+  '/hero2.jpg',
 ]
 
 const services = [
@@ -54,11 +54,11 @@ const services = [
 ]
 
 const projectImages = [
-  { src: '/src/assets/project-slide-1.png', name: 'project-slide-1' },
-  { src: '/src/assets/project-slide-2.png', name: 'project-slide-2' },
-  { src: '/src/assets/project-slide-3.png', name: 'project-slide-3' },
-  { src: '/src/assets/project-slide-4.png', name: 'project-slide-4' },
-  { src: '/src/assets/project-slide-5.png', name: 'project-slide-5' },
+  { src: '/project-slide-1.png', name: 'project-slide-1' },
+  { src: '/project-slide-2.png', name: 'project-slide-2' },
+  { src: '/project-slide-3.png', name: 'project-slide-3' },
+  { src: '/project-slide-4.png', name: 'project-slide-4' },
+  { src: '/project-slide-5.png', name: 'project-slide-5' },
 ]
 
 function App() {
@@ -100,7 +100,7 @@ function App() {
     <>
       <header className="header simple-header">
         <div className="header-logo">
-          <img src="/src/assets/logo.jpeg" alt="Vian Global Logo" className="header-logo-img" />
+          <img src="/logo.jpeg" alt="Vian Global Logo" className="header-logo-img" />
         </div>
         <nav className="nav">
           <a href="#home">Home</a>
@@ -150,7 +150,7 @@ function App() {
             <h2 className="our-portals-title">Our Products</h2>
             <div className="our-portals-content">
               <div className="our-portals-img-wrapper">
-                <img src="/src/assets/squaress.png" alt="Squaress" className="our-portals-img" />
+                <img src="/squaress.png" alt="Squaress" className="our-portals-img" />
               </div>
               <div className="our-portals-info">
                 <h3>SpareS.com Portal</h3>
@@ -164,7 +164,7 @@ function App() {
           <div className="our-portals-container">
             <div className="navigator-content">
               <div className="our-portals-img-wrapper">
-                <img src="/src/assets/navigator.jpeg" alt="Navigator" className="navigator-img" />
+                <img src="/navigator.jpeg" alt="Navigator" className="navigator-img" />
               </div>
               <div className="navigator-info">
                 <h3>Navigator Platform</h3>
