@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&family=Orbitron:wght@700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700;900&display=swap');
 
 :root {
   --primary: #366a82;
@@ -18,7 +19,8 @@ body, html {
   padding: 0;
 }
 h1, h2, h3, .projects-title, .projects-title-bold {
-  font-family: 'Orbitron', 'Montserrat', Arial, sans-serif;
+  font-family: 'Orbitron', Arial, sans-serif;
+  font-weight: 700;
   letter-spacing: 0.5px;
 }
 
@@ -70,6 +72,20 @@ html, body {
   color: #888;
 }
 
+.header, .simple-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+}
+.simple-header {
+  /* already inherits position: fixed from above */
+}
+.simple-header .nav a, .nav a {
+  font-weight: 900;
+}
+
 .header {
   width: 100vw;
   min-width: 100vw;
@@ -81,14 +97,14 @@ html, body {
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 1.2rem 3rem 1.2rem 2rem;
+  padding: 2rem 3rem 2rem 2rem;
   background: rgba(24, 26, 27, 0.95);
   box-shadow: 0 6px 32px 0 rgba(54, 106, 130, 0.13), 0 1.5px 0 0 var(--accent);
   border-bottom: none;
   position: fixed;
   top: 0;
   z-index: 100;
-  min-height: 74px;
+  min-height: 100px;
   backdrop-filter: blur(10px) saturate(1.2);
   -webkit-backdrop-filter: blur(10px) saturate(1.2);
   border-radius: 0 0 18px 18px;
@@ -99,21 +115,33 @@ html, body {
   align-items: center;
 }
 .header-logo-img {
-  height: 54px;
+  height: 160px;
   width: auto;
   display: block;
   border-radius: 10px;
-  background: #fff;
-  box-shadow: 0 2px 8px rgba(54, 106, 130, 0.10);
   margin-right: 1.1rem;
+  background: none;
+  box-shadow: none;
+}
+@media (max-width: 900px) {
+  .header-logo-img {
+    height: 70px;
+    margin-right: 0.7rem;
+  }
+}
+@media (max-width: 700px) {
+  .header-logo-img {
+    height: 54px;
+    margin-right: 0.7rem;
+  }
 }
 .brand-name {
-  font-size: 2.1rem;
   font-family: 'Orbitron', Arial, sans-serif;
+  font-size: 2.1rem;
   font-weight: 900;
   color: #fff;
   letter-spacing: 2px;
-  text-shadow: 0 2px 12px rgba(54, 106, 130, 0.13);
+  text-shadow: none;
 }
 .nav {
   display: flex;
@@ -160,6 +188,7 @@ html, body {
   box-shadow: 0 8px 32px 0 rgba(54, 106, 130, 0.18);
   transform: translateY(-2px) scale(1.03);
 }
+/* --- Mobile Hamburger Menu Styles --- */
 @media (max-width: 700px) {
   .header {
     flex-direction: column;
@@ -177,14 +206,23 @@ html, body {
     letter-spacing: 1px;
   }
   .nav {
+    display: flex !important;
+    flex-direction: row;
     gap: 1.1rem;
     margin-top: 0.7rem;
     width: 100%;
     justify-content: flex-start;
+    background: none;
+    position: static;
+    padding: 0;
+    box-shadow: none;
   }
   .nav a {
     font-size: 1rem;
     padding: 0.3rem 0.7rem;
+    width: auto;
+    text-align: left;
+    border-radius: 8px;
   }
 }
 
@@ -257,8 +295,8 @@ html, body {
 
 .simple-header {
   background: var(--primary);
-  height: 84px;
-  min-height: 84px;
+  height: 110px;
+  min-height: 110px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -303,11 +341,12 @@ html, body {
     flex-direction: column;
     align-items: flex-start;
     height: auto;
-    min-height: 60px;
+    min-height: 80px;
+    height: 80px;
     padding: 0.5rem 1rem;
   }
   .header-logo-img {
-    height: 38px;
+    height: 54px;
   }
   .simple-header .nav {
     gap: 1rem;
@@ -338,6 +377,7 @@ html, body {
   margin-bottom: 0.7rem;
 }
 .vian-way-header h2 {
+  font-family: 'Orbitron', Arial, sans-serif;
   font-size: 2.2rem;
   font-weight: 800;
   color: var(--primary);
@@ -359,7 +399,8 @@ html, body {
   flex-wrap: wrap;
 }
 .vian-way-card {
-  background: #fff;
+  background: #926f47;
+  color: #fff;
   border-radius: 18px;
   border: 1.5px solid var(--card-border);
   box-shadow: 0 2px 16px 0 rgba(54, 106, 130, 0.07);
@@ -379,11 +420,12 @@ html, body {
   z-index: 2;
 }
 .vian-way-card h3 {
+  color: #fff;
   font-size: 1.13rem;
   margin-bottom: 0.5rem;
 }
 .vian-way-card p {
-  color: var(--dark);
+  color: #fff;
   font-size: 1.09rem;
   margin: 0;
   font-weight: 500;
@@ -397,7 +439,7 @@ html, body {
   margin-top: 0;
   font-size: 1rem;
   padding: 0.7rem 1.7rem;
-  font-family: 'Poppins', 'Avenir', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
 }
@@ -431,13 +473,14 @@ html, body {
   padding: 0 2rem;
   width: 100%;
 }
-.our-portals-title {
+.our-portals-title, .services-title {
+  font-family: 'Orbitron', Arial, sans-serif;
   text-align: center;
-  font-size: 2.1rem;
-  font-family: 'Poppins', 'Avenir', Arial, sans-serif;
+  font-size: 2.2rem;
   color: var(--primary);
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 2.2rem;
+  letter-spacing: 1px;
 }
 .our-portals-content, .navigator-content {
   display: flex;
@@ -479,7 +522,7 @@ html, body {
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  font-family: 'Orbitron', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
   text-align: center;
@@ -493,7 +536,7 @@ html, body {
   flex: 1 1 0;
 }
 .our-portals-info h3 {
-  font-family: 'Poppins', 'Avenir', Arial, sans-serif;
+  font-family: 'Orbitron', Arial, sans-serif;
   font-size: 1.35rem;
   color: var(--primary);
   font-weight: 700;
@@ -503,13 +546,13 @@ html, body {
   font-size: 1.08rem;
   color: var(--dark);
   margin-bottom: 1.2rem;
-  font-family: 'Avenir', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
 }
 .our-portals-link {
   display: inline-block;
   background: var(--primary);
   color: #fff;
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 800;
   font-size: 1.13rem;
   padding: 0.85rem 2.3rem;
@@ -583,11 +626,12 @@ html, body {
   width: 100%;
 }
 .navigator-title {
+  font-family: 'Orbitron', Arial, sans-serif;
   text-align: center;
   font-size: 2.1rem;
-  font-family: 'Poppins', 'Avenir', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   color: var(--primary);
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 2.2rem;
 }
 .navigator-content {
@@ -612,7 +656,7 @@ html, body {
   flex: 1 1 0;
 }
 .navigator-info h3 {
-  font-family: 'Poppins', 'Avenir', Arial, sans-serif;
+  font-family: 'Orbitron', Arial, sans-serif;
   font-size: 1.35rem;
   color: var(--primary);
   font-weight: 700;
@@ -622,13 +666,13 @@ html, body {
   font-size: 1.08rem;
   color: var(--dark);
   margin-bottom: 1.2rem;
-  font-family: 'Avenir', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
 }
 .navigator-link {
   display: inline-block;
   background: var(--primary);
   color: #fff;
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 700;
   font-size: 1.05rem;
   padding: 0.7rem 2.1rem;
@@ -651,7 +695,7 @@ html, body {
   display: inline-block;
   background: var(--accent);
   color: #fff;
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 800;
   font-size: 1.13rem;
   padding: 0.85rem 2.3rem;
@@ -694,11 +738,12 @@ html, body {
   width: 100%;
 }
 .services-title {
+  font-family: 'Orbitron', Arial, sans-serif;
   text-align: center;
   font-size: 2.1rem;
-  font-family: 'Poppins', 'Avenir', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   color: var(--primary);
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 2.2rem;
 }
 .services-grid {
@@ -707,15 +752,41 @@ html, body {
   gap: 2.5rem;
 }
 .service-card {
-  background: #fff;
+  background: #926f47;
+  color: #fff;
   border-radius: 18px;
   border: 2px solid #343631;
   box-shadow: 0 2px 12px 0 rgba(54, 106, 130, 0.07);
-  padding: 2.1rem 1.3rem 1.5rem 1.3rem;
-  text-align: center;
+  padding: 0;
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  overflow: hidden;
   transition: box-shadow 0.22s, transform 0.22s, border 0.22s;
   position: relative;
   z-index: 1;
+  min-height: 220px;
+}
+.service-card-image {
+  flex: 1 1 40%;
+  min-width: 160px;
+  background-size: cover;
+  background-position: center;
+  height: 100%;
+}
+.service-card-content {
+  flex: 2 1 60%;
+  padding: 2.1rem 1.3rem 1.5rem 1.3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.service-card h3, .service-card .service-title {
+  color: #fff;
+}
+.service-card .service-desc {
+  color: #fff;
 }
 .service-card:hover {
   box-shadow: 0 8px 32px 0 rgba(54, 106, 130, 0.13);
@@ -727,7 +798,7 @@ html, body {
   font-size: 2.7rem;
   margin-bottom: 1.1rem;
   color: #343631;
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 800;
   display: flex;
   align-items: center;
@@ -737,14 +808,14 @@ html, body {
 .service-title {
   font-size: 1.18rem;
   color: #343631;
-  font-family: 'Poppins', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 700;
   margin-bottom: 0.6rem;
 }
 .service-desc {
   font-size: 1.04rem;
   color: var(--dark);
-  font-family: 'Avenir', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 500;
   margin: 0;
 }
@@ -760,7 +831,18 @@ html, body {
     gap: 1.2rem;
   }
   .service-card {
+    flex-direction: column;
+    min-height: 0;
+  }
+  .service-card-image {
+    min-height: 180px;
+    width: 100%;
+  }
+  .service-card-content {
     padding: 1.2rem 0.7rem 1.1rem 0.7rem;
+  }
+  .service-card .service-desc {
+    font-size: 0.9rem;
   }
 }
 
@@ -779,11 +861,12 @@ html, body {
   width: 100%;
 }
 .partners-title {
+  font-family: 'Orbitron', Arial, sans-serif;
   text-align: center;
   font-size: 2.1rem;
-  font-family: 'Poppins', 'Avenir', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   color: var(--primary);
-  font-weight: 800;
+  font-weight: 900;
   margin-bottom: 2.2rem;
 }
 .partners-carousel {
@@ -835,7 +918,7 @@ html, body {
 }
 
 .contact-section {
-  background: linear-gradient(135deg, var(--background) 0%, #e8f7ff 100%);
+  background: var(--primary);
   padding: 72px 0 64px 0;
   border-top: 1.5px solid var(--card-border);
   display: flex;
@@ -886,8 +969,9 @@ html, body {
   transform: translateY(-4px);
 }
 .contact-title {
-  font-size: 2.4rem;
   font-family: 'Orbitron', Arial, sans-serif;
+  font-size: 2.4rem;
+  font-family: 'Montserrat', Arial, sans-serif;
   color: var(--primary);
   font-weight: 900;
   margin-bottom: 2rem;
@@ -970,9 +1054,10 @@ html, body {
   justify-content: center;
 }
 .contact-info-area h3 {
-  font-size: 1.3rem;
-  color: var(--primary);
   font-family: 'Orbitron', Arial, sans-serif;
+  font-size: 1.3rem;
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: var(--primary);
   font-weight: 700;
   margin-bottom: 0.8rem;
   margin-top: 2rem;
@@ -1053,6 +1138,7 @@ html, body {
   width: 100%;
 }
 .projects-title {
+  font-family: 'Orbitron', Arial, sans-serif;
   text-align: center;
   font-size: 2.3rem;
   color: #222;
@@ -1119,7 +1205,7 @@ html, body {
   align-items: center;
   justify-content: center;
   border-radius: 12px;
-  font-family: 'Orbitron', Arial, sans-serif;
+  font-family: 'Montserrat', Arial, sans-serif;
   font-size: 0.95rem;
   font-weight: 700;
   text-align: center;
@@ -1142,6 +1228,14 @@ html, body {
   }
   .projects-title, .projects-title-bold {
     font-size: 1.3rem;
+  }
+}
+.project-image-card img {
+  height: 270px;
+}
+@media (max-width: 900px) {
+  .project-image-card, .project-image-card img {
+    height: 200px;
   }
 }
 
@@ -1230,11 +1324,250 @@ html, body {
   }
   .footer-nav {
     gap: 1.1rem;
+    flex-direction: column;
+    align-items: center;
   }
   .footer-social {
     gap: 0.7rem;
+    margin-top: 0.7rem;
   }
   .footer-bottom {
     font-size: 0.97rem;
+    margin-top: 1.2rem;
+  }
+}
+
+/* --- Section Layouts --- */
+@media (max-width: 900px) {
+  .vian-way-cards,
+  .our-portals-content,
+  .navigator-content,
+  .services-grid {
+    flex-direction: column !important;
+    gap: 1.2rem;
+    align-items: stretch !important;
+    padding: 1.2rem 0.7rem !important;
+  }
+  .our-portals-img,
+  .navigator-img,
+  .project-image-card,
+  .project-image-card img {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    min-width: 0 !important;
+  }
+}
+
+/* --- Buttons & Forms --- */
+@media (max-width: 700px) {
+  .cta-btn, .our-portals-link, .navigator-link {
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 20px;
+  }
+  .contact-form input, .contact-form textarea {
+    font-size: 1rem;
+    padding: 1rem 1.2rem;
+    border-radius: 8px;
+  }
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.scroll-fade-in {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s cubic-bezier(0.4,0,0.2,1), transform 0.7s cubic-bezier(0.4,0,0.2,1);
+}
+.scroll-fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+  animation: fadeInUp 0.7s cubic-bezier(0.4,0,0.2,1) both;
+}
+
+.services-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+.service-card-custom {
+  display: flex;
+  align-items: center;
+  background: #926f47;
+  color: #fff;
+  border-radius: 24px;
+  box-shadow: 0 4px 24px 0 rgba(54, 106, 130, 0.13);
+  padding: 2.2rem 2rem;
+  position: relative;
+  overflow: hidden;
+  min-height: 220px;
+}
+.service-card-custom .service-img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid #fff;
+  box-shadow: 0 2px 12px 0 rgba(54, 106, 130, 0.13);
+  margin-right: 2.5rem;
+  background: #fff;
+}
+.service-card-custom .service-info {
+  flex: 1 1 0;
+}
+.service-card-custom h3 {
+  font-family: 'Orbitron', Arial, sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  margin-bottom: 0.7rem;
+  color: #fff;
+}
+.service-card-custom p {
+  font-size: 1.13rem;
+  color: #fff;
+  margin-bottom: 0;
+  font-family: 'Montserrat', Arial, sans-serif;
+}
+.service-card-custom .accent-bar {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 10px;
+  background: var(--primary);
+  border-radius: 24px 0 0 24px;
+}
+.service-card-custom.reverse {
+  flex-direction: row-reverse;
+}
+.service-card-custom.reverse .service-img {
+  margin-left: 2.5rem;
+  margin-right: 0;
+}
+@media (max-width: 900px) {
+  .service-card-custom, .service-card-custom.reverse {
+    flex-direction: column !important;
+    align-items: flex-start;
+    padding: 1.2rem 0.7rem;
+  }
+  .service-card-custom .service-img, .service-card-custom.reverse .service-img {
+    margin: 0 0 1.2rem 0;
+    width: 100px;
+    height: 100px;
+  }
+}
+
+/* Hamburger styles */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 120;
+}
+.hamburger .bar {
+  width: 28px;
+  height: 4px;
+  background: #fff;
+  margin: 3px 0;
+  border-radius: 2px;
+  transition: all 0.3s;
+}
+@media (max-width: 900px) {
+  .nav {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    width: 70vw;
+    max-width: 320px;
+    background: #181a1b;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 2rem 2rem 2rem;
+    box-shadow: -2px 0 16px rgba(0,0,0,0.13);
+    z-index: 110;
+    gap: 2rem;
+    font-size: 1.2rem;
+  }
+  .nav.nav-open {
+    display: flex;
+  }
+  .hamburger {
+    display: flex;
+    position: absolute;
+    right: 1.2rem;
+    top: 1.2rem;
+  }
+  .nav-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.3);
+    z-index: 100;
+  }
+  .header, .simple-header {
+    flex-direction: row;
+    align-items: center;
+    padding: 0.7rem 1rem;
+    min-height: 60px;
+    height: 60px;
+  }
+  .header-logo-img {
+    height: 38px;
+    margin-right: 0.7rem;
+  }
+  .services-content, .our-portals-content, .navigator-content {
+    flex-direction: column !important;
+    gap: 1.5rem;
+    padding: 1.2rem 0.7rem;
+  }
+  .our-portals-img, .navigator-img, .service-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto 1.2rem auto;
+    display: block;
+  }
+  .service-card-custom, .service-card-custom.reverse {
+    flex-direction: column !important;
+    align-items: flex-start;
+    padding: 1.2rem 0.7rem;
+  }
+  .service-card-custom .service-img, .service-card-custom.reverse .service-img {
+    margin: 0 0 1.2rem 0;
+    width: 100px;
+    height: 100px;
+  }
+  .services-title, .our-portals-title, .projects-title, .contact-title {
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+  .service-card-custom h3, .our-portals-info h3 {
+    font-size: 1.1rem;
+  }
+  .service-card-custom p, .our-portals-info p {
+    font-size: 0.98rem;
+  }
+  .cta-btn, .our-portals-link, .navigator-link {
+    font-size: 1rem;
+    padding: 0.7rem 1.5rem;
+    margin-top: 1.2rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 }
