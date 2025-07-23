@@ -17,6 +17,12 @@ body, html, #root {
   max-width: 100vw;
   box-sizing: border-box;
 }
+
+body.nav-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
 h1, h2, h3, .projects-title, .projects-title-bold {
   font-family: 'Orbitron', Arial, sans-serif;
   font-weight: 700;
@@ -427,13 +433,14 @@ html, body {
 }
 .vian-way-lead {
   font-size: 1.08rem;
-  color: var(--dark);
+  color: var(--primary);
   margin: 0 auto;
   max-width: 600px;
   font-family: 'Orbitron', Arial, sans-serif;
   font-weight: 700;
   letter-spacing: 0.5px;
   white-space: nowrap;
+  text-align: center;
 }
 
 @media (max-width: 768px) {
@@ -442,6 +449,8 @@ html, body {
     font-size: 1rem;
     line-height: 1.4;
     max-width: 100%;
+    text-align: center;
+    color: var(--primary);
   }
 }
 .vian-way-cards {
@@ -1194,7 +1203,7 @@ html, body {
   font-family: 'Orbitron', Arial, sans-serif;
   text-align: center;
   font-size: 2.3rem;
-  color: #222;
+  color: var(--primary);
   font-weight: 800;
   margin-bottom: 2.5rem;
   line-height: 1.2;
@@ -1202,7 +1211,7 @@ html, body {
 }
 .projects-title-bold {
   font-weight: 900;
-  color: #23272e;
+  color: var(--primary);
   font-size: 2.5rem;
   letter-spacing: 1px;
   display: inline-block;
@@ -1520,75 +1529,87 @@ html, body {
   }
 }
 
-/* Hamburger styles */
+/* Modern Hamburger Menu */
 .hamburger {
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 44px;
-  height: 44px;
-  background: none;
+  width: 48px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.1);
   border: none;
+  border-radius: 8px;
   cursor: pointer;
   z-index: 120;
-  padding: 8px;
+  transition: all 0.3s ease;
 }
 
-@media (max-width: 900px) {
-  .hamburger {
-    display: flex;
-  }
+.hamburger:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
 }
+
 .hamburger .bar {
-  width: 28px;
-  height: 4px;
+  width: 22px;
+  height: 2px;
   background: #fff;
-  margin: 3px 0;
+  margin: 2px 0;
   border-radius: 2px;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
 }
-@media (max-width: 900px) {
+
+.hamburger.active .bar:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger.active .bar:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active .bar:nth-child(3) {
+  transform: rotate(-45deg) translate(7px, -6px);
+}
+/* === MODERN MOBILE DESIGN === */
+@media (max-width: 768px) {
+  /* Modern Mobile Header */
   .header, .simple-header {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    padding: 0.8rem 1rem;
-    min-height: 70px;
-    height: 70px;
-    border-radius: 0 0 12px 12px;
+    padding: 1rem 1.5rem;
+    min-height: 80px;
+    height: 80px;
+    background: var(--primary);
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 0;
     position: fixed;
     width: 100%;
     box-sizing: border-box;
+    z-index: 1000;
   }
+  
   .header-logo {
     justify-content: flex-start;
     width: auto;
-    margin-bottom: 0;
+    margin: 0;
   }
+  
   .header-logo-img {
-    height: 50px;
+    height: 55px;
     margin: 0;
     display: block;
   }
+  
   .hamburger {
     display: flex;
-    position: static;
-    right: auto;
-    top: auto;
-    z-index: 120;
-    width: 44px;
-    height: 44px;
-    padding: 8px;
+    z-index: 1001;
+    position: relative;
   }
-  .hamburger .bar {
-    width: 24px;
-    height: 3px;
-    background: #fff;
-    margin: 2px 0;
-    border-radius: 2px;
-    transition: all 0.3s;
-  }
+  
+
+  
+  /* Modern Mobile Navigation */
   .nav {
     display: none;
     position: fixed;
@@ -1598,248 +1619,378 @@ html, body {
     bottom: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(24, 26, 27, 0.98);
-    backdrop-filter: blur(10px);
+    background: linear-gradient(135deg, rgba(54, 106, 130, 0.98) 0%, rgba(24, 26, 27, 0.98) 100%);
+    backdrop-filter: blur(20px);
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 0;
-    box-shadow: none;
-    z-index: 110;
-    gap: 2.5rem;
-    font-size: 1.2rem;
+    z-index: 999;
+    gap: 2rem;
   }
+  
   .nav.nav-open {
     display: flex;
+    animation: slideIn 0.3s ease-out;
   }
+  
   .nav a {
     color: #fff;
-    font-size: 1.3rem;
-    padding: 1.2rem 2rem;
-    width: auto;
-    text-align: center;
-    border-radius: 8px;
-    background: rgba(54, 106, 130, 0.1);
-    border: 1px solid rgba(54, 106, 130, 0.3);
+    font-size: 1.4rem;
     font-family: 'Orbitron', Arial, sans-serif;
     font-weight: 700;
+    padding: 1rem 2.5rem;
+    margin: 0.5rem 0;
+    text-align: center;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    min-width: 250px;
+    transition: all 0.3s ease;
     letter-spacing: 1px;
-    min-width: 200px;
-    transition: all 0.3s;
+    text-decoration: none;
   }
+  
   .nav a:hover, .nav a:active {
-    background: var(--primary);
-    color: #fff;
-    transform: scale(1.05);
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
   }
+  
   .nav-overlay {
     position: fixed;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0,0,0,0.5);
-    z-index: 100;
+    top: 0; 
+    left: 0; 
+    right: 0; 
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 998;
+    backdrop-filter: blur(2px);
+    cursor: pointer;
   }
-  .hero-section, .vian-way-section, .our-portals-section, .navigator-section, .services-section, .projects-section, .contact-section {
-    padding: 2.2rem 0.7rem !important;
-  }
-  .hero-content h1 {
-    font-size: 1.6rem;
-    line-height: 1.3;
-    margin-bottom: 1.5rem;
-    text-align: center;
-  }
-  .services-title, .our-portals-title, .projects-title, .contact-title, .navigator-title, .partners-title {
-    font-size: 1.8rem;
-    margin-bottom: 1.5rem;
-    text-align: center;
-    line-height: 1.2;
-  }
-  .vian-way-header h2 {
-    font-size: 1.8rem;
-    margin-bottom: 1rem;
-  }
-  .services-content, .our-portals-content, .navigator-content {
-    flex-direction: column !important;
-    gap: 1.5rem;
-    padding: 1.2rem 0.7rem;
-    align-items: stretch;
-  }
-  .our-portals-img, .navigator-img, .service-img {
-    width: 100%;
-    max-width: 100%;
-    height: auto;
-    margin: 0 auto 1.2rem auto;
-    display: block;
-    border-radius: 14px;
-  }
-  .service-card-custom, .service-card-custom.reverse {
-    flex-direction: column !important;
-    align-items: flex-start;
-    padding: 1.2rem 0.7rem;
-    min-height: 0;
-  }
-  .service-card-custom .service-img, .service-card-custom.reverse .service-img {
-    margin: 0 0 1.2rem 0;
-    width: 100px;
-    height: 100px;
-    border-radius: 50%;
-  }
-  .service-card-custom h3, .our-portals-info h3 {
-    font-size: 1.1rem;
-    text-align: left;
-  }
-  .service-card-custom p, .our-portals-info p {
-    font-size: 0.98rem;
-    text-align: left;
-  }
-  .cta-btn, .our-portals-link, .navigator-link {
-    font-size: 1rem;
-    padding: 0.7rem 1.5rem;
-    margin-top: 1.2rem;
-    width: 100%;
-    box-sizing: border-box;
-  }
-  .contact-form-area, .contact-info-area {
-    padding: 1.2rem 0.7rem;
-    border-radius: 16px;
-  }
-  .contact-form input, .contact-form textarea {
-    font-size: 1rem;
-    padding: 0.9rem 1rem;
-    border-radius: 8px;
-  }
-  .footer-container, .footer-menus {
-    flex-direction: column;
-    align-items: center;
-    padding: 1.2rem 0.7rem;
-  }
-  .footer-nav {
-    flex-direction: column;
-    gap: 1rem;
-    width: 100%;
-    align-items: center;
-  }
-  .footer-nav a {
-    font-size: 1.1rem;
-    padding: 0.5rem 1rem;
-    min-width: 120px;
-    border-radius: 8px;
-  }
-  .footer-social {
-    margin: 1.2rem 0;
-    justify-content: center;
-  }
-  .footer-bottom {
-    text-align: center;
-    font-size: 0.95rem;
-    margin-top: 1rem;
-  }
-}
 
-/* === COMPREHENSIVE MOBILE OPTIMIZATIONS === */
-@media (max-width: 768px) {
-  /* Hero section mobile optimization */
+  /* Modern Hero Section */
   .hero-section {
-    min-height: 100vh !important;
-    height: 100vh !important;
-    padding-top: 70px !important;
-    align-items: flex-end !important;
-    padding-bottom: 8vh !important;
+    min-height: 100vh;
+    height: 100vh;
+    padding-top: 80px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    padding-bottom: 15vh;
+  }
+  
+  .hero-bg {
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+  }
+  
+  .hero-overlay {
+    background: linear-gradient(45deg, rgba(20, 40, 60, 0.75) 0%, rgba(54, 106, 130, 0.6) 100%);
   }
   
   .hero-content {
-    text-align: left !important;
-    padding: 0 1.5rem !important;
-    max-width: 100% !important;
+    text-align: left;
+    padding: 0 2rem;
+    max-width: 100%;
+    width: 100%;
   }
   
   .hero-content h1 {
-    font-size: 1.9rem !important;
-    line-height: 1.2 !important;
-    text-align: left !important;
-    margin-bottom: 1.8rem !important;
-    max-width: 95% !important;
+    font-size: 2.2rem;
+    line-height: 1.25;
+    margin-bottom: 2rem;
+    text-align: left;
+    font-weight: 800;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   }
   
-  /* Better touch targets */
-  .cta-btn, .our-portals-link, .navigator-link {
-    font-size: 1.1rem !important;
-    padding: 1rem 2rem !important;
-    min-height: 48px;
-    margin-top: 1.5rem !important;
-    border-radius: 25px !important;
+  .cta-btn {
+    font-size: 1.1rem;
+    padding: 1.2rem 2.5rem;
+    margin-top: 2rem;
+    border-radius: 30px;
+    box-shadow: 0 8px 25px rgba(54, 106, 130, 0.3);
+    min-height: auto;
+    width: auto;
+    display: inline-block;
+  }
+
+  /* Clean Section Styling */
+  .vian-way-section, .our-portals-section, .navigator-section, 
+  .services-section, .projects-section, .contact-section {
+    padding: 4rem 1.5rem;
   }
   
-  /* Improved form experience */
-  .contact-form input, .contact-form textarea {
-    font-size: 1.1rem !important;
-    padding: 1.2rem 1.5rem !important;
-    border-radius: 12px !important;
-    min-height: 48px;
+  /* Modern Typography */
+  .services-title, .our-portals-title, .projects-title, 
+  .contact-title, .navigator-title, .partners-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+    text-align: center;
+    line-height: 1.2;
   }
   
-  /* Better spacing for sections */
-  .vian-way-section, .our-portals-section, 
-  .navigator-section, .services-section, .projects-section, .contact-section {
-    padding: 3rem 1rem !important;
+  .vian-way-header h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Card Layouts */
+  .vian-way-cards {
+    gap: 1.5rem;
+    flex-direction: column;
   }
   
-  /* Improved card spacing */
-  .vian-way-card, .service-card-custom {
-    padding: 1.5rem 1.2rem !important;
+  .vian-way-card {
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .service-card-custom {
+    flex-direction: column;
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  }
+  
+  .service-card-custom .service-img {
+    width: 80px;
+    height: 80px;
+    margin: 0 0 1.5rem 0;
+    border-radius: 50%;
+  }
+  
+  .service-card-custom h3 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+  
+  .service-card-custom p {
+    font-size: 1rem;
+    line-height: 1.6;
+    text-align: left;
+  }
+
+  /* Content Layouts */
+  .our-portals-content, .navigator-content {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+  }
+  
+  .our-portals-img, .navigator-img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
     margin-bottom: 1rem;
   }
-  
-  /* Better project gallery for mobile */
-  .project-image-card {
-    min-width: 300px !important;
-    max-width: 300px !important;
+
+  /* Contact Section */
+  .contact-container {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 0 1rem;
   }
   
-  /* Social media icons larger touch targets */
-  .footer-social a {
-    width: 48px !important;
-    height: 48px !important;
+  .contact-form-area, .contact-info-area {
+    padding: 2rem 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
   }
   
-  /* Contact info better spacing */
+  .contact-title {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .contact-form {
+    width: 100%;
+  }
+  
+  .contact-form input, .contact-form textarea {
+    font-size: 1.1rem;
+    padding: 1.2rem 1.5rem;
+    border-radius: 12px;
+    border: 2px solid var(--card-border);
+    width: 100%;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+    background: #fafcff;
+    transition: all 0.3s ease;
+  }
+  
+  .contact-form input:focus, .contact-form textarea:focus {
+    border-color: var(--primary);
+    box-shadow: 0 0 0 3px rgba(54, 106, 130, 0.1);
+    background: #fff;
+    outline: none;
+  }
+  
+  .contact-form button {
+    width: 100%;
+    padding: 1.2rem 2rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: var(--primary);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+  }
+  
+  .contact-form button:hover {
+    background: var(--secondary);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(54, 106, 130, 0.3);
+  }
+  
   .contact-info-area h3 {
     font-size: 1.2rem;
     margin-top: 1.5rem;
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.8rem;
   }
   
   .contact-info-area p {
     font-size: 1rem;
-    line-height: 1.5;
+    line-height: 1.6;
     margin-bottom: 1.2rem;
+  }
+
+  /* Footer */
+  .footer-container {
+    padding: 2rem 1.5rem;
+  }
+  
+  .footer-menus {
+    flex-direction: column;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .footer-nav {
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+    align-items: center;
+  }
+  
+  .footer-nav a {
+    font-size: 1.1rem;
+    padding: 0.8rem 1.5rem;
+    min-width: 150px;
+    border-radius: 12px;
+    background: rgba(54, 106, 130, 0.1);
+    transition: all 0.3s ease;
+  }
+  
+  .footer-nav a:hover {
+    background: var(--accent);
+    color: var(--primary);
+    transform: translateY(-2px);
+  }
+  
+  .footer-social {
+    margin: 1.5rem 0;
+    justify-content: center;
+    gap: 1rem;
+  }
+  
+  .footer-social a {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    background: var(--primary);
+    transition: all 0.3s ease;
+  }
+  
+  .footer-social a:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 10px 25px rgba(54, 106, 130, 0.3);
+  }
+  
+  .footer-bottom {
+    text-align: center;
+    font-size: 1rem;
+    margin-top: 2rem;
   }
 }
 
-/* === EXTRA SMALL MOBILE SCREENS === */
+/* === MODERN MOBILE ANIMATIONS === */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* === ADDITIONAL MOBILE REFINEMENTS === */
 @media (max-width: 480px) {
   .header-logo-img {
-    height: 45px !important;
+    height: 45px;
   }
   
   .hamburger {
-    width: 40px !important;
-    height: 40px !important;
-    padding: 6px !important;
+    width: 44px;
+    height: 44px;
   }
   
   .hero-content h1 {
-    font-size: 1.6rem !important;
-    line-height: 1.25 !important;
-  }
-  
-  .cta-btn {
-    font-size: 1rem !important;
-    padding: 0.9rem 1.8rem !important;
+    font-size: 1.8rem;
+    line-height: 1.3;
   }
   
   .nav a {
-    font-size: 1.2rem !important;
-    min-width: 180px !important;
-    padding: 1rem 1.5rem !important;
+    font-size: 1.2rem;
+    min-width: 200px;
+    padding: 0.9rem 1.5rem;
+  }
+  
+  .vian-way-section, .our-portals-section, .navigator-section, 
+  .services-section, .projects-section, .contact-section {
+    padding: 3rem 1rem;
+  }
+  
+  .service-card-custom h3 {
+    font-size: 1.2rem;
+  }
+  
+  .service-card-custom p {
+    font-size: 0.95rem;
+  }
+  
+  .cta-btn {
+    font-size: 1rem;
+    padding: 0.9rem 1.8rem;
+  }
+  
+  .contact-form-area, .contact-info-area {
+    padding: 1.5rem 1rem;
+  }
+  
+  .contact-form input, .contact-form textarea {
+    font-size: 1rem;
+    padding: 1rem 1.2rem;
+  }
+  
+  .contact-form button {
+    padding: 1rem 1.5rem;
+    font-size: 1rem;
   }
 }
+

@@ -25,12 +25,12 @@ const services = [
   {
     bgImage: '/project-slide-3.png',
     title: 'Business Process Optimization',
-    desc: 'We offer tailored solutions to streamline and improve core business operations by analyzing, redesigning, and digitizing workflows enabling businesses to increase efficiency, reduce costs, eliminate waste, and enhance overall performance.'
+    desc: 'We offer tailored solutions to streamline and improve core business operations by analyzing redesigning and digitizing workflows enabling businesses to increase efficiency, reduce costs, eliminate waste and enhance overall performance.'
   },
   {
     bgImage: '/project-slide-4.png',
     title: 'Condition Assessment and Evaluation',
-    desc: 'We specialize in inspecting, analyzing, and reporting the physical and operational state of assets, infrastructure, or equipment enabling clients to understand the current condition, risks, life expectancy, and necessary maintenance or replacement actions for critical assets.'
+    desc: 'We specialize in inspecting, analyzing and reporting the physical and operational state of assets, infrastructure or equipment enabling clients to understand the current condition, risks, life expectancy and necessary maintenance or replacement actions for critical assets.'
   }
 ]
 
@@ -94,13 +94,27 @@ function App() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
+  // Handle body scroll lock when menu is open
+  useEffect(() => {
+    if (navOpen) {
+      document.body.classList.add('nav-open')
+    } else {
+      document.body.classList.remove('nav-open')
+    }
+    
+    // Cleanup on component unmount
+    return () => {
+      document.body.classList.remove('nav-open')
+    }
+  }, [navOpen])
+
   return (
     <>
       <header className="header simple-header">
         <div className="header-logo">
           <img src={newVianLogo} alt="Vian Global Logo" className="header-logo-img" />
         </div>
-        <button className="hamburger" onClick={() => setNavOpen(!navOpen)} aria-label="Open navigation">
+        <button className={`hamburger ${navOpen ? 'active' : ''}`} onClick={() => setNavOpen(!navOpen)} aria-label="Open navigation">
           <span className="bar"></span>
           <span className="bar"></span>
           <span className="bar"></span>
@@ -145,7 +159,7 @@ function App() {
               </div>
               <div className="vian-way-card scroll-fade-in">
                 <h3>Consistent Quality</h3>
-                <p>We ensure high sense of quality across all levels of our work to align with internationally recognized benchmarks.</p>
+                <p>We ensure high sense of quality across all levels of our work to align with internationally recognized benchmarks</p>
               </div>
             </div>
           </div>
@@ -197,7 +211,7 @@ function App() {
                 <img src={conditionEvaluationImg} alt="Condition Assessment and Evaluation" className="service-img" />
                 <div className="service-info">
                   <h3>Condition Assessment and Evaluation</h3>
-                  <p>We specialize in inspecting, analyzing, and reporting the physical and operational state of assets, infrastructure, or equipment enabling clients to understand the current condition, risks, life expectancy, and necessary maintenance or replacement actions for critical assets.</p>
+                  <p>We specialize in inspecting, analyzing and reporting the physical and operational state of assets, infrastructure or equipment enabling clients to understand the current condition, risks, life expectancy and necessary maintenance or replacement actions for critical assets.</p>
                 </div>
               </div>
               <div className="service-card-custom scroll-fade-in">
@@ -205,7 +219,7 @@ function App() {
                 <img src={businessProcessImg} alt="Business Process Optimization" className="service-img" />
                 <div className="service-info">
                   <h3>Business Process Optimization</h3>
-                  <p>We offer tailored solutions to streamline and improve core business operations by analyzing, redesigning, and digitizing workflows enabling businesses to increase efficiency, reduce costs, eliminate waste, and enhance overall performance.</p>
+                  <p>We offer tailored solutions to streamline and improve core business operations by analyzing redesigning and digitizing workflows enabling businesses to increase efficiency, reduce costs, eliminate waste and enhance overall performance.</p>
                 </div>
               </div>
               <div className="service-card-custom scroll-fade-in reverse">
