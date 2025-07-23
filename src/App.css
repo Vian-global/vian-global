@@ -183,7 +183,10 @@ html, body {
   transform: translateY(-2px) scale(1.04);
 }
 .cta-btn {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   margin-top: 2.2rem;
   padding: 0.95rem 2.5rem;
   font-size: 1.18rem;
@@ -197,6 +200,8 @@ html, body {
   letter-spacing: 1px;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s, transform 0.2s;
   cursor: pointer;
+  min-height: 48px;
+  line-height: 1;
 }
 .cta-btn:hover {
   background: var(--secondary);
@@ -328,7 +333,11 @@ html, body {
     padding: 1rem 2rem;
     margin-top: 1.5rem;
     min-height: 48px;
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
   }
 }
 
@@ -441,6 +450,10 @@ html, body {
   letter-spacing: 0.5px;
   white-space: nowrap;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
 @media (max-width: 768px) {
@@ -504,6 +517,12 @@ html, body {
   font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 700;
   letter-spacing: 1px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 44px;
+  line-height: 1;
 }
 .cta-btn.alt:hover {
   background: var(--primary);
@@ -611,7 +630,10 @@ html, body {
   font-family: 'Montserrat', Arial, sans-serif;
 }
 .our-portals-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   background: var(--primary);
   color: #fff;
   font-family: 'Montserrat', Arial, sans-serif;
@@ -628,6 +650,8 @@ html, body {
   position: relative;
   overflow: hidden;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  min-height: 48px;
+  line-height: 1;
 }
 .our-portals-link::after {
   content: '';
@@ -754,7 +778,10 @@ html, body {
   opacity: 0.7;
 }
 .our-portals-link.disabled, .navigator-link.disabled {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   background: var(--accent);
   color: #fff;
   font-family: 'Montserrat', Arial, sans-serif;
@@ -771,6 +798,8 @@ html, body {
   pointer-events: none;
   opacity: 1;
   transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  min-height: 48px;
+  line-height: 1;
 }
 @media (max-width: 900px) {
   .navigator-content {
@@ -1086,6 +1115,10 @@ html, body {
   min-height: 120px;
 }
 .contact-form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   margin-top: 1rem;
   padding: 1.2rem 2.5rem;
   font-size: 1.1rem;
@@ -1095,6 +1128,12 @@ html, body {
   transition: all 0.3s cubic-bezier(0.4,0,0.2,1);
   position: relative;
   overflow: hidden;
+  min-height: 48px;
+  line-height: 1;
+  border: none;
+  background: var(--primary);
+  color: #fff;
+  cursor: pointer;
 }
 .contact-form button::before {
   content: '';
@@ -1428,6 +1467,12 @@ html, body {
     font-size: 1rem;
     padding: 1rem 1.5rem;
     border-radius: 20px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 44px;
+    line-height: 1;
   }
   .contact-form input, .contact-form textarea {
     font-size: 1rem;
@@ -1848,6 +1893,12 @@ html, body {
     cursor: pointer;
     transition: all 0.3s ease;
     margin-top: 1rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 48px;
+    line-height: 1;
   }
   
   .contact-form button:hover {
@@ -1991,6 +2042,91 @@ html, body {
   .contact-form button {
     padding: 1rem 1.5rem;
     font-size: 1rem;
+  }
+}
+
+/* === GLOBAL MOBILE REFINEMENTS === */
+@media (max-width: 480px) {
+  body, html {
+    font-size: 16px;
+  }
+  .main-content {
+    padding-top: 90px; /* header offset for mobile */
+  }
+  .section {
+    padding: 3.5rem 1rem;
+  }
+  .cta-btn, .our-portals-link, .navigator-link, .contact-form button, .footer-nav a, .nav a {
+    min-height: 44px;
+    font-size: 1.05rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+  }
+  .contact-form input, .contact-form textarea {
+    font-size: 16px;
+    min-height: 44px;
+    margin-bottom: 1.2rem;
+  }
+  .contact-form button {
+    margin-top: 1.5rem;
+  }
+  .hero-content {
+    padding-left: 1.2rem;
+    padding-right: 1.2rem;
+  }
+  .footer-social a {
+    width: 48px;
+    height: 48px;
+    margin: 0 0.5rem;
+  }
+  .footer-nav {
+    gap: 1.2rem;
+  }
+}
+
+/* Desktop main content offset */
+@media (min-width: 481px) {
+  .main-content {
+    padding-top: 120px;
+  }
+  .section {
+    padding: 4.5rem 2rem;
+  }
+}
+
+/* Utility classes for consistent section padding */
+.section {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Ensure all nav/footer/cta links are at least 44px tall and properly centered */
+.cta-btn, .our-portals-link, .navigator-link, .contact-form button, .footer-nav a, .nav a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  line-height: 1;
+}
+
+/* Add extra margin between stacked cards and sections on mobile */
+@media (max-width: 480px) {
+  .vian-way-card, .service-card-custom, .our-portals-content, .navigator-content {
+    margin-bottom: 1.5rem;
+  }
+  .vian-way-card:last-child, .service-card-custom:last-child, .our-portals-content:last-child, .navigator-content:last-child {
+    margin-bottom: 0;
+  }
+}
+
+/* Add extra margin below hero CTA on mobile */
+@media (max-width: 480px) {
+  .hero-content .cta-btn {
+    margin-bottom: 2.2rem;
   }
 }
 

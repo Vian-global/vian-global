@@ -159,7 +159,7 @@ function App() {
               </div>
               <div className="vian-way-card scroll-fade-in">
                 <h3>Consistent Quality</h3>
-                <p>We ensure high sense of quality across all levels of our work to align with internationally recognized benchmarks</p>
+                <p>We ensure high sense of quality across all levels of our work to align with internationally recognized benchmarks.</p>
               </div>
             </div>
           </div>
