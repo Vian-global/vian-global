@@ -1,5 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import './App.css'
+import projectManagementImg from './assets/project management.jpeg'
+import conditionEvaluationImg from './assets/Condition Evalution.jpeg'
+import businessProcessImg from './assets/business process.jpeg'
+import businessDigitalizationImg from './assets/business digitalization.jpeg'
 
 const heroImages = [
   '/hero.jpg',
@@ -132,15 +136,15 @@ function App() {
             <div className="vian-way-cards">
               <div className="vian-way-card scroll-fade-in">
                 <h3>Tailored Solutions</h3>
-                <p>Our solutions are aligned with your business processes and focused on increasing productivity and optimizing cost.</p>
+                <p>Solutions are aligned with business processes and focused on increasing productivity and optimizing cost.</p>
               </div>
               <div className="vian-way-card scroll-fade-in">
                 <h3>Expert Management</h3>
-                <p>Operations are managed by professionals with compliance to best practices and industry standards.</p>
+                <p>Our operations are managed by professionals with compliance to best practices and industry standards.</p>
               </div>
               <div className="vian-way-card scroll-fade-in">
-                <h3>Global Reach</h3>
-                <p>We help you expand your business to a global audience with scalable, smart technical solutions.</p>
+                <h3>Consistent Quality</h3>
+                <p>We ensure high sense of quality across all levels of our work for better results and brand recognition to align with internationally recognized benchmarks</p>
               </div>
             </div>
           </div>
@@ -150,11 +154,11 @@ function App() {
             <h2 className="our-portals-title scroll-fade-in">Our Products</h2>
             <div className="our-portals-content">
               <div className="our-portals-img-wrapper scroll-fade-in">
-                <img src="/squaress.png" alt="Sparess" className="our-portals-img" />
+                <img src="/sqaress.com.jpeg" alt="Sparess" className="our-portals-img" />
               </div>
               <div className="our-portals-info scroll-fade-in">
                 <h3>Sparess.com Portal</h3>
-                <p>Our portal is designed and launched by Vian Global for marketing, buying, and selling new or used parts and services applicable for the Marine & Offshore industries. The online portal is easy to access and available across website and mobile platforms.</p>
+                <p>Designed and launched by Vian Global for marketing, buying, and selling new or used parts and services applicable for the Marine & Offshore industries. The online portal is easy to access and available across website and mobile platforms.</p>
                 <a className="our-portals-link" href="https://sparess.com" target="_blank" rel="noopener noreferrer">Visit Our Portal</a>
               </div>
             </div>
@@ -179,23 +183,38 @@ function App() {
           <div className="services-container">
             <h2 className="services-title scroll-fade-in">Our Services</h2>
             <div className="services-content">
-              {services.map((service, idx) => (
-                <div
-                  className={`service-card-custom scroll-fade-in${idx % 2 === 1 ? ' reverse' : ''}`}
-                  key={idx}
-                >
-                  <div className="accent-bar" />
-                  <img
-                    src={`/project-slide-${idx + 1}.png`}
-                    alt={service.title}
-                    className="service-img"
-                  />
-                  <div className="service-info">
-                    <h3>{service.title}</h3>
-                    <p>{service.desc}</p>
-                  </div>
+              <div className="service-card-custom scroll-fade-in">
+                <div className="accent-bar" />
+                <img src={projectManagementImg} alt="Project Management and Consulting" className="service-img" />
+                <div className="service-info">
+                  <h3>Project Management and Consulting</h3>
+                  <p>Be it Industrial development or business process optimization, we offer expert guidance and project management services during product design, engineering, development and marketing.</p>
                 </div>
-              ))}
+              </div>
+              <div className="service-card-custom scroll-fade-in reverse">
+                <div className="accent-bar" />
+                <img src={conditionEvaluationImg} alt="Condition Assessment and Evaluation" className="service-img" />
+                <div className="service-info">
+                  <h3>Condition Assessment and Evaluation</h3>
+                  <p>We specialize in inspecting, analyzing, and reporting the physical and operational state of assets, infrastructure, or equipment enabling clients to understand the current condition, risks, life expectancy, and necessary maintenance or replacement actions for critical assets.</p>
+                </div>
+              </div>
+              <div className="service-card-custom scroll-fade-in">
+                <div className="accent-bar" />
+                <img src={businessProcessImg} alt="Business Process Optimization" className="service-img" />
+                <div className="service-info">
+                  <h3>Business Process Optimization</h3>
+                  <p>We offer tailored solutions to streamline and improve core business operations by analyzing, redesigning, and digitizing workflows enabling businesses to increase efficiency, reduce costs, eliminate waste, and enhance overall performance.</p>
+                </div>
+              </div>
+              <div className="service-card-custom scroll-fade-in reverse">
+                <div className="accent-bar" />
+                <img src={businessDigitalizationImg} alt="Business Digitalization and Marketing" className="service-img" />
+                <div className="service-info">
+                  <h3>Business Digitalization and Marketing</h3>
+                  <p>With our existing software development partners, we can take your businesses to next level by developing modernized tools for process optimization, sales & marketing, e-commerce, data compiling & analysis requirements.</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -226,17 +245,17 @@ function App() {
                 </div>
               ) : (
                 <form className="contact-form" autoComplete="off" onSubmit={e => { e.preventDefault(); setFormSubmitted(true); }}>
-                  <div className="form-row">
-                    <input type="text" name="name" placeholder="Your Name" required className="scroll-fade-in" />
-                  </div>
-                  <div className="form-row">
-                    <input type="email" name="email" placeholder="Your Email" required className="scroll-fade-in" />
-                  </div>
-                  <div className="form-row">
-                    <textarea name="message" placeholder="Your Message" rows={5} required className="scroll-fade-in"></textarea>
-                  </div>
-                  <button type="submit" className="cta-btn scroll-fade-in">Send Message</button>
-                </form>
+                <div className="form-row">
+                  <input type="text" name="name" placeholder="Your Name" required className="scroll-fade-in" />
+                </div>
+                <div className="form-row">
+                  <input type="email" name="email" placeholder="Your Email" required className="scroll-fade-in" />
+                </div>
+                <div className="form-row">
+                  <textarea name="message" placeholder="Your Message" rows={5} required className="scroll-fade-in"></textarea>
+                </div>
+                <button type="submit" className="cta-btn scroll-fade-in">Send Message</button>
+              </form>
               )}
             </div>
             <div className="contact-info-area scroll-fade-in">
@@ -262,19 +281,7 @@ function App() {
             </nav>
             <div className="footer-social scroll-fade-in">
               <a href="https://www.instagram.com/viangloballlp/" target="_blank" rel="noopener" aria-label="Instagram">
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <defs>
-                    <radialGradient id="ig-gradient" cx="50%" cy="50%" r="80%">
-                      <stop offset="0%" stop-color="#fdf497"/>
-                      <stop offset="45%" stop-color="#fdf497"/>
-                      <stop offset="60%" stop-color="#fd5949"/>
-                      <stop offset="90%" stop-color="#d6249f"/>
-                      <stop offset="100%" stop-color="#285AEB"/>
-                    </radialGradient>
-                  </defs>
-                  <rect width="28" height="28" rx="6" fill="url(#ig-gradient)"/>
-                  <path d="M19.25 9.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5Zm-5.25 1.25a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7Zm0-2.25c-2.55 0-4.75 2.2-4.75 4.75s2.2 4.75 4.75 4.75 4.75-2.2 4.75-4.75-2.2-4.75-4.75-4.75Zm7.25 1.25a5.25 5.25 0 0 0-5.25-5.25h-4.5A5.25 5.25 0 0 0 6.5 9.25v4.5a5.25 5.25 0 0 0 5.25 5.25h4.5a5.25 5.25 0 0 0 5.25-5.25v-4.5Zm-1.5 0v4.5a3.75 3.75 0 0 1-3.75 3.75h-4.5A3.75 3.75 0 0 1 7.5 13.75v-4.5A3.75 3.75 0 0 1 11.25 5.5h4.5A3.75 3.75 0 0 1 19.5 9.25Z" fill="#fff"/>
-                </svg>
+                <svg width="28" height="28" fill="none" viewBox="0 0 28 28"><rect width="28" height="28" rx="6" fill="#366a82"/><path d="M19.25 9.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5Zm-5.25 1.25a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7Zm0-2.25c-2.55 0-4.75 2.2-4.75 4.75s2.2 4.75 4.75 4.75 4.75-2.2 4.75-4.75-2.2-4.75-4.75-4.75Zm7.25 1.25a5.25 5.25 0 0 0-5.25-5.25h-4.5A5.25 5.25 0 0 0 6.5 9.25v4.5a5.25 5.25 0 0 0 5.25 5.25h4.5a5.25 5.25 0 0 0 5.25-5.25v-4.5Zm-1.5 0v4.5a3.75 3.75 0 0 1-3.75 3.75h-4.5A3.75 3.75 0 0 1 7.5 13.75v-4.5A3.75 3.75 0 0 1 11.25 5.5h4.5A3.75 3.75 0 0 1 19.5 9.25Z" fill="#fff"/></svg>
               </a>
               <a href="https://www.linkedin.com/company/vian-global-llp/" target="_blank" rel="noopener" aria-label="LinkedIn">
                 <svg width="28" height="28" fill="none" viewBox="0 0 28 28"><rect width="28" height="28" rx="6" fill="#366a82"/><path d="M8.5 11.5v7h2.25v-7H8.5zm1.125-3.5a1.312 1.312 0 1 0 0 2.625 1.312 1.312 0 0 0 0-2.625zM12.25 11.5v7h2.25v-3.5c0-.966.784-1.75 1.75-1.75s1.75.784 1.75 1.75v3.5H20.5v-4.25c0-2.071-1.679-3.75-3.75-3.75s-3.75 1.679-3.75 3.75z" fill="#fff"/></svg>
