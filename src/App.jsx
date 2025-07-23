@@ -4,6 +4,7 @@ import projectManagementImg from './assets/project management.jpeg'
 import conditionEvaluationImg from './assets/Condition Evalution.jpeg'
 import businessProcessImg from './assets/business process.jpeg'
 import businessDigitalizationImg from './assets/business digitalization.jpeg'
+import newVianLogo from './assets/new-vian-logo.png'
 
 const heroImages = [
   '/hero.jpg',
@@ -97,7 +98,7 @@ function App() {
     <>
       <header className="header simple-header">
         <div className="header-logo">
-          <img src="/logo.jpeg" alt="Vian Global Logo" className="header-logo-img" />
+          <img src={newVianLogo} alt="Vian Global Logo" className="header-logo-img" />
         </div>
         <button className="hamburger" onClick={() => setNavOpen(!navOpen)} aria-label="Open navigation">
           <span className="bar"></span>
@@ -144,7 +145,7 @@ function App() {
               </div>
               <div className="vian-way-card scroll-fade-in">
                 <h3>Consistent Quality</h3>
-                <p>We ensure high sense of quality across all levels of our work for better results and brand recognition to align with internationally recognized benchmarks</p>
+                <p>We ensure high sense of quality across all levels of our work to align with internationally recognized benchmarks.</p>
               </div>
             </div>
           </div>
@@ -281,7 +282,14 @@ function App() {
             </nav>
             <div className="footer-social scroll-fade-in">
               <a href="https://www.instagram.com/viangloballlp/" target="_blank" rel="noopener" aria-label="Instagram">
-                <svg width="28" height="28" fill="none" viewBox="0 0 28 28"><rect width="28" height="28" rx="6" fill="#366a82"/><path d="M19.25 9.25a.75.75 0 1 1 0 1.5.75.75 0 0 1 0-1.5Zm-5.25 1.25a3.5 3.5 0 1 1 0 7 3.5 3.5 0 0 1 0-7Zm0-2.25c-2.55 0-4.75 2.2-4.75 4.75s2.2 4.75 4.75 4.75 4.75-2.2 4.75-4.75-2.2-4.75-4.75-4.75Zm7.25 1.25a5.25 5.25 0 0 0-5.25-5.25h-4.5A5.25 5.25 0 0 0 6.5 9.25v4.5a5.25 5.25 0 0 0 5.25 5.25h4.5a5.25 5.25 0 0 0 5.25-5.25v-4.5Zm-1.5 0v4.5a3.75 3.75 0 0 1-3.75 3.75h-4.5A3.75 3.75 0 0 1 7.5 13.75v-4.5A3.75 3.75 0 0 1 11.25 5.5h4.5A3.75 3.75 0 0 1 19.5 9.25Z" fill="#fff"/></svg>
+                <svg width="28" height="28" fill="none" viewBox="0 0 28 28">
+                  <rect width="28" height="28" rx="6" fill="#366a82"/>
+                  <g transform="translate(6, 6)">
+                    <rect x="0" y="0" width="16" height="16" rx="5.33" fill="none" stroke="#fff" strokeWidth="1.5"/>
+                    <circle cx="8" cy="8" r="3.5" fill="none" stroke="#fff" strokeWidth="1.5"/>
+                    <circle cx="12.5" cy="3.5" r="1" fill="#fff"/>
+                  </g>
+                </svg>
               </a>
               <a href="https://www.linkedin.com/company/vian-global-llp/" target="_blank" rel="noopener" aria-label="LinkedIn">
                 <svg width="28" height="28" fill="none" viewBox="0 0 28 28"><rect width="28" height="28" rx="6" fill="#366a82"/><path d="M8.5 11.5v7h2.25v-7H8.5zm1.125-3.5a1.312 1.312 0 1 0 0 2.625 1.312 1.312 0 0 0 0-2.625zM12.25 11.5v7h2.25v-3.5c0-.966.784-1.75 1.75-1.75s1.75.784 1.75 1.75v3.5H20.5v-4.25c0-2.071-1.679-3.75-3.75-3.75s-3.75 1.679-3.75 3.75z" fill="#fff"/></svg>
