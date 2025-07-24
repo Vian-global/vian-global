@@ -6,6 +6,32 @@ import businessProcessImg from './assets/business process.jpeg'
 import businessDigitalizationImg from './assets/business digitalization.jpeg'
 import newVianLogo from './assets/new-vian-logo.png'
 
+// Mobile optimization styles
+const mobileStyles = `
+  @media (max-width: 768px) {
+    html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
+    .hero-section { padding-top: 70px !important; overflow: hidden !important; }
+    .hero-bg { height: 110% !important; top: -5% !important; position: absolute !important; }
+    .hero-content h1 { font-size: 1.8rem !important; text-align: center !important; }
+    .vian-way-section { padding: 2rem 1rem !important; }
+    .vian-way-container { padding: 0 0.5rem !important; }
+    .vian-way-header h2 { font-size: 1.8rem !important; }
+    .vian-way-lead { font-size: 0.95rem !important; }
+    .vian-way-card { padding: 1.3rem 1rem !important; }
+    .vian-way-card h3 { font-size: 1.1rem !important; }
+    .vian-way-card p { font-size: 0.9rem !important; }
+    .our-portals-section, .navigator-section, .services-section { padding: 2rem 1rem !important; }
+    .projects-title, .projects-title-bold { font-size: 1.8rem !important; }
+    .project-image-card { min-width: 300px !important; max-width: 300px !important; }
+    .project-image-card img { height: 220px !important; }
+    .contact-section { padding: 2rem 0 !important; }
+    .contact-container { padding: 0 1rem !important; }
+    .contact-form-area, .contact-info-area { padding: 1.8rem 1.3rem !important; }
+    .contact-title { font-size: 1.8rem !important; }
+    .services-title, .our-portals-title, .navigator-title { font-size: 1.8rem !important; }
+  }
+`;
+
 const heroImages = [
   '/hero.jpg',
   '/hero2.jpg',
@@ -150,6 +176,39 @@ function App() {
 
   return (
     <>
+      <style>{`
+        @media (max-width: 768px) {
+          html { scroll-behavior: smooth !important; -webkit-overflow-scrolling: touch !important; }
+          .hero-section { padding-top: 70px !important; overflow: hidden !important; }
+          .hero-bg { height: 110% !important; top: -5% !important; position: absolute !important; }
+          .hero-content h1 { font-size: 1.8rem !important; text-align: center !important; line-height: 1.3 !important; }
+          .vian-way-section { padding: 2rem 1rem !important; }
+          .vian-way-container { padding: 0 0.5rem !important; max-width: 100% !important; }
+          .vian-way-header h2 { font-size: 1.8rem !important; margin-bottom: 0.8rem !important; }
+          .vian-way-lead { font-size: 0.95rem !important; padding: 0 !important; }
+          .vian-way-cards { gap: 1rem !important; margin-bottom: 0 !important; }
+          .vian-way-card { padding: 1.3rem 1rem !important; margin-bottom: 0 !important; }
+          .vian-way-card h3 { font-size: 1.1rem !important; margin-bottom: 0.6rem !important; }
+          .vian-way-card p { font-size: 0.9rem !important; line-height: 1.4 !important; margin: 0 !important; }
+          .our-portals-section, .navigator-section, .services-section { padding: 2rem 1rem !important; }
+          .our-portals-content, .navigator-content { padding: 1.3rem 1rem !important; gap: 1.2rem !important; }
+          .service-card-custom { padding: 1.3rem 1rem !important; margin-bottom: 1rem !important; }
+          .service-card-custom .service-img { width: 60px !important; height: 60px !important; margin: 0 0 1rem 0 !important; }
+          .service-card-custom h3 { font-size: 1.1rem !important; margin-bottom: 0.7rem !important; }
+          .service-card-custom p { font-size: 0.9rem !important; line-height: 1.4 !important; }
+          .projects-section { padding: 2rem 1rem !important; }
+          .projects-title, .projects-title-bold { font-size: 1.8rem !important; margin-bottom: 1.5rem !important; }
+          .project-image-card { min-width: 300px !important; max-width: 300px !important; }
+          .project-image-card img { height: 220px !important; }
+          .contact-section { padding: 2rem 0 !important; }
+          .contact-container { padding: 0 1rem !important; gap: 1.5rem !important; }
+          .contact-form-area, .contact-info-area { padding: 1.8rem 1.3rem !important; }
+          .contact-title { font-size: 1.8rem !important; margin-bottom: 1.5rem !important; }
+          .contact-form input, .contact-form textarea { font-size: 1rem !important; padding: 1.2rem 1.3rem !important; margin-bottom: 1rem !important; }
+          .contact-form button { padding: 1.3rem 2rem !important; font-size: 1.1rem !important; min-height: 50px !important; }
+          .services-title, .our-portals-title, .navigator-title, .partners-title { font-size: 1.8rem !important; margin-bottom: 1.2rem !important; padding: 0 0.5rem !important; }
+        }
+      `}</style>
       <header className="header simple-header">
         <div className="header-logo">
           <img src={newVianLogo} alt="Vian Global Logo" className="header-logo-img" />
