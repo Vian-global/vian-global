@@ -179,34 +179,265 @@ function App() {
       <style>{`
         @media (max-width: 768px) {
           html { scroll-behavior: smooth !important; -webkit-overflow-scrolling: touch !important; }
-          .hero-section { padding-top: 70px !important; overflow: hidden !important; }
+          
+          /* Hero Section - More Compact */
+          .hero-section { 
+            padding-top: 70px !important; 
+            overflow: hidden !important;
+            min-height: 85vh !important;
+            height: 85vh !important;
+          }
           .hero-bg { height: 110% !important; top: -5% !important; position: absolute !important; }
-          .hero-content h1 { font-size: 1.8rem !important; text-align: center !important; line-height: 1.3 !important; }
-          .vian-way-section { padding: 2rem 1rem !important; }
-          .vian-way-container { padding: 0 0.5rem !important; max-width: 100% !important; }
-          .vian-way-header h2 { font-size: 1.8rem !important; margin-bottom: 0.8rem !important; }
-          .vian-way-lead { font-size: 0.95rem !important; padding: 0 !important; }
-          .vian-way-cards { gap: 1rem !important; margin-bottom: 0 !important; }
-          .vian-way-card { padding: 1.3rem 1rem !important; margin-bottom: 0 !important; }
-          .vian-way-card h3 { font-size: 1.1rem !important; margin-bottom: 0.6rem !important; }
-          .vian-way-card p { font-size: 0.9rem !important; line-height: 1.4 !important; margin: 0 !important; }
-          .our-portals-section, .navigator-section, .services-section { padding: 2rem 1rem !important; }
-          .our-portals-content, .navigator-content { padding: 1.3rem 1rem !important; gap: 1.2rem !important; }
-          .service-card-custom { padding: 1.3rem 1rem !important; margin-bottom: 1rem !important; }
-          .service-card-custom .service-img { width: 60px !important; height: 60px !important; margin: 0 0 1rem 0 !important; }
-          .service-card-custom h3 { font-size: 1.1rem !important; margin-bottom: 0.7rem !important; }
-          .service-card-custom p { font-size: 0.9rem !important; line-height: 1.4 !important; }
-          .projects-section { padding: 2rem 1rem !important; }
-          .projects-title, .projects-title-bold { font-size: 1.8rem !important; margin-bottom: 1.5rem !important; }
-          .project-image-card { min-width: 300px !important; max-width: 300px !important; }
-          .project-image-card img { height: 220px !important; }
-          .contact-section { padding: 2rem 0 !important; }
-          .contact-container { padding: 0 1rem !important; gap: 1.5rem !important; }
-          .contact-form-area, .contact-info-area { padding: 1.8rem 1.3rem !important; }
-          .contact-title { font-size: 1.8rem !important; margin-bottom: 1.5rem !important; }
-          .contact-form input, .contact-form textarea { font-size: 1rem !important; padding: 1.2rem 1.3rem !important; margin-bottom: 1rem !important; }
-          .contact-form button { padding: 1.3rem 2rem !important; font-size: 1.1rem !important; min-height: 50px !important; }
-          .services-title, .our-portals-title, .navigator-title, .partners-title { font-size: 1.8rem !important; margin-bottom: 1.2rem !important; padding: 0 0.5rem !important; }
+          .hero-content h1 { 
+            font-size: 1.7rem !important; 
+            text-align: center !important; 
+            line-height: 1.3 !important;
+            margin-bottom: 1rem !important;
+          }
+          .hero-content .cta-btn {
+            font-size: 0.95rem !important;
+            padding: 0.8rem 1.8rem !important;
+            margin-top: 1rem !important;
+            min-height: 42px !important;
+            border-radius: 22px !important;
+          }
+          
+          /* Vian Way Section - Centered Boxes with Reduced Height */
+          .vian-way-section { padding: 1.8rem 1rem !important; }
+          .vian-way-container { 
+            padding: 0 0.5rem !important; 
+            max-width: 100% !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+          }
+          .vian-way-header { 
+            text-align: center !important;
+            margin-bottom: 1.2rem !important;
+            width: 100% !important;
+          }
+          .vian-way-header h2 { 
+            font-size: 1.8rem !important; 
+            margin-bottom: 0.8rem !important; 
+          }
+          .vian-way-lead { 
+            font-size: 0.95rem !important; 
+            padding: 0 !important;
+            text-align: center !important;
+            line-height: 1.4 !important;
+          }
+          .vian-way-cards { 
+            gap: 0.8rem !important; 
+            margin-bottom: 0 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            width: 100% !important;
+          }
+          .vian-way-card { 
+            padding: 1.2rem 1rem !important; 
+            margin-bottom: 0 !important;
+            text-align: center !important;
+            width: 100% !important;
+            max-width: 320px !important;
+            min-height: auto !important;
+            height: auto !important;
+          }
+          .vian-way-card h3 { 
+            font-size: 1.1rem !important; 
+            margin-bottom: 0.6rem !important;
+            text-align: center !important;
+          }
+          .vian-way-card p { 
+            font-size: 0.9rem !important; 
+            line-height: 1.4 !important; 
+            margin: 0 !important;
+            text-align: center !important;
+          }
+
+          /* Products Section - Wider Rectangles */
+          .our-portals-section, .navigator-section { padding: 1.8rem 1rem !important; }
+          .our-portals-content, .navigator-content { 
+            padding: 1.2rem 1rem !important; 
+            gap: 1rem !important;
+            border-radius: 12px !important;
+            min-height: auto !important;
+            height: auto !important;
+          }
+          .our-portals-img, .navigator-img {
+            width: 100% !important;
+            max-width: 100% !important;
+            height: 180px !important;
+            object-fit: cover !important;
+            border-radius: 10px !important;
+          }
+          .our-portals-info h3, .navigator-info h3 { 
+            font-size: 1.1rem !important; 
+            margin-bottom: 0.6rem !important; 
+          }
+          .our-portals-info p, .navigator-info p { 
+            font-size: 0.9rem !important; 
+            line-height: 1.4 !important; 
+            margin-bottom: 1rem !important; 
+          }
+
+          /* Services Section - Adjusted Cards */
+          .services-section { padding: 1.8rem 1rem !important; }
+          .service-card-custom { 
+            padding: 1.2rem 1rem !important; 
+            margin-bottom: 0.8rem !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            min-height: auto !important;
+            height: auto !important;
+          }
+          .service-card-custom .service-img { 
+            width: 55px !important; 
+            height: 55px !important; 
+            margin: 0 0 0.8rem 0 !important; 
+          }
+          .service-card-custom h3 { 
+            font-size: 1.1rem !important; 
+            margin-bottom: 0.6rem !important; 
+          }
+          .service-card-custom p { 
+            font-size: 0.9rem !important; 
+            line-height: 1.4 !important; 
+          }
+
+          /* Standardized Typography */
+          .services-title, .our-portals-title, .navigator-title, .partners-title { 
+            font-size: 1.8rem !important; 
+            margin-bottom: 1.2rem !important; 
+            padding: 0 0.5rem !important;
+            line-height: 1.2 !important;
+          }
+
+          /* Projects Section - Improved */
+          .projects-section { padding: 1.8rem 1rem !important; }
+          .projects-title, .projects-title-bold { 
+            font-size: 1.8rem !important; 
+            margin-bottom: 1.2rem !important; 
+            line-height: 1.2 !important;
+          }
+          .project-image-card { 
+            min-width: 280px !important; 
+            max-width: 280px !important; 
+          }
+          .project-image-card img { height: 200px !important; }
+
+          /* Contact Form - Clear Stacked Layout */
+          .contact-section { padding: 1.8rem 0 !important; }
+          .contact-container { 
+            padding: 0 1rem !important; 
+            gap: 1.2rem !important; 
+          }
+          .contact-form-area, .contact-info-area { 
+            padding: 1.5rem 1.2rem !important;
+            margin-bottom: 0 !important;
+          }
+          .contact-title { 
+            font-size: 1.8rem !important; 
+            margin-bottom: 1.2rem !important;
+            text-align: center !important;
+            color: var(--primary) !important;
+            font-weight: 800 !important;
+            display: block !important;
+            visibility: visible !important;
+          }
+          .form-row {
+            width: 100% !important;
+            margin-bottom: 1rem !important;
+            display: block !important;
+          }
+          .contact-form input, .contact-form textarea { 
+            font-size: 1rem !important; 
+            padding: 1.1rem 1.2rem !important; 
+            margin-bottom: 0 !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            display: block !important;
+          }
+          .contact-form textarea { min-height: 110px !important; }
+          .contact-form button { 
+            padding: 1.2rem 2rem !important; 
+            font-size: 1rem !important; 
+            min-height: 48px !important;
+            margin-top: 1rem !important;
+            width: 100% !important;
+          }
+
+          /* Footer - Text-only Left-aligned Links */
+          .site-footer { 
+            background: linear-gradient(135deg, #1a1c1d 0%, #2d3034 100%) !important;
+            padding: 1.5rem 0 1rem 0 !important; 
+          }
+          .footer-container { padding: 0 1rem !important; }
+          .footer-menus {
+            flex-direction: column !important;
+            gap: 1rem !important;
+            align-items: flex-start !important;
+          }
+          .footer-nav { 
+            display: flex !important;
+            flex-direction: row !important;
+            gap: 1rem !important;
+            width: 100% !important;
+            max-width: none !important;
+            margin: 0 !important;
+            justify-content: flex-start !important;
+            align-items: flex-start !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+            padding-bottom: 0.5rem !important;
+          }
+          .footer-nav a { 
+            font-size: 0.95rem !important; 
+            padding: 0.5rem 0 !important;
+            border-radius: 0 !important;
+            background: none !important;
+            text-align: left !important;
+            color: #f3f3f3 !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            white-space: nowrap !important;
+            border: none !important;
+            min-width: auto !important;
+            margin-right: 1rem !important;
+          }
+          .footer-nav a:hover {
+            color: var(--accent) !important;
+            background: none !important;
+            transform: none !important;
+            box-shadow: none !important;
+          }
+          .footer-social { 
+            justify-content: flex-start !important;
+            margin: 1rem 0 0.5rem 0 !important; 
+          }
+          .footer-social a { 
+            width: 40px !important; 
+            height: 40px !important; 
+            margin-right: 0.8rem !important;
+          }
+          .footer-bottom { 
+            text-align: left !important; 
+            font-size: 0.85rem !important; 
+            margin-top: 1rem !important;
+            padding-top: 1rem !important;
+          }
+
+          /* Responsive breakpoints */
+          @media (max-width: 414px) {
+            .hero-content h1 { font-size: 1.6rem !important; }
+            .vian-way-card, .service-card-custom { padding: 1rem 0.8rem !important; }
+            .contact-form-area, .contact-info-area { padding: 1.2rem 1rem !important; }
+          }
+          @media (max-width: 375px) {
+            .hero-content h1 { font-size: 1.5rem !important; }
+            .projects-title, .services-title { font-size: 1.6rem !important; }
+            .project-image-card { min-width: 260px !important; max-width: 260px !important; }
+          }
         }
       `}</style>
       <header className="header simple-header">
