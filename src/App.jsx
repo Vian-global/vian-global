@@ -48,6 +48,7 @@ function App() {
   const [navOpen, setNavOpen] = useState(false)
   const galleryRef = useRef(null)
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   // Hero slider interval
   useEffect(() => {
@@ -107,6 +108,45 @@ function App() {
       document.body.classList.remove('nav-open')
     }
   }, [navOpen])
+
+  // Handle form submission
+  const handleFormSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+
+    const formData = new FormData(e.target);
+    const formValues = {
+      name: formData.get('name'),
+      email: formData.get('email'),
+      message: formData.get('message')
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formValues)
+      });
+
+      const result = await response.json();
+
+      if (response.ok && result.success) {
+        setFormSubmitted(true);
+        // Optional: Reset form
+        e.target.reset();
+      } else {
+        // Handle error
+        alert(result.message || 'Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      console.error('Form submission error:', error);
+      alert('Network error. Please check your connection and try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -259,7 +299,7 @@ function App() {
                   <p>Your message has been sent. We appreciate your interest and will get back to you soon.</p>
                 </div>
               ) : (
-                <form className="contact-form" autoComplete="off" onSubmit={e => { e.preventDefault(); setFormSubmitted(true); }}>
+                <form className="contact-form" autoComplete="off" onSubmit={handleFormSubmit}>
                 <div className="form-row">
                   <input type="text" name="name" placeholder="Your Name" required className="scroll-fade-in" />
                 </div>
@@ -269,7 +309,9 @@ function App() {
                 <div className="form-row">
                   <textarea name="message" placeholder="Your Message" rows={5} required className="scroll-fade-in"></textarea>
                 </div>
-                <button type="submit" className="cta-btn scroll-fade-in">Send Message</button>
+                <button type="submit" className="cta-btn scroll-fade-in" disabled={isSubmitting}>
+                  {isSubmitting ? 'Sending...' : 'Send Message'}
+                </button>
               </form>
               )}
             </div>
