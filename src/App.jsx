@@ -472,9 +472,9 @@ function App() {
             box-sizing: border-box !important;
           }
           
-          /* Vian Way Section - REDUCED BOX HEIGHT */
+          /* Vian Way Section - FIXED SPACING */
           .vian-way-section { 
-            padding: 1.5rem 1rem !important; 
+            padding: 1.8rem 1rem !important; 
             background: linear-gradient(135deg, #ddf3fe 60%, #89d0ee 100%) !important;
           }
           .vian-way-container { 
@@ -489,29 +489,29 @@ function App() {
           }
           .vian-way-header { 
             text-align: center !important;
-            margin-bottom: 1.2rem !important;
+            margin-bottom: 1.5rem !important;
             width: 100% !important;
             max-width: 100% !important;
           }
           .vian-way-header h2 { 
             font-size: 1.8rem !important; 
-            margin-bottom: 0.6rem !important;
+            margin-bottom: 0.8rem !important;
             color: var(--primary) !important;
             font-weight: 800 !important;
             width: 100% !important;
           }
           .vian-way-lead { 
-            font-size: 0.9rem !important; 
+            font-size: 0.95rem !important; 
             padding: 0 0.5rem !important;
             text-align: center !important;
-            line-height: 1.3 !important;
+            line-height: 1.4 !important;
             color: var(--primary) !important;
             margin: 0 auto !important;
             width: 100% !important;
             max-width: 100% !important;
           }
           .vian-way-cards { 
-            gap: 0.8rem !important; 
+            gap: 1rem !important; 
             margin-bottom: 0 !important;
             display: flex !important;
             flex-direction: column !important;
@@ -520,16 +520,16 @@ function App() {
             max-width: 100% !important;
           }
           .vian-way-card { 
-            padding: 0.8rem 0.6rem !important; 
+            padding: 1rem 0.8rem !important; 
             margin-bottom: 0 !important;
             text-align: center !important;
             width: 100% !important;
-            max-width: 300px !important;
+            max-width: 320px !important;
             min-height: auto !important;
             height: auto !important;
             background: #926f47 !important;
             color: #fff !important;
-            border-radius: 14px !important;
+            border-radius: 16px !important;
             display: flex !important;
             flex-direction: column !important;
             justify-content: center !important;
@@ -537,8 +537,8 @@ function App() {
             box-sizing: border-box !important;
           }
           .vian-way-card h3 { 
-            font-size: 1rem !important; 
-            margin-bottom: 0.4rem !important;
+            font-size: 1.1rem !important; 
+            margin-bottom: 0.5rem !important;
             text-align: center !important;
             color: #fff !important;
             font-weight: 700 !important;
@@ -546,7 +546,7 @@ function App() {
             width: 100% !important;
           }
           .vian-way-card p { 
-            font-size: 0.8rem !important; 
+            font-size: 0.85rem !important; 
             line-height: 1.3 !important; 
             margin: 0 !important;
             text-align: center !important;
@@ -595,10 +595,11 @@ function App() {
             text-align: center !important;
             box-sizing: border-box !important;
           }
+          }
           .our-portals-img, .navigator-img {
             width: 100% !important;
             max-width: 100% !important;
-            height: 160px !important;
+            height: 180px !important;
             object-fit: cover !important;
             border-radius: 10px !important;
           }
@@ -669,7 +670,7 @@ function App() {
             text-align: center !important;
           }
           .service-card-custom { 
-            padding: 1rem 1.2rem !important; 
+            padding: 1.2rem 1rem !important; 
             margin-bottom: 0.8rem !important;
             width: 100% !important;
             max-width: 100% !important;
@@ -679,8 +680,8 @@ function App() {
             box-sizing: border-box !important;
           }
           .service-card-custom .service-img { 
-            width: 50px !important; 
-            height: 50px !important; 
+            width: 55px !important; 
+            height: 55px !important; 
             margin: 0 0 0.8rem 0 !important; 
           }
           .service-card-custom h3 { 
@@ -750,10 +751,11 @@ function App() {
             width: 100% !important;
             object-fit: cover !important;
           }
+          .project-image-card img { height: 200px !important; }
 
-          /* CONTACT FORM - PHONE COMPATIBLE & CENTERED */
+          /* FIXED Contact Form Section */
           .contact-section { 
-            padding: 1.5rem 0 !important; 
+            padding: 2rem 0 !important; 
             background: var(--primary) !important;
             display: flex !important;
             justify-content: center !important;
@@ -764,65 +766,58 @@ function App() {
             box-sizing: border-box !important;
           }
           .contact-container { 
-            padding: 0 !important; 
-            gap: 1rem !important;
+            padding: 0 1rem !important; 
+            gap: 1.5rem !important;
             display: flex !important;
             flex-direction: column !important;
-            max-width: 340px !important;
-            width: 90% !important;
+            max-width: 100% !important;
             margin: 0 auto !important;
             align-items: center !important;
             box-sizing: border-box !important;
           }
           .contact-form-area { 
-            padding: 1.5rem 1.2rem !important;
+            padding: 2rem 1.5rem !important;
             margin-bottom: 0 !important;
             background: #fff !important;
-            border-radius: 16px !important;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 20px !important;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
             position: relative !important;
             overflow: visible !important;
             display: block !important;
             visibility: visible !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            box-sizing: border-box !important;
           }
           .contact-info-area { 
-            padding: 1.5rem 1.2rem !important;
+            padding: 2rem 1.5rem !important;
             margin-bottom: 0 !important;
             background: #fff !important;
-            border-radius: 16px !important;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 20px !important;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
             position: relative !important;
             overflow: visible !important;
             display: block !important;
             visibility: visible !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            box-sizing: border-box !important;
           }
           .contact-title { 
-            font-size: 1.6rem !important; 
-            margin-bottom: 1.2rem !important;
+            font-size: 2rem !important; 
+            margin-bottom: 1.5rem !important;
             text-align: center !important;
             color: var(--primary) !important;
             font-weight: 800 !important;
             display: block !important;
             visibility: visible !important;
             font-family: 'Orbitron', Arial, sans-serif !important;
-            letter-spacing: 0.5px !important;
+            letter-spacing: 1px !important;
             position: relative !important;
             width: 100% !important;
           }
           .contact-title::after {
             content: '' !important;
             position: absolute !important;
-            bottom: -6px !important;
+            bottom: -8px !important;
             left: 50% !important;
             transform: translateX(-50%) !important;
-            width: 50px !important;
-            height: 2px !important;
+            width: 60px !important;
+            height: 3px !important;
             background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%) !important;
             border-radius: 2px !important;
           }
@@ -841,15 +836,15 @@ function App() {
             box-sizing: border-box !important;
           }
           .contact-form input, .contact-form textarea { 
-            font-size: 0.95rem !important; 
-            padding: 1.1rem 1.2rem !important; 
+            font-size: 1rem !important; 
+            padding: 1.3rem 1.4rem !important; 
             margin-bottom: 0 !important;
             width: 100% !important;
             max-width: 100% !important;
             box-sizing: border-box !important;
             display: block !important;
             border: 2px solid #e8f4f8 !important;
-            border-radius: 10px !important;
+            border-radius: 12px !important;
             background: #f8fcff !important;
             color: var(--dark) !important;
             font-family: 'Montserrat', Arial, sans-serif !important;
@@ -859,7 +854,7 @@ function App() {
           .contact-form input:focus, .contact-form textarea:focus {
             border: 2px solid var(--primary) !important;
             background: #fff !important;
-            box-shadow: 0 0 0 3px rgba(54, 106, 130, 0.1) !important;
+            box-shadow: 0 0 0 4px rgba(54, 106, 130, 0.1) !important;
             transform: translateY(-1px) !important;
           }
           .contact-form input::placeholder, .contact-form textarea::placeholder {
@@ -867,23 +862,23 @@ function App() {
             font-weight: 500 !important;
           }
           .contact-form textarea { 
-            min-height: 100px !important;
+            min-height: 120px !important;
             resize: vertical !important;
           }
           .contact-form button { 
-            padding: 1.1rem 1.5rem !important; 
-            font-size: 0.95rem !important; 
-            min-height: 46px !important;
-            margin-top: 1rem !important;
+            padding: 1.4rem 2rem !important; 
+            font-size: 1.1rem !important; 
+            min-height: 52px !important;
+            margin-top: 1.5rem !important;
             width: 100% !important;
             max-width: 100% !important;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) !important;
             color: #fff !important;
             border: none !important;
-            border-radius: 12px !important;
+            border-radius: 16px !important;
             font-weight: 800 !important;
             text-transform: uppercase !important;
-            letter-spacing: 0.5px !important;
+            letter-spacing: 1px !important;
             cursor: pointer !important;
             transition: all 0.3s ease !important;
             box-shadow: 0 4px 15px rgba(54, 106, 130, 0.3) !important;
@@ -891,19 +886,19 @@ function App() {
           }
           .contact-form button:hover {
             transform: translateY(-2px) !important;
-            box-shadow: 0 6px 20px rgba(54, 106, 130, 0.4) !important;
+            box-shadow: 0 10px 30px rgba(54, 106, 130, 0.4) !important;
           }
 
           /* Contact Info Area */
           .contact-info-area h3 {
-            font-size: 1.1rem !important;
-            margin-top: 1.2rem !important;
-            margin-bottom: 0.6rem !important;
+            font-size: 1.3rem !important;
+            margin-top: 1.5rem !important;
+            margin-bottom: 0.8rem !important;
             color: var(--primary) !important;
             font-weight: 800 !important;
             display: flex !important;
             align-items: center !important;
-            gap: 0.6rem !important;
+            gap: 0.8rem !important;
             letter-spacing: 0.5px !important;
             width: 100% !important;
           }
@@ -912,18 +907,18 @@ function App() {
           }
           .contact-info-area h3::before {
             content: '' !important;
-            width: 6px !important;
-            height: 6px !important;
+            width: 8px !important;
+            height: 8px !important;
             background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%) !important;
             border-radius: 50% !important;
             display: inline-block !important;
-            box-shadow: 0 1px 4px rgba(54, 106, 130, 0.3) !important;
+            box-shadow: 0 2px 6px rgba(54, 106, 130, 0.3) !important;
           }
           .contact-info-area p {
-            font-size: 0.9rem !important;
-            line-height: 1.5 !important;
-            margin-bottom: 1rem !important;
-            padding-left: 1.2rem !important;
+            font-size: 1rem !important;
+            line-height: 1.6 !important;
+            margin-bottom: 1.2rem !important;
+            padding-left: 1.6rem !important;
             color: var(--dark) !important;
             font-weight: 500 !important;
             width: 100% !important;
@@ -939,7 +934,7 @@ function App() {
             color: var(--accent) !important;
           }
 
-          /* FOOTER - VERTICAL MENU & REDUCED SPACING */
+          /* Footer - Text-only Left-aligned Links */
           .site-footer { 
             background: linear-gradient(135deg, #1a1c1d 0%, #2d3034 100%) !important;
             padding: 1.2rem 0 0.8rem 0 !important;
@@ -955,28 +950,30 @@ function App() {
             margin: 0 auto !important;
             box-sizing: border-box !important;
           }
+          .footer-container { padding: 0 1rem !important; }
           .footer-menus {
             flex-direction: column !important;
-            gap: 0.8rem !important;
+            gap: 1rem !important;
             align-items: flex-start !important;
             margin-bottom: 1rem !important;
             width: 100% !important;
           }
           .footer-nav { 
             display: flex !important;
-            flex-direction: column !important;
-            gap: 0.6rem !important;
+            flex-direction: row !important;
+            gap: 1rem !important;
             width: 100% !important;
             max-width: none !important;
             margin: 0 !important;
             justify-content: flex-start !important;
             align-items: flex-start !important;
-            overflow: visible !important;
-            padding: 0 !important;
+            overflow-x: auto !important;
+            -webkit-overflow-scrolling: touch !important;
+            padding-bottom: 0.5rem !important;
           }
           .footer-nav a { 
-            font-size: 0.9rem !important; 
-            padding: 0.3rem 0 !important;
+            font-size: 0.95rem !important; 
+            padding: 0.5rem 0 !important;
             border-radius: 0 !important;
             background: none !important;
             text-align: left !important;
@@ -1004,9 +1001,9 @@ function App() {
             width: 100% !important;
           }
           .footer-social a { 
-            width: 36px !important; 
-            height: 36px !important; 
-            margin-right: 0 !important;
+            width: 40px !important; 
+            height: 40px !important; 
+            margin-right: 0.8rem !important;
           }
           .footer-bottom { 
             text-align: left !important; 
@@ -1021,7 +1018,7 @@ function App() {
           /* Standardized Typography */
           .services-title, .our-portals-title, .navigator-title, .partners-title { 
             font-size: 1.8rem !important; 
-            margin-bottom: 1rem !important; 
+            margin-bottom: 1.2rem !important; 
             padding: 0 0.5rem !important;
             line-height: 1.2 !important;
             width: 100% !important;
