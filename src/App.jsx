@@ -181,7 +181,6 @@ function App() {
         * {
           box-sizing: border-box !important;
         }
-        
         html, body {
           overflow-x: hidden !important;
           max-width: 100vw !important;
@@ -189,7 +188,6 @@ function App() {
           margin: 0 !important;
           padding: 0 !important;
         }
-        
         #root {
           overflow-x: hidden !important;
           max-width: 100vw !important;
@@ -198,120 +196,32 @@ function App() {
           padding: 0 !important;
         }
         
-        /* Fix all container elements */
-        .header, .simple-header, main, section, .container, 
-        .vian-way-container, .our-portals-container, .navigator-container,
-        .services-container, .projects-container, .contact-container,
-        .footer-container {
-          overflow-x: hidden !important;
-          max-width: 100vw !important;
-          width: 100% !important;
-          box-sizing: border-box !important;
-        }
-        
+        /* MOBILE RESPONSIVE FIXES */
         @media (max-width: 768px) {
-          /* Enhanced Mobile Scrolling */
-          html { 
-            scroll-behavior: smooth !important; 
-            -webkit-overflow-scrolling: touch !important;
-            overflow-x: hidden !important;
-            max-width: 100vw !important;
-            width: 100% !important;
-            height: 100% !important;
-          }
-          body { 
-            -webkit-overflow-scrolling: touch !important;
-            overflow-x: hidden !important;
-            max-width: 100vw !important;
-            width: 100% !important;
-            overscroll-behavior: none !important;
-            -webkit-overscroll-behavior: none !important;
-            touch-action: pan-y !important;
-            -webkit-touch-action: pan-y !important;
+          /* Ensure proper section positioning */
+          .hero-section, .vian-way-section, .our-portals-section, 
+          .navigator-section, .services-section, .projects-section, 
+          .contact-section, .site-footer {
             position: relative !important;
-            min-height: 100vh !important;
-            margin: 0 !important;
-            padding: 0 !important;
-          }
-          * {
-            -webkit-overflow-scrolling: touch !important;
-            overscroll-behavior: auto !important;
-            -webkit-overscroll-behavior: auto !important;
-            box-sizing: border-box !important;
-            max-width: 100% !important;
-          }
-          
-          /* Fix container scrolling */
-          #root {
-            overflow-x: hidden !important;
-            max-width: 100vw !important;
             width: 100% !important;
-            min-height: 100vh !important;
-            -webkit-overflow-scrolling: touch !important;
+            max-width: 100% !important;
+            overflow-x: hidden !important;
             margin: 0 !important;
-            padding: 0 !important;
-          }
-          
-          /* FIXED HAMBURGER MENU */
-          .header, .simple-header {
-            flex-direction: row !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-            padding: 1rem 1.5rem !important;
-            min-height: 70px !important;
-            height: 70px !important;
-            background: var(--primary) !important;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1) !important;
-            border-radius: 0 !important;
-            position: fixed !important;
-            width: 100vw !important;
-            max-width: 100vw !important;
-            box-sizing: border-box !important;
-            z-index: 1000 !important;
-            top: 0 !important;
             left: 0 !important;
             right: 0 !important;
-            overflow: hidden !important;
-            -webkit-overflow-scrolling: touch !important;
-            margin: 0 !important;
           }
           
-          .header-logo {
-            display: flex !important;
-            align-items: center !important;
-            margin: 0 !important;
-            overflow: hidden !important;
-          }
-          
-          .header-logo-img {
-            height: 50px !important;
-            margin: 0 !important;
-            background: transparent !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            filter: brightness(1.1) contrast(1.05) !important;
-            max-width: 100% !important;
-          }
-          
+          /* Better hamburger menu with X icon */
           .hamburger {
-            display: flex !important;
-            flex-direction: column !important;
-            justify-content: center !important;
-            align-items: center !important;
             width: 44px !important;
             height: 44px !important;
-            background: rgba(255, 255, 255, 0.15) !important;
-            border: none !important;
             border-radius: 8px !important;
-            cursor: pointer !important;
-            z-index: 1002 !important;
-            position: relative !important;
+            background: rgba(255, 255, 255, 0.15) !important;
             transition: all 0.3s ease !important;
-            overflow: hidden !important;
           }
           
           .hamburger:hover {
-            background: rgba(255, 255, 255, 0.2) !important;
+            background: rgba(255, 255, 255, 0.25) !important;
             transform: scale(1.05) !important;
           }
           
@@ -319,730 +229,196 @@ function App() {
             width: 22px !important;
             height: 2px !important;
             background: #fff !important;
-            margin: 2px 0 !important;
+            margin: 3px 0 !important;
             border-radius: 2px !important;
             transition: all 0.3s ease !important;
           }
           
+          /* X icon when hamburger is active */
           .hamburger.active .bar:nth-child(1) {
-            transform: rotate(45deg) translate(5px, 5px) !important;
+            transform: rotate(45deg) translate(6px, 6px) !important;
           }
           
           .hamburger.active .bar:nth-child(2) {
             opacity: 0 !important;
+            transform: translateX(20px) !important;
           }
           
           .hamburger.active .bar:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -6px) !important;
+            transform: rotate(-45deg) translate(6px, -6px) !important;
           }
-
-          /* Mobile Navigation */
+          
+          /* Enhanced mobile navigation */
           .nav {
-            display: none !important;
             position: fixed !important;
             top: 0 !important;
             left: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
             width: 100vw !important;
-            max-width: 100vw !important;
             height: 100vh !important;
             background: linear-gradient(135deg, rgba(54, 106, 130, 0.98) 0%, rgba(24, 26, 27, 0.98) 100%) !important;
-            backdrop-filter: blur(20px) !important;
-            -webkit-backdrop-filter: blur(20px) !important;
+            backdrop-filter: blur(25px) !important;
+            -webkit-backdrop-filter: blur(25px) !important;
+            display: flex !important;
             flex-direction: column !important;
             align-items: center !important;
             justify-content: center !important;
-            padding: 0 !important;
             z-index: 1001 !important;
-            gap: 1.5rem !important;
+            gap: 2rem !important;
             transform: translateX(-100%) !important;
-            transition: transform 0.3s ease-out !important;
-            overflow: hidden !important;
-            margin: 0 !important;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+            opacity: 0 !important;
           }
           
           .nav.nav-open {
-            display: flex !important;
             transform: translateX(0) !important;
+            opacity: 1 !important;
           }
           
           .nav a {
             color: #fff !important;
-            font-size: 1.2rem !important;
+            font-size: 1.3rem !important;
             font-family: 'Orbitron', Arial, sans-serif !important;
             font-weight: 700 !important;
-            padding: 0.8rem 2rem !important;
+            padding: 1rem 2.5rem !important;
             margin: 0.3rem 0 !important;
             text-align: center !important;
             border-radius: 12px !important;
             background: rgba(255, 255, 255, 0.1) !important;
             border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            min-width: 220px !important;
-            max-width: 280px !important;
+            min-width: 250px !important;
             transition: all 0.3s ease !important;
             letter-spacing: 1px !important;
             text-decoration: none !important;
-            box-sizing: border-box !important;
+            transform: translateY(20px) !important;
+            opacity: 0 !important;
+            animation: slideInUp 0.6s ease forwards !important;
           }
+          
+          .nav a:nth-child(1) { animation-delay: 0.1s !important; }
+          .nav a:nth-child(2) { animation-delay: 0.2s !important; }
+          .nav a:nth-child(3) { animation-delay: 0.3s !important; }
+          .nav a:nth-child(4) { animation-delay: 0.4s !important; }
+          .nav a:nth-child(5) { animation-delay: 0.5s !important; }
           
           .nav a:hover, .nav a:active {
-            background: rgba(255, 255, 255, 0.2) !important;
+            background: rgba(255, 255, 255, 0.25) !important;
             transform: translateY(-2px) !important;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2) !important;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
           }
           
+          /* Smooth animations */
+          @keyframes slideInUp {
+            to {
+              transform: translateY(0) !important;
+              opacity: 1 !important;
+            }
+          }
+          
+          /* Better overlay */
           .nav-overlay {
             position: fixed !important;
-            top: 0 !important; 
-            left: 0 !important; 
-            right: 0 !important; 
-            bottom: 0 !important;
+            top: 0 !important;
+            left: 0 !important;
             width: 100vw !important;
             height: 100vh !important;
-            background: rgba(0, 0, 0, 0.5) !important;
+            background: rgba(0, 0, 0, 0.4) !important;
             z-index: 1000 !important;
             backdrop-filter: blur(2px) !important;
             -webkit-backdrop-filter: blur(2px) !important;
             cursor: pointer !important;
-            opacity: 0 !important;
             transition: opacity 0.3s ease !important;
+          }
+          
+          /* Prevent body scroll when nav is open */
+          body.nav-open {
             overflow: hidden !important;
+            position: fixed !important;
+            width: 100% !important;
           }
           
-          .nav-overlay.active {
-            opacity: 1 !important;
+          /* Hero section adjustments */
+          .hero-section {
+            padding-top: 80px !important;
+            min-height: 90vh !important;
           }
           
-          /* Hero Section - More Compact */
-          .hero-section { 
-            padding-top: 70px !important; 
-            overflow: hidden !important;
-            min-height: 85vh !important;
-            height: 85vh !important;
-            -webkit-overflow-scrolling: touch !important;
-            width: 100vw !important;
-            max-width: 100vw !important;
-            margin: 0 !important;
-            box-sizing: border-box !important;
-          }
-          .hero-bg { 
-            height: 110% !important; 
-            top: -5% !important; 
-            position: absolute !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            overflow: hidden !important;
-          }
-          .hero-content { 
-            width: 100% !important;
-            max-width: 90% !important;
-            margin: 0 auto !important;
-            padding: 0 1rem !important;
-            box-sizing: border-box !important;
-          }
-          .hero-content h1 { 
-            font-size: 1.7rem !important; 
-            text-align: center !important; 
-            line-height: 1.3 !important;
-            margin-bottom: 1rem !important;
-            width: 100% !important;
-            max-width: 100% !important;
-          }
-          .hero-content .cta-btn {
-            font-size: 0.95rem !important;
-            padding: 0.8rem 1.8rem !important;
-            margin-top: 1rem !important;
-            min-height: 42px !important;
-            border-radius: 22px !important;
-            max-width: 100% !important;
-            box-sizing: border-box !important;
+          /* Compact section spacing */
+          .vian-way-section, .our-portals-section, .navigator-section, .services-section {
+            padding: 2rem 1rem !important;
           }
           
-          /* All Sections - No Horizontal Scroll */
-          .vian-way-section, .our-portals-section, .navigator-section, 
-          .services-section, .projects-section, .contact-section {
-            -webkit-overflow-scrolling: touch !important;
-            overflow-x: hidden !important;
-            overflow-y: visible !important;
-            position: relative !important;
-            width: 100vw !important;
-            max-width: 100vw !important;
-            margin: 0 !important;
-            box-sizing: border-box !important;
+          .projects-section {
+            padding: 2rem 1rem !important;
           }
           
-          /* Vian Way Section - FIXED SPACING */
-          .vian-way-section { 
-            padding: 1.8rem 1rem !important; 
-            background: linear-gradient(135deg, #ddf3fe 60%, #89d0ee 100%) !important;
+          .contact-section {
+            padding: 2rem 1rem !important;
           }
-          .vian-way-container { 
-            padding: 0 0.8rem !important; 
-            max-width: 100% !important;
-            width: 100% !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            margin: 0 auto !important;
-            box-sizing: border-box !important;
-          }
-          .vian-way-header { 
-            text-align: center !important;
-            margin-bottom: 1.5rem !important;
-            width: 100% !important;
-            max-width: 100% !important;
-          }
-          .vian-way-header h2 { 
-            font-size: 1.8rem !important; 
-            margin-bottom: 0.8rem !important;
-            color: var(--primary) !important;
-            font-weight: 800 !important;
-            width: 100% !important;
-          }
-          .vian-way-lead { 
-            font-size: 0.95rem !important; 
-            padding: 0 0.5rem !important;
-            text-align: center !important;
-            line-height: 1.4 !important;
-            color: var(--primary) !important;
-            margin: 0 auto !important;
-            width: 100% !important;
-            max-width: 100% !important;
-          }
-          .vian-way-cards { 
-            gap: 1rem !important; 
-            margin-bottom: 0 !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            width: 100% !important;
-            max-width: 100% !important;
-          }
-          .vian-way-card { 
-            padding: 1rem 0.8rem !important; 
-            margin-bottom: 0 !important;
-            text-align: center !important;
-            width: 100% !important;
-            max-width: 320px !important;
-            min-height: auto !important;
-            height: auto !important;
-            background: #926f47 !important;
-            color: #fff !important;
-            border-radius: 16px !important;
-            display: flex !important;
-            flex-direction: column !important;
-            justify-content: center !important;
-            align-items: center !important;
-            box-sizing: border-box !important;
-          }
-          .vian-way-card h3 { 
-            font-size: 1.1rem !important; 
-            margin-bottom: 0.5rem !important;
-            text-align: center !important;
-            color: #fff !important;
-            font-weight: 700 !important;
-            line-height: 1.2 !important;
-            width: 100% !important;
-          }
-          .vian-way-card p { 
-            font-size: 0.85rem !important; 
-            line-height: 1.3 !important; 
-            margin: 0 !important;
-            text-align: center !important;
-            color: #fff !important;
-            font-weight: 500 !important;
-            width: 100% !important;
-          }
-
-          /* Products Section - CENTERED BOXES WITH OPTIMIZED BUTTONS */
-          .our-portals-section, .navigator-section { 
-            padding: 1.2rem 1rem !important; 
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-          }
-          .our-portals-container, .navigator-container {
-            max-width: 100% !important;
-            width: 100% !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            padding: 0 0.5rem !important;
-            margin: 0 auto !important;
-            box-sizing: border-box !important;
-          }
-          .our-portals-title, .navigator-title {
+          
+          /* Better text sizing */
+          .vian-way-header h2, .our-portals-title, .navigator-title, 
+          .services-title, .projects-title, .contact-title {
             font-size: 1.8rem !important;
-            margin-bottom: 1rem !important;
-            padding: 0 0.5rem !important;
+            margin-bottom: 1.5rem !important;
             text-align: center !important;
-            width: 100% !important;
-            max-width: 100% !important;
           }
-          .our-portals-content, .navigator-content { 
-            padding: 1.2rem 1rem !important; 
-            gap: 1rem !important;
-            border-radius: 14px !important;
-            min-height: auto !important;
-            height: auto !important;
-            width: 100% !important;
+          
+          /* Optimize card layouts */
+          .vian-way-card {
+            max-width: 320px !important;
+            margin: 0 auto 1rem auto !important;
+            padding: 1.2rem !important;
+          }
+          
+          .our-portals-content, .navigator-content {
             max-width: 340px !important;
             margin: 0 auto !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            text-align: center !important;
-            box-sizing: border-box !important;
+            padding: 1.5rem !important;
           }
+          
+          .service-card-custom {
+            max-width: 340px !important;
+            margin: 0 auto 1.5rem auto !important;
           }
-          .our-portals-img, .navigator-img {
-            width: 100% !important;
+          
+          /* Contact form improvements */
+          .contact-container {
             max-width: 100% !important;
-            height: 180px !important;
-            object-fit: cover !important;
-            border-radius: 10px !important;
-          }
-          .our-portals-info, .navigator-info {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            text-align: center !important;
-            width: 100% !important;
-            max-width: 100% !important;
-          }
-          .our-portals-info h3, .navigator-info h3 { 
-            font-size: 1.1rem !important; 
-            margin-bottom: 0.6rem !important;
-            text-align: center !important;
-            width: 100% !important;
-          }
-          .our-portals-info p, .navigator-info p { 
-            font-size: 0.85rem !important; 
-            line-height: 1.4 !important; 
-            margin-bottom: 1rem !important;
-            text-align: center !important;
-            width: 100% !important;
-          }
-          .our-portals-link {
-            font-size: 0.8rem !important;
-            padding: 0.7rem 1.2rem !important;
-            text-transform: none !important;
-            letter-spacing: 0.3px !important;
-            white-space: nowrap !important;
-            display: inline-flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            text-align: center !important;
-            border-radius: 20px !important;
-            background: var(--primary) !important;
-            color: #fff !important;
-            text-decoration: none !important;
-            font-weight: 700 !important;
-            transition: all 0.3s ease !important;
-            box-shadow: 0 4px 15px rgba(54, 106, 130, 0.2) !important;
-            max-width: 100% !important;
-            box-sizing: border-box !important;
-          }
-          .our-portals-link:hover {
-            background: var(--accent) !important;
-            color: var(--primary) !important;
-            transform: translateY(-2px) !important;
-            box-shadow: 0 6px 20px rgba(54, 106, 130, 0.3) !important;
-          }
-
-          /* Services Section - IMPROVED BOXES WITH WIDER WIDTH */
-          .services-section { 
-            padding: 1.5rem 0.8rem !important; 
-          }
-          .services-container {
-            max-width: 100% !important;
-            width: 100% !important;
-            margin: 0 auto !important;
-            padding: 0 0.5rem !important;
-            box-sizing: border-box !important;
-          }
-          .services-title {
-            font-size: 1.8rem !important;
-            margin-bottom: 1rem !important;
-            padding: 0 0.5rem !important;
-            width: 100% !important;
-            text-align: center !important;
-          }
-          .service-card-custom { 
-            padding: 1.2rem 1rem !important; 
-            margin-bottom: 0.8rem !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            min-height: auto !important;
-            height: auto !important;
-            border-radius: 14px !important;
-            box-sizing: border-box !important;
-          }
-          .service-card-custom .service-img { 
-            width: 55px !important; 
-            height: 55px !important; 
-            margin: 0 0 0.8rem 0 !important; 
-          }
-          .service-card-custom h3 { 
-            font-size: 1.05rem !important; 
-            margin-bottom: 0.5rem !important;
-            padding-right: 0.5rem !important;
-            width: 100% !important;
-          }
-          .service-card-custom p { 
-            font-size: 0.85rem !important; 
-            line-height: 1.3 !important;
-            padding: 0 0.5rem 0 0 !important;
-            width: 100% !important;
-          }
-
-          /* Projects Section - OPTIMIZED TEXT AND SPACING */
-          .projects-section { 
-            padding: 1.5rem 0.8rem !important; 
-          }
-          .projects-container {
-            padding: 0 !important;
-            max-width: 100% !important;
-            width: 100% !important;
-            margin: 0 auto !important;
-            box-sizing: border-box !important;
-          }
-          .projects-title { 
-            font-size: 1.7rem !important; 
-            margin-bottom: 1rem !important; 
-            line-height: 1.2 !important;
-            text-align: center !important;
-            padding: 0 0.5rem !important;
-            width: 100% !important;
-            max-width: 100% !important;
-          }
-          .projects-title-bold { 
-            font-size: 1.7rem !important; 
-            font-weight: 900 !important;
-            display: inline !important;
-          }
-          .projects-gallery {
-            -webkit-overflow-scrolling: touch !important;
-            overflow-x: auto !important;
-            overflow-y: hidden !important;
-            scroll-behavior: smooth !important;
-            overscroll-behavior-x: contain !important;
-            -webkit-overscroll-behavior-x: contain !important;
-            margin-top: 0.5rem !important;
-            width: 100% !important;
-            max-width: 100vw !important;
-            box-sizing: border-box !important;
-          }
-          .projects-gallery-track {
-            display: flex !important;
-            gap: 1rem !important;
             padding: 0 1rem !important;
-            box-sizing: border-box !important;
           }
-          .project-image-card { 
-            min-width: 270px !important; 
-            max-width: 270px !important;
-            flex-shrink: 0 !important;
-            box-sizing: border-box !important;
-          }
-          .project-image-card img { 
-            height: 190px !important;
-            width: 100% !important;
-            object-fit: cover !important;
-          }
-          .project-image-card img { height: 200px !important; }
-
-          /* FIXED Contact Form Section */
-          .contact-section { 
-            padding: 2rem 0 !important; 
-            background: var(--primary) !important;
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            width: 100vw !important;
-            max-width: 100vw !important;
-            margin: 0 !important;
-            box-sizing: border-box !important;
-          }
-          .contact-container { 
-            padding: 0 1rem !important; 
-            gap: 1.5rem !important;
-            display: flex !important;
-            flex-direction: column !important;
-            max-width: 100% !important;
+          
+          .contact-form-area, .contact-info-area {
+            max-width: 400px !important;
             margin: 0 auto !important;
-            align-items: center !important;
-            box-sizing: border-box !important;
+            padding: 1.5rem !important;
           }
-          .contact-form-area { 
-            padding: 2rem 1.5rem !important;
-            margin-bottom: 0 !important;
-            background: #fff !important;
-            border-radius: 20px !important;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
-            position: relative !important;
-            overflow: visible !important;
-            display: block !important;
-            visibility: visible !important;
+          
+          /* Project gallery */
+          .project-image-card {
+            min-width: 280px !important;
+            max-width: 280px !important;
           }
-          .contact-info-area { 
-            padding: 2rem 1.5rem !important;
-            margin-bottom: 0 !important;
-            background: #fff !important;
-            border-radius: 20px !important;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
-            position: relative !important;
-            overflow: visible !important;
-            display: block !important;
-            visibility: visible !important;
+          
+          .project-image-card img {
+            height: 200px !important;
           }
-          .contact-title { 
-            font-size: 2rem !important; 
-            margin-bottom: 1.5rem !important;
-            text-align: center !important;
-            color: var(--primary) !important;
-            font-weight: 800 !important;
-            display: block !important;
-            visibility: visible !important;
-            font-family: 'Orbitron', Arial, sans-serif !important;
-            letter-spacing: 1px !important;
-            position: relative !important;
-            width: 100% !important;
+        }
+        
+        /* Smaller screens */
+        @media (max-width: 414px) {
+          .nav a {
+            font-size: 1.2rem !important;
+            padding: 0.9rem 2rem !important;
+            min-width: 220px !important;
           }
-          .contact-title::after {
-            content: '' !important;
-            position: absolute !important;
-            bottom: -8px !important;
-            left: 50% !important;
-            transform: translateX(-50%) !important;
-            width: 60px !important;
-            height: 3px !important;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%) !important;
-            border-radius: 2px !important;
+          
+          .vian-way-card, .our-portals-content, .navigator-content, .service-card-custom {
+            max-width: 300px !important;
           }
-          .contact-form {
-            display: block !important;
-            visibility: visible !important;
-            width: 100% !important;
-            max-width: 100% !important;
-          }
-          .form-row {
-            width: 100% !important;
-            max-width: 100% !important;
-            margin-bottom: 1rem !important;
-            display: block !important;
-            position: relative !important;
-            box-sizing: border-box !important;
-          }
-          .contact-form input, .contact-form textarea { 
-            font-size: 1rem !important; 
-            padding: 1.3rem 1.4rem !important; 
-            margin-bottom: 0 !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            box-sizing: border-box !important;
-            display: block !important;
-            border: 2px solid #e8f4f8 !important;
-            border-radius: 12px !important;
-            background: #f8fcff !important;
-            color: var(--dark) !important;
-            font-family: 'Montserrat', Arial, sans-serif !important;
-            outline: none !important;
-            transition: all 0.3s ease !important;
-          }
-          .contact-form input:focus, .contact-form textarea:focus {
-            border: 2px solid var(--primary) !important;
-            background: #fff !important;
-            box-shadow: 0 0 0 4px rgba(54, 106, 130, 0.1) !important;
-            transform: translateY(-1px) !important;
-          }
-          .contact-form input::placeholder, .contact-form textarea::placeholder {
-            color: #94a3b8 !important;
-            font-weight: 500 !important;
-          }
-          .contact-form textarea { 
-            min-height: 120px !important;
-            resize: vertical !important;
-          }
-          .contact-form button { 
-            padding: 1.4rem 2rem !important; 
-            font-size: 1.1rem !important; 
-            min-height: 52px !important;
-            margin-top: 1.5rem !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) !important;
-            color: #fff !important;
-            border: none !important;
-            border-radius: 16px !important;
-            font-weight: 800 !important;
-            text-transform: uppercase !important;
-            letter-spacing: 1px !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-            box-shadow: 0 4px 15px rgba(54, 106, 130, 0.3) !important;
-            box-sizing: border-box !important;
-          }
-          .contact-form button:hover {
-            transform: translateY(-2px) !important;
-            box-shadow: 0 10px 30px rgba(54, 106, 130, 0.4) !important;
-          }
-
-          /* Contact Info Area */
-          .contact-info-area h3 {
-            font-size: 1.3rem !important;
-            margin-top: 1.5rem !important;
-            margin-bottom: 0.8rem !important;
-            color: var(--primary) !important;
-            font-weight: 800 !important;
-            display: flex !important;
-            align-items: center !important;
-            gap: 0.8rem !important;
-            letter-spacing: 0.5px !important;
-            width: 100% !important;
-          }
-          .contact-info-area h3:first-child {
-            margin-top: 0 !important;
-          }
-          .contact-info-area h3::before {
-            content: '' !important;
-            width: 8px !important;
-            height: 8px !important;
-            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%) !important;
-            border-radius: 50% !important;
-            display: inline-block !important;
-            box-shadow: 0 2px 6px rgba(54, 106, 130, 0.3) !important;
-          }
-          .contact-info-area p {
-            font-size: 1rem !important;
-            line-height: 1.6 !important;
-            margin-bottom: 1.2rem !important;
-            padding-left: 1.6rem !important;
-            color: var(--dark) !important;
-            font-weight: 500 !important;
-            width: 100% !important;
-            max-width: 100% !important;
-          }
-          .contact-info-area a {
-            color: var(--primary) !important;
-            text-decoration: none !important;
-            font-weight: 600 !important;
-            transition: all 0.3s ease !important;
-          }
-          .contact-info-area a:hover {
-            color: var(--accent) !important;
-          }
-
-          /* Footer - Text-only Left-aligned Links */
-          .site-footer { 
-            background: linear-gradient(135deg, #1a1c1d 0%, #2d3034 100%) !important;
-            padding: 1.2rem 0 0.8rem 0 !important;
-            width: 100vw !important;
-            max-width: 100vw !important;
-            margin: 0 !important;
-            box-sizing: border-box !important;
-          }
-          .footer-container { 
-            padding: 0 1rem !important; 
-            max-width: 100% !important;
-            width: 100% !important;
-            margin: 0 auto !important;
-            box-sizing: border-box !important;
-          }
-          .footer-container { padding: 0 1rem !important; }
-          .footer-menus {
-            flex-direction: column !important;
-            gap: 1rem !important;
-            align-items: flex-start !important;
-            margin-bottom: 1rem !important;
-            width: 100% !important;
-          }
-          .footer-nav { 
-            display: flex !important;
-            flex-direction: row !important;
-            gap: 1rem !important;
-            width: 100% !important;
-            max-width: none !important;
-            margin: 0 !important;
-            justify-content: flex-start !important;
-            align-items: flex-start !important;
-            overflow-x: auto !important;
-            -webkit-overflow-scrolling: touch !important;
-            padding-bottom: 0.5rem !important;
-          }
-          .footer-nav a { 
-            font-size: 0.95rem !important; 
-            padding: 0.5rem 0 !important;
-            border-radius: 0 !important;
-            background: none !important;
-            text-align: left !important;
-            color: #f3f3f3 !important;
-            text-decoration: none !important;
-            font-weight: 500 !important;
-            white-space: nowrap !important;
-            border: none !important;
-            min-width: auto !important;
-            margin: 0 !important;
-            display: block !important;
-            width: auto !important;
-            max-width: 100% !important;
-          }
-          .footer-nav a:hover {
-            color: var(--accent) !important;
-            background: none !important;
-            transform: none !important;
-            box-shadow: none !important;
-          }
-          .footer-social { 
-            justify-content: flex-start !important;
-            margin: 0.8rem 0 0.5rem 0 !important; 
-            gap: 0.8rem !important;
-            width: 100% !important;
-          }
-          .footer-social a { 
-            width: 40px !important; 
-            height: 40px !important; 
-            margin-right: 0.8rem !important;
-          }
-          .footer-bottom { 
-            text-align: left !important; 
-            font-size: 0.8rem !important; 
-            margin-top: 0.8rem !important;
-            padding-top: 0.8rem !important;
-            border-top: 1px solid rgba(137, 208, 238, 0.2) !important;
-            width: 100% !important;
-            max-width: 100% !important;
-          }
-
-          /* Standardized Typography */
-          .services-title, .our-portals-title, .navigator-title, .partners-title { 
-            font-size: 1.8rem !important; 
-            margin-bottom: 1.2rem !important; 
-            padding: 0 0.5rem !important;
-            line-height: 1.2 !important;
-            width: 100% !important;
-            max-width: 100% !important;
-          }
-
-          /* Responsive breakpoints */
-          @media (max-width: 414px) {
-            .hero-content h1 { font-size: 1.6rem !important; }
-            .vian-way-card { padding: 0.7rem 0.5rem !important; }
-            .service-card-custom { padding: 0.8rem 1rem !important; }
-            .contact-container { max-width: 320px !important; width: 95% !important; }
-            .contact-form-area, .contact-info-area { padding: 1.2rem 1rem !important; }
-            .contact-title { font-size: 1.5rem !important; }
-            .our-portals-content, .navigator-content { max-width: 320px !important; }
-          }
-          @media (max-width: 375px) {
-            .hero-content h1 { font-size: 1.5rem !important; }
-            .projects-title, .services-title { font-size: 1.6rem !important; }
-            .project-image-card { min-width: 250px !important; max-width: 250px !important; }
-            .vian-way-card { padding: 0.6rem 0.4rem !important; }
-            .contact-container { max-width: 300px !important; }
-            .contact-title { font-size: 1.4rem !important; }
-            .our-portals-content, .navigator-content { max-width: 300px !important; }
+          
+          .contact-form-area, .contact-info-area {
+            max-width: 320px !important;
+            padding: 1.2rem !important;
           }
         }
       `}</style>

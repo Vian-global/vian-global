@@ -1692,6 +1692,8 @@ html, body {
     top: 0;
     left: 0;
     right: 0;
+    max-width: 100vw;
+    overflow: hidden;
   }
   
   .header-logo {
@@ -1793,16 +1795,28 @@ html, body {
     opacity: 1;
   }
 
+  /* Ensure all sections stay in place */
+  .hero-section, .vian-way-section, .our-portals-section, 
+  .navigator-section, .services-section, .projects-section, 
+  .contact-section, .site-footer {
+    position: relative;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    margin: 0;
+    left: 0;
+    right: 0;
+  }
+
   /* Modern Hero Section */
   .hero-section {
-    min-height: 100vh;
-    height: 100vh;
+    min-height: 90vh;
+    height: 90vh;
     padding-top: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
     padding-bottom: 0;
-    position: relative;
   }
   
   .hero-bg {
