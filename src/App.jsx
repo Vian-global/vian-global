@@ -245,9 +245,9 @@ function App() {
             position: relative !important;
           }
           
-          /* Vian Way Section - FIXED SPACING */
+          /* Vian Way Section - REDUCED BOX HEIGHT */
           .vian-way-section { 
-            padding: 1.8rem 1rem !important; 
+            padding: 1.5rem 1rem !important; 
             background: linear-gradient(135deg, #ddf3fe 60%, #89d0ee 100%) !important;
           }
           .vian-way-container { 
@@ -259,25 +259,25 @@ function App() {
           }
           .vian-way-header { 
             text-align: center !important;
-            margin-bottom: 1.5rem !important;
+            margin-bottom: 1.2rem !important;
             width: 100% !important;
           }
           .vian-way-header h2 { 
             font-size: 1.8rem !important; 
-            margin-bottom: 0.8rem !important;
+            margin-bottom: 0.6rem !important;
             color: var(--primary) !important;
             font-weight: 800 !important;
           }
           .vian-way-lead { 
-            font-size: 0.95rem !important; 
+            font-size: 0.9rem !important; 
             padding: 0 0.5rem !important;
             text-align: center !important;
-            line-height: 1.4 !important;
+            line-height: 1.3 !important;
             color: var(--primary) !important;
             margin: 0 auto !important;
           }
           .vian-way-cards { 
-            gap: 1rem !important; 
+            gap: 0.8rem !important; 
             margin-bottom: 0 !important;
             display: flex !important;
             flex-direction: column !important;
@@ -285,31 +285,31 @@ function App() {
             width: 100% !important;
           }
           .vian-way-card { 
-            padding: 1rem 0.8rem !important; 
+            padding: 0.8rem 0.6rem !important; 
             margin-bottom: 0 !important;
             text-align: center !important;
             width: 100% !important;
-            max-width: 320px !important;
+            max-width: 300px !important;
             min-height: auto !important;
             height: auto !important;
             background: #926f47 !important;
             color: #fff !important;
-            border-radius: 16px !important;
+            border-radius: 14px !important;
             display: flex !important;
             flex-direction: column !important;
             justify-content: center !important;
             align-items: center !important;
           }
           .vian-way-card h3 { 
-            font-size: 1.1rem !important; 
-            margin-bottom: 0.5rem !important;
+            font-size: 1rem !important; 
+            margin-bottom: 0.4rem !important;
             text-align: center !important;
             color: #fff !important;
             font-weight: 700 !important;
             line-height: 1.2 !important;
           }
           .vian-way-card p { 
-            font-size: 0.85rem !important; 
+            font-size: 0.8rem !important; 
             line-height: 1.3 !important; 
             margin: 0 !important;
             text-align: center !important;
@@ -317,62 +317,103 @@ function App() {
             font-weight: 500 !important;
           }
 
-          /* Products Section - Wider Rectangles */
-          .our-portals-section, .navigator-section { padding: 1.8rem 1rem !important; }
+          /* Products Section - REDUCED SPACING & WIDER BOXES */
+          .our-portals-section, .navigator-section { 
+            padding: 1.2rem 0.8rem !important; 
+          }
+          .our-portals-title, .navigator-title {
+            font-size: 1.8rem !important;
+            margin-bottom: 0.8rem !important;
+            padding: 0 0.5rem !important;
+          }
           .our-portals-content, .navigator-content { 
-            padding: 1.2rem 1rem !important; 
-            gap: 1rem !important;
+            padding: 1rem 0.8rem !important; 
+            gap: 0.8rem !important;
             border-radius: 12px !important;
             min-height: auto !important;
             height: auto !important;
+            width: 100% !important;
+            max-width: 100% !important;
           }
           .our-portals-img, .navigator-img {
             width: 100% !important;
             max-width: 100% !important;
-            height: 180px !important;
+            height: 160px !important;
             object-fit: cover !important;
             border-radius: 10px !important;
           }
           .our-portals-info h3, .navigator-info h3 { 
             font-size: 1.1rem !important; 
-            margin-bottom: 0.6rem !important; 
+            margin-bottom: 0.5rem !important; 
           }
           .our-portals-info p, .navigator-info p { 
-            font-size: 0.9rem !important; 
-            line-height: 1.4 !important; 
-            margin-bottom: 1rem !important; 
+            font-size: 0.85rem !important; 
+            line-height: 1.3 !important; 
+            margin-bottom: 0.8rem !important; 
+          }
+          .our-portals-link {
+            font-size: 0.85rem !important;
+            padding: 0.7rem 1.2rem !important;
+            text-transform: none !important;
+            letter-spacing: 0.5px !important;
+            white-space: nowrap !important;
+            display: inline-block !important;
+            text-align: center !important;
           }
 
-          /* Services Section - Adjusted Cards */
-          .services-section { padding: 1.8rem 1rem !important; }
+          /* Services Section - IMPROVED BOXES WITH WIDER WIDTH */
+          .services-section { 
+            padding: 1.5rem 0.8rem !important; 
+          }
+          .services-title {
+            font-size: 1.8rem !important;
+            margin-bottom: 1rem !important;
+            padding: 0 0.5rem !important;
+          }
           .service-card-custom { 
-            padding: 1.2rem 1rem !important; 
+            padding: 1rem 1.2rem !important; 
             margin-bottom: 0.8rem !important;
             width: 100% !important;
             max-width: 100% !important;
             min-height: auto !important;
             height: auto !important;
+            border-radius: 14px !important;
           }
           .service-card-custom .service-img { 
-            width: 55px !important; 
-            height: 55px !important; 
+            width: 50px !important; 
+            height: 50px !important; 
             margin: 0 0 0.8rem 0 !important; 
           }
           .service-card-custom h3 { 
-            font-size: 1.1rem !important; 
-            margin-bottom: 0.6rem !important; 
+            font-size: 1.05rem !important; 
+            margin-bottom: 0.5rem !important;
+            padding-right: 0.5rem !important;
           }
           .service-card-custom p { 
-            font-size: 0.9rem !important; 
-            line-height: 1.4 !important; 
+            font-size: 0.85rem !important; 
+            line-height: 1.3 !important;
+            padding: 0 0.5rem 0 0 !important;
           }
 
-          /* Projects Gallery - Enhanced Scrolling */
-          .projects-section { padding: 1.8rem 1rem !important; }
-          .projects-title, .projects-title-bold { 
-            font-size: 1.8rem !important; 
-            margin-bottom: 1.2rem !important; 
+          /* Projects Section - OPTIMIZED TEXT AND SPACING */
+          .projects-section { 
+            padding: 1.5rem 0.8rem !important; 
+          }
+          .projects-container {
+            padding: 0 !important;
+            max-width: 100% !important;
+          }
+          .projects-title { 
+            font-size: 1.7rem !important; 
+            margin-bottom: 1rem !important; 
             line-height: 1.2 !important;
+            text-align: center !important;
+            padding: 0 0.5rem !important;
+          }
+          .projects-title-bold { 
+            font-size: 1.7rem !important; 
+            font-weight: 900 !important;
+            display: inline !important;
           }
           .projects-gallery {
             -webkit-overflow-scrolling: touch !important;
@@ -381,70 +422,82 @@ function App() {
             scroll-behavior: smooth !important;
             overscroll-behavior-x: contain !important;
             -webkit-overscroll-behavior-x: contain !important;
+            margin-top: 0.5rem !important;
           }
           .project-image-card { 
-            min-width: 280px !important; 
-            max-width: 280px !important; 
+            min-width: 270px !important; 
+            max-width: 270px !important; 
           }
-          .project-image-card img { height: 200px !important; }
+          .project-image-card img { 
+            height: 190px !important; 
+          }
 
-          /* FIXED Contact Form Section */
+          /* CONTACT FORM - PHONE COMPATIBLE & CENTERED */
           .contact-section { 
-            padding: 2rem 0 !important; 
+            padding: 1.5rem 0 !important; 
             background: var(--primary) !important;
-            display: block !important;
-            visibility: visible !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
           }
           .contact-container { 
-            padding: 0 1rem !important; 
-            gap: 1.5rem !important;
+            padding: 0 !important; 
+            gap: 1rem !important;
             display: flex !important;
             flex-direction: column !important;
-            max-width: 100% !important;
+            max-width: 340px !important;
+            width: 90% !important;
             margin: 0 auto !important;
+            align-items: center !important;
           }
           .contact-form-area { 
-            padding: 2rem 1.5rem !important;
+            padding: 1.5rem 1.2rem !important;
             margin-bottom: 0 !important;
             background: #fff !important;
-            border-radius: 20px !important;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 16px !important;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15) !important;
             position: relative !important;
             overflow: visible !important;
             display: block !important;
             visibility: visible !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
           }
           .contact-info-area { 
-            padding: 2rem 1.5rem !important;
+            padding: 1.5rem 1.2rem !important;
             margin-bottom: 0 !important;
             background: #fff !important;
-            border-radius: 20px !important;
-            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15) !important;
+            border-radius: 16px !important;
+            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15) !important;
             position: relative !important;
             overflow: visible !important;
             display: block !important;
             visibility: visible !important;
+            width: 100% !important;
+            max-width: 100% !important;
+            box-sizing: border-box !important;
           }
           .contact-title { 
-            font-size: 2rem !important; 
-            margin-bottom: 1.5rem !important;
+            font-size: 1.6rem !important; 
+            margin-bottom: 1.2rem !important;
             text-align: center !important;
             color: var(--primary) !important;
             font-weight: 800 !important;
             display: block !important;
             visibility: visible !important;
             font-family: 'Orbitron', Arial, sans-serif !important;
-            letter-spacing: 1px !important;
+            letter-spacing: 0.5px !important;
             position: relative !important;
           }
           .contact-title::after {
             content: '' !important;
             position: absolute !important;
-            bottom: -8px !important;
+            bottom: -6px !important;
             left: 50% !important;
             transform: translateX(-50%) !important;
-            width: 60px !important;
-            height: 3px !important;
+            width: 50px !important;
+            height: 2px !important;
             background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%) !important;
             border-radius: 2px !important;
           }
@@ -455,19 +508,19 @@ function App() {
           }
           .form-row {
             width: 100% !important;
-            margin-bottom: 1.2rem !important;
+            margin-bottom: 1rem !important;
             display: block !important;
             position: relative !important;
           }
           .contact-form input, .contact-form textarea { 
-            font-size: 1rem !important; 
-            padding: 1.3rem 1.4rem !important; 
+            font-size: 0.95rem !important; 
+            padding: 1.1rem 1.2rem !important; 
             margin-bottom: 0 !important;
             width: 100% !important;
             box-sizing: border-box !important;
             display: block !important;
             border: 2px solid #e8f4f8 !important;
-            border-radius: 12px !important;
+            border-radius: 10px !important;
             background: #f8fcff !important;
             color: var(--dark) !important;
             font-family: 'Montserrat', Arial, sans-serif !important;
@@ -477,7 +530,7 @@ function App() {
           .contact-form input:focus, .contact-form textarea:focus {
             border: 2px solid var(--primary) !important;
             background: #fff !important;
-            box-shadow: 0 0 0 4px rgba(54, 106, 130, 0.1) !important;
+            box-shadow: 0 0 0 3px rgba(54, 106, 130, 0.1) !important;
             transform: translateY(-1px) !important;
           }
           .contact-form input::placeholder, .contact-form textarea::placeholder {
@@ -485,41 +538,41 @@ function App() {
             font-weight: 500 !important;
           }
           .contact-form textarea { 
-            min-height: 120px !important;
+            min-height: 100px !important;
             resize: vertical !important;
           }
           .contact-form button { 
-            padding: 1.4rem 2rem !important; 
-            font-size: 1.1rem !important; 
-            min-height: 52px !important;
-            margin-top: 1.5rem !important;
+            padding: 1.1rem 1.5rem !important; 
+            font-size: 0.95rem !important; 
+            min-height: 46px !important;
+            margin-top: 1rem !important;
             width: 100% !important;
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) !important;
             color: #fff !important;
             border: none !important;
-            border-radius: 16px !important;
+            border-radius: 12px !important;
             font-weight: 800 !important;
             text-transform: uppercase !important;
-            letter-spacing: 1px !important;
+            letter-spacing: 0.5px !important;
             cursor: pointer !important;
             transition: all 0.3s ease !important;
-            box-shadow: 0 6px 20px rgba(54, 106, 130, 0.3) !important;
+            box-shadow: 0 4px 15px rgba(54, 106, 130, 0.3) !important;
           }
           .contact-form button:hover {
             transform: translateY(-2px) !important;
-            box-shadow: 0 10px 30px rgba(54, 106, 130, 0.4) !important;
+            box-shadow: 0 6px 20px rgba(54, 106, 130, 0.4) !important;
           }
 
           /* Contact Info Area */
           .contact-info-area h3 {
-            font-size: 1.3rem !important;
-            margin-top: 1.5rem !important;
-            margin-bottom: 0.8rem !important;
+            font-size: 1.1rem !important;
+            margin-top: 1.2rem !important;
+            margin-bottom: 0.6rem !important;
             color: var(--primary) !important;
             font-weight: 800 !important;
             display: flex !important;
             align-items: center !important;
-            gap: 0.8rem !important;
+            gap: 0.6rem !important;
             letter-spacing: 0.5px !important;
           }
           .contact-info-area h3:first-child {
@@ -527,18 +580,18 @@ function App() {
           }
           .contact-info-area h3::before {
             content: '' !important;
-            width: 8px !important;
-            height: 8px !important;
+            width: 6px !important;
+            height: 6px !important;
             background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%) !important;
             border-radius: 50% !important;
             display: inline-block !important;
-            box-shadow: 0 2px 6px rgba(54, 106, 130, 0.3) !important;
+            box-shadow: 0 1px 4px rgba(54, 106, 130, 0.3) !important;
           }
           .contact-info-area p {
-            font-size: 1rem !important;
-            line-height: 1.6 !important;
-            margin-bottom: 1.2rem !important;
-            padding-left: 1.6rem !important;
+            font-size: 0.9rem !important;
+            line-height: 1.5 !important;
+            margin-bottom: 1rem !important;
+            padding-left: 1.2rem !important;
             color: var(--dark) !important;
             font-weight: 500 !important;
           }
@@ -552,33 +605,36 @@ function App() {
             color: var(--accent) !important;
           }
 
-          /* Footer - Text-only Left-aligned Links */
+          /* FOOTER - VERTICAL MENU & REDUCED SPACING */
           .site-footer { 
             background: linear-gradient(135deg, #1a1c1d 0%, #2d3034 100%) !important;
-            padding: 1.5rem 0 1rem 0 !important; 
+            padding: 1.2rem 0 0.8rem 0 !important; 
           }
-          .footer-container { padding: 0 1rem !important; }
+          .footer-container { 
+            padding: 0 1rem !important; 
+            max-width: 100% !important;
+          }
           .footer-menus {
             flex-direction: column !important;
-            gap: 1rem !important;
+            gap: 0.8rem !important;
             align-items: flex-start !important;
+            margin-bottom: 1rem !important;
           }
           .footer-nav { 
             display: flex !important;
-            flex-direction: row !important;
-            gap: 1rem !important;
+            flex-direction: column !important;
+            gap: 0.6rem !important;
             width: 100% !important;
             max-width: none !important;
             margin: 0 !important;
             justify-content: flex-start !important;
             align-items: flex-start !important;
-            overflow-x: auto !important;
-            -webkit-overflow-scrolling: touch !important;
-            padding-bottom: 0.5rem !important;
+            overflow: visible !important;
+            padding: 0 !important;
           }
           .footer-nav a { 
-            font-size: 0.95rem !important; 
-            padding: 0.5rem 0 !important;
+            font-size: 0.9rem !important; 
+            padding: 0.3rem 0 !important;
             border-radius: 0 !important;
             background: none !important;
             text-align: left !important;
@@ -588,7 +644,8 @@ function App() {
             white-space: nowrap !important;
             border: none !important;
             min-width: auto !important;
-            margin-right: 1rem !important;
+            margin: 0 !important;
+            display: block !important;
           }
           .footer-nav a:hover {
             color: var(--accent) !important;
@@ -598,24 +655,26 @@ function App() {
           }
           .footer-social { 
             justify-content: flex-start !important;
-            margin: 1rem 0 0.5rem 0 !important; 
+            margin: 0.8rem 0 0.5rem 0 !important; 
+            gap: 0.8rem !important;
           }
           .footer-social a { 
-            width: 40px !important; 
-            height: 40px !important; 
-            margin-right: 0.8rem !important;
+            width: 36px !important; 
+            height: 36px !important; 
+            margin-right: 0 !important;
           }
           .footer-bottom { 
             text-align: left !important; 
-            font-size: 0.85rem !important; 
-            margin-top: 1rem !important;
-            padding-top: 1rem !important;
+            font-size: 0.8rem !important; 
+            margin-top: 0.8rem !important;
+            padding-top: 0.8rem !important;
+            border-top: 1px solid rgba(137, 208, 238, 0.2) !important;
           }
 
           /* Standardized Typography */
           .services-title, .our-portals-title, .navigator-title, .partners-title { 
             font-size: 1.8rem !important; 
-            margin-bottom: 1.2rem !important; 
+            margin-bottom: 1rem !important; 
             padding: 0 0.5rem !important;
             line-height: 1.2 !important;
           }
@@ -623,16 +682,19 @@ function App() {
           /* Responsive breakpoints */
           @media (max-width: 414px) {
             .hero-content h1 { font-size: 1.6rem !important; }
-            .vian-way-card, .service-card-custom { padding: 0.8rem 0.6rem !important; }
-            .contact-form-area, .contact-info-area { padding: 1.5rem 1.2rem !important; }
-            .contact-title { font-size: 1.8rem !important; }
+            .vian-way-card { padding: 0.7rem 0.5rem !important; }
+            .service-card-custom { padding: 0.8rem 1rem !important; }
+            .contact-container { max-width: 320px !important; width: 95% !important; }
+            .contact-form-area, .contact-info-area { padding: 1.2rem 1rem !important; }
+            .contact-title { font-size: 1.5rem !important; }
           }
           @media (max-width: 375px) {
             .hero-content h1 { font-size: 1.5rem !important; }
             .projects-title, .services-title { font-size: 1.6rem !important; }
-            .project-image-card { min-width: 260px !important; max-width: 260px !important; }
-            .vian-way-card { padding: 0.7rem 0.5rem !important; }
-            .contact-title { font-size: 1.7rem !important; }
+            .project-image-card { min-width: 250px !important; max-width: 250px !important; }
+            .vian-way-card { padding: 0.6rem 0.4rem !important; }
+            .contact-container { max-width: 300px !important; }
+            .contact-title { font-size: 1.4rem !important; }
           }
         }
       `}</style>
