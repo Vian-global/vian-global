@@ -248,75 +248,123 @@ function App() {
             background: #fff !important;
           }
           
-          /* Enhanced Mobile Navigation */
+          /* Enhanced Off-Canvas Mobile Navigation */
           .nav {
             position: fixed !important;
             top: 0 !important;
             left: 0 !important;
-            width: 100vw !important;
+            width: 280px !important;
             height: 100vh !important;
             background: linear-gradient(135deg, rgba(54, 106, 130, 0.98) 0%, rgba(24, 26, 27, 0.98) 100%) !important;
             backdrop-filter: blur(30px) !important;
             -webkit-backdrop-filter: blur(30px) !important;
-            display: none !important;
+            display: flex !important;
             flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
+            align-items: flex-start !important;
+            justify-content: flex-start !important;
             z-index: 1002 !important;
-            gap: 1.5rem !important;
             transform: translateX(-100%) !important;
-            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3) !important;
+            padding: 2rem 0 !important;
+            overflow-y: auto !important;
           }
           
           .nav.nav-open {
-            display: flex !important;
             transform: translateX(0) !important;
-            opacity: 1 !important;
-            visibility: visible !important;
+          }
+          
+          /* Close button for mobile nav */
+          .nav-close-btn {
+            position: absolute !important;
+            top: 1rem !important;
+            right: 1rem !important;
+            width: 40px !important;
+            height: 40px !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            border-radius: 50% !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            cursor: pointer !important;
+            transition: all 0.3s ease !important;
+            z-index: 1003 !important;
+          }
+          
+          .nav-close-btn:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+            transform: scale(1.1) !important;
+          }
+          
+          .nav-close-btn::before,
+          .nav-close-btn::after {
+            content: '' !important;
+            position: absolute !important;
+            width: 20px !important;
+            height: 2px !important;
+            background: #fff !important;
+            border-radius: 1px !important;
+            transition: all 0.3s ease !important;
+          }
+          
+          .nav-close-btn::before {
+            transform: rotate(45deg) !important;
+          }
+          
+          .nav-close-btn::after {
+            transform: rotate(-45deg) !important;
           }
           
           .nav a {
             color: #fff !important;
-            font-size: 1.3rem !important;
+            font-size: 1.2rem !important;
             font-family: 'Orbitron', Arial, sans-serif !important;
-            font-weight: 700 !important;
-            padding: 1.2rem 2.5rem !important;
-            margin: 0.3rem 0 !important;
-            text-align: center !important;
-            border-radius: 16px !important;
-            background: rgba(255, 255, 255, 0.1) !important;
-            border: 2px solid rgba(255, 255, 255, 0.2) !important;
-            min-width: 280px !important;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            letter-spacing: 1px !important;
+            font-weight: 600 !important;
+            padding: 1rem 2rem !important;
+            margin: 0.5rem 0 !important;
+            text-align: left !important;
+            border-radius: 0 !important;
+            background: transparent !important;
+            border: none !important;
+            border-left: 3px solid transparent !important;
+            width: 100% !important;
+            min-width: auto !important;
+            transition: all 0.3s ease !important;
+            letter-spacing: 0.5px !important;
             text-decoration: none !important;
-            transform: translateY(30px) !important;
-            opacity: 0 !important;
-            backdrop-filter: blur(10px) !important;
-            -webkit-backdrop-filter: blur(10px) !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
             position: relative !important;
             overflow: hidden !important;
             touch-action: manipulation !important;
             -webkit-tap-highlight-color: transparent !important;
+            display: block !important;
+            box-sizing: border-box !important;
           }
-          
-          .nav.nav-open a {
-            animation: slideInNavLink 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
-          }
-          
-          .nav a:nth-child(1) { animation-delay: 0.1s !important; }
-          .nav a:nth-child(2) { animation-delay: 0.2s !important; }
-          .nav a:nth-child(3) { animation-delay: 0.3s !important; }
-          .nav a:nth-child(4) { animation-delay: 0.4s !important; }
-          .nav a:nth-child(5) { animation-delay: 0.5s !important; }
           
           .nav a:hover, .nav a:active, .nav a:focus {
-            background: rgba(255, 255, 255, 0.25) !important;
-            transform: translateY(-3px) scale(1.02) !important;
-            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3) !important;
-            border-color: rgba(137, 208, 238, 0.6) !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            border-left-color: var(--accent) !important;
+            color: var(--accent) !important;
+            transform: translateX(10px) !important;
+            box-shadow: none !important;
+          }
+          
+          /* Navigation header */
+          .nav-header {
+            width: 100% !important;
+            padding: 0 2rem 1rem 2rem !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            margin-bottom: 1rem !important;
+          }
+          
+          .nav-header h3 {
+            color: #fff !important;
+            font-size: 1.1rem !important;
+            font-weight: 600 !important;
+            margin: 0 !important;
+            opacity: 0.8 !important;
           }
           
           .nav a::before {
@@ -341,10 +389,10 @@ function App() {
             left: 0 !important;
             width: 100vw !important;
             height: 100vh !important;
-            background: rgba(0, 0, 0, 0.5) !important;
+            background: rgba(0, 0, 0, 0.6) !important;
             z-index: 1001 !important;
-            backdrop-filter: blur(3px) !important;
-            -webkit-backdrop-filter: blur(3px) !important;
+            backdrop-filter: blur(2px) !important;
+            -webkit-backdrop-filter: blur(2px) !important;
             cursor: pointer !important;
             transition: opacity 0.3s ease !important;
             opacity: 0 !important;
@@ -575,15 +623,30 @@ function App() {
             flex-direction: column !important;
             gap: 2rem !important;
             padding: 0 1rem !important;
+            max-width: 100% !important;
           }
           
           .contact-form-area, .contact-info-area {
             width: 100% !important;
             max-width: 100% !important;
             margin: 0 !important;
-            padding: 2rem 1.5rem !important;
+            padding: 2.5rem 2rem !important;
             border-radius: 20px !important;
             box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
+            background: #fff !important;
+            border: 2px solid #e8f4f8 !important;
+            position: relative !important;
+            overflow: hidden !important;
+          }
+          
+          .contact-form-area::before, .contact-info-area::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            height: 4px !important;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%) !important;
           }
           
           .contact-form {
@@ -599,17 +662,27 @@ function App() {
             width: 100% !important;
             box-sizing: border-box !important;
             font-size: 16px !important;
-            padding: 1.2rem 1.5rem !important;
+            padding: 1.3rem 1.8rem !important;
             border-radius: 12px !important;
             border: 2px solid #e8f4f8 !important;
             background: #f8fcff !important;
             margin-bottom: 0 !important;
+            font-family: 'Montserrat', Arial, sans-serif !important;
+            color: var(--dark) !important;
+            transition: all 0.3s ease !important;
+            outline: none !important;
           }
           
           .contact-form input:focus, .contact-form textarea:focus {
             border-color: var(--primary) !important;
             background: #fff !important;
             box-shadow: 0 0 0 4px rgba(54, 106, 130, 0.1) !important;
+            transform: translateY(-1px) !important;
+          }
+          
+          .contact-form input::placeholder, .contact-form textarea::placeholder {
+            color: #94a3b8 !important;
+            font-weight: 500 !important;
           }
           
           .contact-form textarea {
@@ -677,19 +750,22 @@ function App() {
             gap: 2rem !important;
             align-items: flex-start !important;
             width: 100% !important;
+            padding: 0 !important;
           }
           
           .footer-nav {
             flex-direction: column !important;
-            gap: 1rem !important;
+            gap: 0.8rem !important;
             align-items: flex-start !important;
             width: 100% !important;
+            margin: 0 !important;
+            padding: 0 !important;
           }
           
           .footer-nav a {
             background: none !important;
             border: none !important;
-            padding: 0.5rem 0 !important;
+            padding: 0.6rem 0 !important;
             margin: 0 !important;
             font-size: 1.1rem !important;
             color: #f3f3f3 !important;
@@ -701,6 +777,10 @@ function App() {
             border-radius: 0 !important;
             box-shadow: none !important;
             transition: color 0.3s ease !important;
+            display: block !important;
+            width: 100% !important;
+            text-align: left !important;
+            position: relative !important;
           }
           
           .footer-nav a:hover {
@@ -708,6 +788,22 @@ function App() {
             color: var(--accent) !important;
             transform: none !important;
             box-shadow: none !important;
+            padding-left: 5px !important;
+          }
+          
+          .footer-nav a::before {
+            content: '•' !important;
+            position: absolute !important;
+            left: -15px !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            color: var(--accent) !important;
+            opacity: 0 !important;
+            transition: opacity 0.3s ease !important;
+          }
+          
+          .footer-nav a:hover::before {
+            opacity: 1 !important;
           }
           
           .footer-social {
@@ -752,6 +848,15 @@ function App() {
           role="navigation"
           aria-label="Main navigation"
         >
+          <button 
+            className="nav-close-btn" 
+            onClick={handleNavClose}
+            aria-label="Close navigation menu"
+            type="button"
+          ></button>
+          <div className="nav-header">
+            <h3>Navigation Menu</h3>
+          </div>
           <a href="#home" onClick={handleNavClick} role="menuitem">Home</a>
           <a href="#about" onClick={handleNavClick} role="menuitem">About</a>
           <a href="#services" onClick={handleNavClick} role="menuitem">Services</a>
