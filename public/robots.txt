@@ -1,0 +1,28 @@
+User-agent: *
+Allow: /
+
+# Important pages
+Sitemap: https://vianglobal.com/sitemap.xml
+
+# Block access to development files
+Disallow: /src/
+Disallow: /*.json$
+Disallow: /node_modules/
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /vite.config.js
+Disallow: /.env
+Disallow: /.git/
+
+# Allow social media crawlers
+User-agent: facebookexternalhit/*
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+# Crawl delay for good behavior
+Crawl-delay: 1 

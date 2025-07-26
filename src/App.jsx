@@ -6,32 +6,6 @@ import businessProcessImg from './assets/business process.jpeg'
 import businessDigitalizationImg from './assets/business digitalization.jpeg'
 import newVianLogo from './assets/new-vian-logo.png'
 
-// Mobile optimization styles
-const mobileStyles = `
-  @media (max-width: 768px) {
-    html { scroll-behavior: smooth; -webkit-overflow-scrolling: touch; }
-    .hero-section { padding-top: 70px !important; overflow: hidden !important; }
-    .hero-bg { height: 110% !important; top: -5% !important; position: absolute !important; }
-    .hero-content h1 { font-size: 1.8rem !important; text-align: center !important; }
-    .vian-way-section { padding: 2rem 1rem !important; }
-    .vian-way-container { padding: 0 0.5rem !important; }
-    .vian-way-header h2 { font-size: 1.8rem !important; }
-    .vian-way-lead { font-size: 0.95rem !important; }
-    .vian-way-card { padding: 1.3rem 1rem !important; }
-    .vian-way-card h3 { font-size: 1.1rem !important; }
-    .vian-way-card p { font-size: 0.9rem !important; }
-    .our-portals-section, .navigator-section, .services-section { padding: 2rem 1rem !important; }
-    .projects-title, .projects-title-bold { font-size: 1.8rem !important; }
-    .project-image-card { min-width: 300px !important; max-width: 300px !important; }
-    .project-image-card img { height: 220px !important; }
-    .contact-section { padding: 2rem 0 !important; }
-    .contact-container { padding: 0 1rem !important; }
-    .contact-form-area, .contact-info-area { padding: 1.8rem 1.3rem !important; }
-    .contact-title { font-size: 1.8rem !important; }
-    .services-title, .our-portals-title, .navigator-title { font-size: 1.8rem !important; }
-  }
-`;
-
 const heroImages = [
   '/hero.jpg',
   '/hero2.jpg',
@@ -124,14 +98,20 @@ function App() {
   // Handle body scroll lock when menu is open
   useEffect(() => {
     if (navOpen) {
-      document.body.classList.add('nav-open')
+      document.body.style.overflow = 'hidden'
+      document.body.style.position = 'fixed'
+      document.body.style.width = '100%'
     } else {
-      document.body.classList.remove('nav-open')
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.width = ''
     }
     
     // Cleanup on component unmount
     return () => {
-      document.body.classList.remove('nav-open')
+      document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.width = ''
     }
   }, [navOpen])
 
@@ -174,6 +154,24 @@ function App() {
     }
   };
 
+  // Handle navigation close
+  const handleNavClose = () => {
+    setNavOpen(false)
+  }
+
+  // Handle navigation link click
+  const handleNavClick = (e) => {
+    e.preventDefault()
+    const href = e.target.getAttribute('href')
+    if (href && href.startsWith('#')) {
+      const element = document.querySelector(href)
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' })
+      }
+    }
+    setNavOpen(false)
+  }
+
   return (
     <>
       <style>{`
@@ -198,45 +196,46 @@ function App() {
         
         /* MOBILE RESPONSIVE FIXES */
         @media (max-width: 768px) {
-          /* Ensure proper section positioning */
-          .hero-section, .vian-way-section, .our-portals-section, 
-          .navigator-section, .services-section, .projects-section, 
-          .contact-section, .site-footer {
-            position: relative !important;
-            width: 100% !important;
-            max-width: 100% !important;
-            overflow-x: hidden !important;
-            margin: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-          }
-          
-          /* Better hamburger menu with X icon */
+          /* Enhanced Hamburger Menu */
           .hamburger {
-            width: 44px !important;
-            height: 44px !important;
-            border-radius: 8px !important;
+            width: 48px !important;
+            height: 48px !important;
+            border-radius: 12px !important;
             background: rgba(255, 255, 255, 0.15) !important;
-            transition: all 0.3s ease !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative !important;
+            z-index: 1003 !important;
+            cursor: pointer !important;
           }
           
           .hamburger:hover {
             background: rgba(255, 255, 255, 0.25) !important;
             transform: scale(1.05) !important;
+            border-color: rgba(255, 255, 255, 0.4) !important;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+          }
+          
+          .hamburger:active {
+            transform: scale(0.95) !important;
           }
           
           .hamburger .bar {
-            width: 22px !important;
-            height: 2px !important;
+            width: 24px !important;
+            height: 3px !important;
             background: #fff !important;
             margin: 3px 0 !important;
-            border-radius: 2px !important;
-            transition: all 0.3s ease !important;
+            border-radius: 3px !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            transform-origin: center !important;
           }
           
-          /* X icon when hamburger is active */
+          /* Enhanced X icon animation */
           .hamburger.active .bar:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px) !important;
+            transform: rotate(45deg) translate(7px, 7px) !important;
+            background: #fff !important;
           }
           
           .hamburger.active .bar:nth-child(2) {
@@ -245,10 +244,11 @@ function App() {
           }
           
           .hamburger.active .bar:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px) !important;
+            transform: rotate(-45deg) translate(7px, -7px) !important;
+            background: #fff !important;
           }
           
-          /* Enhanced mobile navigation */
+          /* Enhanced Mobile Navigation */
           .nav {
             position: fixed !important;
             top: 0 !important;
@@ -256,22 +256,24 @@ function App() {
             width: 100vw !important;
             height: 100vh !important;
             background: linear-gradient(135deg, rgba(54, 106, 130, 0.98) 0%, rgba(24, 26, 27, 0.98) 100%) !important;
-            backdrop-filter: blur(25px) !important;
-            -webkit-backdrop-filter: blur(25px) !important;
+            backdrop-filter: blur(30px) !important;
+            -webkit-backdrop-filter: blur(30px) !important;
             display: flex !important;
             flex-direction: column !important;
             align-items: center !important;
             justify-content: center !important;
-            z-index: 1001 !important;
-            gap: 2rem !important;
+            z-index: 1002 !important;
+            gap: 1.5rem !important;
             transform: translateX(-100%) !important;
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+            transition: transform 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
             opacity: 0 !important;
+            visibility: hidden !important;
           }
           
           .nav.nav-open {
             transform: translateX(0) !important;
             opacity: 1 !important;
+            visibility: visible !important;
           }
           
           .nav a {
@@ -279,19 +281,26 @@ function App() {
             font-size: 1.3rem !important;
             font-family: 'Orbitron', Arial, sans-serif !important;
             font-weight: 700 !important;
-            padding: 1rem 2.5rem !important;
+            padding: 1.2rem 2.5rem !important;
             margin: 0.3rem 0 !important;
             text-align: center !important;
-            border-radius: 12px !important;
+            border-radius: 16px !important;
             background: rgba(255, 255, 255, 0.1) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            min-width: 250px !important;
-            transition: all 0.3s ease !important;
+            border: 2px solid rgba(255, 255, 255, 0.2) !important;
+            min-width: 280px !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
             letter-spacing: 1px !important;
             text-decoration: none !important;
-            transform: translateY(20px) !important;
+            transform: translateY(30px) !important;
             opacity: 0 !important;
-            animation: slideInUp 0.6s ease forwards !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            position: relative !important;
+            overflow: hidden !important;
+          }
+          
+          .nav.nav-open a {
+            animation: slideInNavLink 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards !important;
           }
           
           .nav a:nth-child(1) { animation-delay: 0.1s !important; }
@@ -300,165 +309,305 @@ function App() {
           .nav a:nth-child(4) { animation-delay: 0.4s !important; }
           .nav a:nth-child(5) { animation-delay: 0.5s !important; }
           
-          .nav a:hover, .nav a:active {
+          .nav a:hover, .nav a:active, .nav a:focus {
             background: rgba(255, 255, 255, 0.25) !important;
-            transform: translateY(-2px) !important;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3) !important;
+            transform: translateY(-3px) scale(1.02) !important;
+            box-shadow: 0 12px 35px rgba(0, 0, 0, 0.3) !important;
+            border-color: rgba(137, 208, 238, 0.6) !important;
           }
           
-          /* Smooth animations */
-          @keyframes slideInUp {
-            to {
-              transform: translateY(0) !important;
-              opacity: 1 !important;
-            }
+          .nav a::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: -100% !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent) !important;
+            transition: left 0.5s ease !important;
           }
           
-          /* Better overlay */
+          .nav a:hover::before {
+            left: 100% !important;
+          }
+          
+          /* Navigation overlay */
           .nav-overlay {
             position: fixed !important;
             top: 0 !important;
             left: 0 !important;
             width: 100vw !important;
             height: 100vh !important;
-            background: rgba(0, 0, 0, 0.4) !important;
-            z-index: 1000 !important;
-            backdrop-filter: blur(2px) !important;
-            -webkit-backdrop-filter: blur(2px) !important;
+            background: rgba(0, 0, 0, 0.5) !important;
+            z-index: 1001 !important;
+            backdrop-filter: blur(3px) !important;
+            -webkit-backdrop-filter: blur(3px) !important;
             cursor: pointer !important;
             transition: opacity 0.3s ease !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
           }
           
-          /* Prevent body scroll when nav is open */
-          body.nav-open {
-            overflow: hidden !important;
-            position: fixed !important;
-            width: 100% !important;
+          .nav-overlay.active {
+            opacity: 1 !important;
+            visibility: visible !important;
           }
           
-          /* Hero section adjustments */
+          /* Enhanced animations */
+          @keyframes slideInNavLink {
+            to {
+              transform: translateY(0) !important;
+              opacity: 1 !important;
+            }
+          }
+          
+          /* Improved hero section for mobile */
           .hero-section {
             padding-top: 80px !important;
-            min-height: 90vh !important;
+            min-height: 100vh !important;
+            height: 100vh !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            position: relative !important;
+            overflow: hidden !important;
           }
           
-          /* Compact section spacing */
-          .vian-way-section, .our-portals-section, .navigator-section, .services-section {
-            padding: 2rem 1rem !important;
+          .hero-bg {
+            background-size: cover !important;
+            background-position: center center !important;
+            background-attachment: scroll !important;
+            width: 100% !important;
+            height: 100% !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            z-index: 0 !important;
           }
           
-          .projects-section {
-            padding: 2rem 1rem !important;
+          .hero-overlay {
+            background: linear-gradient(135deg, rgba(20, 40, 60, 0.7) 0%, rgba(54, 106, 130, 0.6) 100%) !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100% !important;
+            height: 100% !important;
+            z-index: 1 !important;
           }
           
-          .contact-section {
-            padding: 2rem 1rem !important;
-          }
-          
-          /* Better text sizing */
-          .vian-way-header h2, .our-portals-title, .navigator-title, 
-          .services-title, .projects-title, .contact-title {
-            font-size: 1.8rem !important;
-            margin-bottom: 1.5rem !important;
+          .hero-content {
             text-align: center !important;
+            padding: 0 1.5rem !important;
+            max-width: 95% !important;
+            width: 100% !important;
+            z-index: 2 !important;
+            position: relative !important;
           }
           
-          /* Optimize card layouts */
-          .vian-way-card {
-            max-width: 320px !important;
-            margin: 0 auto 1rem auto !important;
-            padding: 1.2rem !important;
-          }
-          
-          .our-portals-content, .navigator-content {
-            max-width: 340px !important;
-            margin: 0 auto !important;
-            padding: 1.5rem !important;
-          }
-          
-          .service-card-custom {
-            max-width: 340px !important;
-            margin: 0 auto 1.5rem auto !important;
-          }
-          
-          /* Contact form improvements */
-          .contact-container {
+          .hero-content h1 {
+            font-size: 2.2rem !important;
+            line-height: 1.3 !important;
+            margin-bottom: 2rem !important;
+            text-align: center !important;
+            font-weight: 800 !important;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
             max-width: 100% !important;
-            padding: 0 1rem !important;
+            color: #fff !important;
           }
           
-          .contact-form-area, .contact-info-area {
-            max-width: 400px !important;
-            margin: 0 auto !important;
-            padding: 1.5rem !important;
+          .hero-content .cta-btn {
+            font-size: 1.2rem !important;
+            padding: 1.3rem 2.8rem !important;
+            margin-top: 1.5rem !important;
+            border-radius: 30px !important;
+            box-shadow: 0 8px 30px rgba(54, 106, 130, 0.4) !important;
+            min-height: 56px !important;
+            width: auto !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
           }
           
-          /* Project gallery */
-          .project-image-card {
-            min-width: 280px !important;
-            max-width: 280px !important;
+          .hero-content .cta-btn:hover {
+            transform: translateY(-3px) scale(1.05) !important;
+            box-shadow: 0 15px 40px rgba(54, 106, 130, 0.5) !important;
           }
           
-          .project-image-card img {
-            height: 200px !important;
+          /* Enhanced section spacing */
+          .vian-way-section, .our-portals-section, .navigator-section, 
+          .services-section, .projects-section, .contact-section {
+            padding: 4rem 1.5rem !important;
+            position: relative !important;
+            width: 100% !important;
+            max-width: 100vw !important;
+            overflow-x: hidden !important;
+            margin: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+          }
+          
+          /* Enhanced typography */
+          .services-title, .our-portals-title, .projects-title, 
+          .contact-title, .navigator-title, .vian-way-header h2 {
+            font-size: 2.2rem !important;
+            margin-bottom: 2.5rem !important;
+            text-align: center !important;
+            line-height: 1.2 !important;
+            font-weight: 800 !important;
+            letter-spacing: 1px !important;
+          }
+          
+          /* Enhanced touch targets and interactions */
+          .cta-btn, .our-portals-link, .navigator-link, 
+          .contact-form button, .footer-nav a, .nav a {
+            min-height: 48px !important;
+            min-width: 48px !important;
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-align: center !important;
+            line-height: 1 !important;
+            touch-action: manipulation !important;
+            -webkit-tap-highlight-color: transparent !important;
+          }
+          
+          /* Enhanced form elements */
+          .contact-form input, .contact-form textarea {
+            min-height: 48px !important;
+            font-size: 16px !important;
+            padding: 1.2rem 1.5rem !important;
+            border-radius: 12px !important;
+            touch-action: manipulation !important;
+            -webkit-appearance: none !important;
           }
         }
         
-        /* Smaller screens */
+        /* Extra small screens */
         @media (max-width: 414px) {
           .nav a {
-            font-size: 1.2rem !important;
-            padding: 0.9rem 2rem !important;
+            font-size: 1.1rem !important;
+            padding: 1rem 2rem !important;
+            min-width: 250px !important;
+          }
+          
+          .hero-content h1 {
+            font-size: 1.9rem !important;
+          }
+          
+          .hero-content .cta-btn {
+            font-size: 1.1rem !important;
+            padding: 1.1rem 2.3rem !important;
+          }
+          
+          .services-title, .our-portals-title, .projects-title, 
+          .contact-title, .navigator-title, .vian-way-header h2 {
+            font-size: 1.9rem !important;
+          }
+        }
+        
+        /* Very small screens */
+        @media (max-width: 375px) {
+          .nav a {
+            font-size: 1rem !important;
+            padding: 0.9rem 1.8rem !important;
             min-width: 220px !important;
           }
           
-          .vian-way-card, .our-portals-content, .navigator-content, .service-card-custom {
-            max-width: 300px !important;
+          .hero-content h1 {
+            font-size: 1.7rem !important;
           }
           
-          .contact-form-area, .contact-info-area {
-            max-width: 320px !important;
-            padding: 1.2rem !important;
+          .hamburger {
+            width: 44px !important;
+            height: 44px !important;
+          }
+          
+          .hamburger .bar {
+            width: 20px !important;
+            height: 2px !important;
           }
         }
       `}</style>
       <header className="header simple-header">
         <div className="header-logo">
-          <img src={newVianLogo} alt="Vian Global Logo" className="header-logo-img" />
+          <img 
+            src={newVianLogo} 
+            alt="Vian Global Logo" 
+            className="header-logo-img"
+            loading="eager"
+            width="200"
+            height="200"
+          />
         </div>
-        <button className={`hamburger ${navOpen ? 'active' : ''}`} onClick={() => setNavOpen(!navOpen)} aria-label="Open navigation">
-          <span className="bar"></span>
-          <span className="bar"></span>
-          <span className="bar"></span>
+        <button 
+          className={`hamburger ${navOpen ? 'active' : ''}`} 
+          onClick={() => setNavOpen(!navOpen)} 
+          aria-label={navOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={navOpen}
+          aria-controls="main-navigation"
+          type="button"
+        >
+          <span className="bar" aria-hidden="true"></span>
+          <span className="bar" aria-hidden="true"></span>
+          <span className="bar" aria-hidden="true"></span>
         </button>
-        <nav className={`nav${navOpen ? ' nav-open' : ''}`}>
-          <a href="#home" onClick={() => setNavOpen(false)}>Home</a>
-          <a href="#about" onClick={() => setNavOpen(false)}>About</a>
-          <a href="#services" onClick={() => setNavOpen(false)}>Services</a>
-          <a href="#projects" onClick={() => setNavOpen(false)}>Projects</a>
-          <a href="#contact" onClick={() => setNavOpen(false)}>Contact</a>
+        <nav 
+          className={`nav${navOpen ? ' nav-open' : ''}`}
+          id="main-navigation"
+          role="navigation"
+          aria-label="Main navigation"
+        >
+          <a href="#home" onClick={handleNavClick} role="menuitem">Home</a>
+          <a href="#about" onClick={handleNavClick} role="menuitem">About</a>
+          <a href="#services" onClick={handleNavClick} role="menuitem">Services</a>
+          <a href="#projects" onClick={handleNavClick} role="menuitem">Projects</a>
+          <a href="#contact" onClick={handleNavClick} role="menuitem">Contact</a>
         </nav>
-        {navOpen && <div className="nav-overlay" onClick={() => setNavOpen(false)}></div>}
+        {navOpen && (
+          <div 
+            className={`nav-overlay ${navOpen ? 'active' : ''}`} 
+            onClick={handleNavClose}
+            aria-hidden="true"
+          ></div>
+        )}
       </header>
-      <main>
+      <main role="main">
         <section className="hero-section" id="home">
           <div
             className="hero-bg"
             style={{
               backgroundImage: `url(${heroImages[heroCurrent]})`,
             }}
+            role="img"
+            aria-label="Hero background image"
           />
-          <div className="hero-overlay" />
+          <div className="hero-overlay" aria-hidden="true" />
           <div className="hero-content">
-            <h1 className="scroll-fade-in">Empowering Businesses with Smart,<br />Scalable Technical Solutions</h1>
-            <a href="#contact" className="cta-btn scroll-fade-in">Get Started</a>
+            <h1 className="scroll-fade-in">
+              Empowering Businesses with Smart,<br />
+              Scalable Technical Solutions
+            </h1>
+            <a 
+              href="#contact" 
+              className="cta-btn scroll-fade-in"
+              onClick={handleNavClick}
+              role="button"
+              aria-label="Get started with our services"
+            >
+              Get Started
+            </a>
           </div>
         </section>
+        
         <section className="vian-way-section" id="about">
           <div className="vian-way-container">
             <div className="vian-way-header">
               <h2 className="scroll-fade-in">The Vian Way</h2>
-              <p className="vian-way-lead scroll-fade-in">Professional technical solutions for businesses to reach a global audience.</p>
+              <p className="vian-way-lead scroll-fade-in">
+                Professional technical solutions for businesses to reach a global audience.
+              </p>
             </div>
             <div className="vian-way-cards">
               <div className="vian-way-card scroll-fade-in">
@@ -476,67 +625,127 @@ function App() {
             </div>
           </div>
         </section>
+        
         <section className="our-portals-section" id="portals">
           <div className="our-portals-container">
             <h2 className="our-portals-title scroll-fade-in">Our Products</h2>
             <div className="our-portals-content">
               <div className="our-portals-img-wrapper scroll-fade-in">
-                <img src="/sqaress.com.jpeg" alt="Sparess" className="our-portals-img" />
+                <img 
+                  src="/sqaress.com.jpeg" 
+                  alt="Sparess.com Portal - Marine & Offshore parts marketplace" 
+                  className="our-portals-img"
+                  loading="lazy"
+                  width="320"
+                  height="240"
+                />
               </div>
               <div className="our-portals-info scroll-fade-in">
                 <h3>Sparess.com Portal</h3>
                 <p>Designed and launched by Vian Global for marketing, buying, and selling new or used parts and services applicable for the Marine & Offshore industries. The online portal is easy to access and available across website and mobile platforms.</p>
-                <a className="our-portals-link" href="https://sparess.com" target="_blank" rel="noopener noreferrer">Visit Our Portal</a>
+                <a 
+                  className="our-portals-link" 
+                  href="https://sparess.com" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="Visit Sparess.com portal (opens in new tab)"
+                >
+                  Visit Our Portal
+                </a>
               </div>
             </div>
           </div>
         </section>
+        
         <section className="navigator-section" id="navigator">
           <div className="our-portals-container">
             <div className="navigator-content">
               <div className="our-portals-img-wrapper scroll-fade-in">
-                <img src="/navigator.jpeg" alt="NavigatorsRus" className="navigator-img" />
+                <img 
+                  src="/navigator.jpeg" 
+                  alt="NavigatorsRus - Global marketing portal" 
+                  className="navigator-img"
+                  loading="lazy"
+                  width="320"
+                  height="240"
+                />
               </div>
               <div className="navigator-info scroll-fade-in">
                 <h3>NavigatorsRus</h3>
                 <p>NavigatorsRus online marketing portal is fully developed by Vian Global for UAE client. The portal is a gateway for effortlessly marketing products and services to a global audience. It connects buyers and sellers from every corner of the globe enabling boosting sales.<br/><br/>VIAN developed the concept, finalized UI, designed the portal and integrated third party services necessary for a fully functional portal. The portal operates as website and mobile app.</p>
-                <a className="our-portals-link" href="https://navigatorsrus.com/" target="_blank" rel="noopener noreferrer">Visit NavigatorsRus</a>
+                <a 
+                  className="our-portals-link" 
+                  href="https://navigatorsrus.com/" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="Visit NavigatorsRus portal (opens in new tab)"
+                >
+                  Visit NavigatorsRus
+                </a>
               </div>
             </div>
           </div>
         </section>
-        {/* Services Sections */}
+        
         <section className="services-section" id="services">
           <div className="services-container">
             <h2 className="services-title scroll-fade-in">Our Services</h2>
             <div className="services-content">
               <div className="service-card-custom scroll-fade-in">
-                <div className="accent-bar" />
-                <img src={projectManagementImg} alt="Project Management and Consulting" className="service-img" />
+                <div className="accent-bar" aria-hidden="true" />
+                <img 
+                  src={projectManagementImg} 
+                  alt="Project Management and Consulting" 
+                  className="service-img"
+                  loading="lazy"
+                  width="120"
+                  height="120"
+                />
                 <div className="service-info">
                   <h3>Project Management and Consulting</h3>
                   <p>Be it Industrial development or business process optimization, we offer expert guidance and project management services during product design, engineering, development and marketing.</p>
                 </div>
               </div>
               <div className="service-card-custom scroll-fade-in reverse">
-                <div className="accent-bar" />
-                <img src={conditionEvaluationImg} alt="Condition Assessment and Evaluation" className="service-img" />
+                <div className="accent-bar" aria-hidden="true" />
+                <img 
+                  src={conditionEvaluationImg} 
+                  alt="Condition Assessment and Evaluation" 
+                  className="service-img"
+                  loading="lazy"
+                  width="120"
+                  height="120"
+                />
                 <div className="service-info">
                   <h3>Condition Assessment and Evaluation</h3>
                   <p>We specialize in inspecting, analyzing and reporting the physical and operational state of assets, infrastructure or equipment enabling clients to understand the current condition, risks, life expectancy and necessary maintenance or replacement actions for critical assets.</p>
                 </div>
               </div>
               <div className="service-card-custom scroll-fade-in">
-                <div className="accent-bar" />
-                <img src={businessProcessImg} alt="Business Process Optimization" className="service-img" />
+                <div className="accent-bar" aria-hidden="true" />
+                <img 
+                  src={businessProcessImg} 
+                  alt="Business Process Optimization" 
+                  className="service-img"
+                  loading="lazy"
+                  width="120"
+                  height="120"
+                />
                 <div className="service-info">
                   <h3>Business Process Optimization</h3>
                   <p>We offer tailored solutions to streamline and improve core business operations by analyzing redesigning and digitizing workflows enabling businesses to increase efficiency, reduce costs, eliminate waste and enhance overall performance.</p>
                 </div>
               </div>
               <div className="service-card-custom scroll-fade-in reverse">
-                <div className="accent-bar" />
-                <img src={businessDigitalizationImg} alt="Business Digitalization and Marketing" className="service-img" />
+                <div className="accent-bar" aria-hidden="true" />
+                <img 
+                  src={businessDigitalizationImg} 
+                  alt="Business Digitalization and Marketing" 
+                  className="service-img"
+                  loading="lazy"
+                  width="120"
+                  height="120"
+                />
                 <div className="service-info">
                   <h3>Business Digitalization and Marketing</h3>
                   <p>With our existing software development partners, we can take your businesses to next level by developing modernized tools for process optimization, sales & marketing, e-commerce, data compiling & analysis requirements.</p>
@@ -545,72 +754,115 @@ function App() {
             </div>
           </div>
         </section>
+        
         <section className="projects-section" id="projects">
           <div className="projects-container">
             <h2 className="projects-title scroll-fade-in">
               <span className="projects-title-bold">Look Into</span> Our Accomplished <span className="projects-title-bold">Projects</span>
             </h2>
-            <div className="projects-gallery" ref={galleryRef}>
+            <div className="projects-gallery" ref={galleryRef} role="region" aria-label="Project gallery">
               <div className="projects-gallery-track">
                 {projectImages.map((img, idx) => (
                   <div className="project-image-card scroll-fade-in" key={idx}>
-                    <img src={img.src} alt={`Project ${idx+1}`} />
+                    <img 
+                      src={img.src} 
+                      alt={`Project ${idx+1}: ${img.name}`}
+                      loading="lazy"
+                      width="380"
+                      height="270"
+                    />
                   </div>
                 ))}
               </div>
             </div>
           </div>
         </section>
+        
         <section className="contact-section" id="contact">
           <div className="contact-container">
             <div className="contact-form-area scroll-fade-in">
-              <h2 className="contact-title scroll-fade-in">Contact Us</h2>
+              <h2 className="contact-title">Contact Us</h2>
               {formSubmitted ? (
                 <div className="thank-you-message scroll-fade-in">
                   <h3>Thank you!</h3>
                   <p>Your message has been sent. We appreciate your interest and will get back to you soon.</p>
                 </div>
               ) : (
-                <form className="contact-form" autoComplete="off" onSubmit={handleFormSubmit}>
-                <div className="form-row">
-                  <input type="text" name="name" placeholder="Your Name" required className="scroll-fade-in" />
-                </div>
-                <div className="form-row">
-                  <input type="email" name="email" placeholder="Your Email" required className="scroll-fade-in" />
-                </div>
-                <div className="form-row">
-                  <textarea name="message" placeholder="Your Message" rows={5} required className="scroll-fade-in"></textarea>
-                </div>
-                <button type="submit" className="cta-btn scroll-fade-in" disabled={isSubmitting}>
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </button>
-              </form>
+                <form className="contact-form" autoComplete="off" onSubmit={handleFormSubmit} noValidate>
+                  <div className="form-row">
+                    <input 
+                      type="text" 
+                      name="name" 
+                      placeholder="Your Name" 
+                      required 
+                      className="scroll-fade-in"
+                      aria-label="Your name"
+                      autoComplete="name"
+                    />
+                  </div>
+                  <div className="form-row">
+                    <input 
+                      type="email" 
+                      name="email" 
+                      placeholder="Your Email" 
+                      required 
+                      className="scroll-fade-in"
+                      aria-label="Your email address"
+                      autoComplete="email"
+                    />
+                  </div>
+                  <div className="form-row">
+                    <textarea 
+                      name="message" 
+                      placeholder="Your Message" 
+                      rows={5} 
+                      required 
+                      className="scroll-fade-in"
+                      aria-label="Your message"
+                    ></textarea>
+                  </div>
+                  <button 
+                    type="submit" 
+                    className="cta-btn scroll-fade-in" 
+                    disabled={isSubmitting}
+                    aria-label={isSubmitting ? 'Sending message...' : 'Send message'}
+                  >
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
+                  </button>
+                </form>
               )}
             </div>
             <div className="contact-info-area scroll-fade-in">
               <h3>Business Address</h3>
               <p>Vian Global LLP<br/>Chennai, Tamil Nadu, India</p>
               <h3>Phone</h3>
-              <p><a href="tel:+919884026978">+91 9884 026 978</a></p>
+              <p><a href="tel:+919884026978" aria-label="Call us at +91 9884 026 978">+91 9884 026 978</a></p>
               <h3>Email</h3>
-              <p><a href="mailto:vianglobal@icloud.com">vianglobal@icloud.com</a></p>
+              <p><a href="mailto:vianglobal@icloud.com" aria-label="Send email to vianglobal@icloud.com">vianglobal@icloud.com</a></p>
             </div>
           </div>
         </section>
       </main>
-      <footer className="site-footer">
+      
+      <footer className="site-footer" role="contentinfo">
         <div className="footer-container">
           <div className="footer-menus">
-            <nav className="footer-nav scroll-fade-in">
-              <a href="#home">Home</a>
-              <a href="#about">About</a>
-              <a href="#services">Services</a>
-              <a href="#projects">Projects</a>
-              <a href="#contact">Contact</a>
+            <nav className="footer-nav scroll-fade-in" role="navigation" aria-label="Footer navigation">
+              <a href="#home" onClick={handleNavClick}>Home</a>
+              <a href="#about" onClick={handleNavClick}>About</a>
+              <a href="#services" onClick={handleNavClick}>Services</a>
+              <a href="#projects" onClick={handleNavClick}>Projects</a>
+              <a href="#contact" onClick={handleNavClick}>Contact</a>
             </nav>
-            <div className="footer-social scroll-fade-in">
-              <a href="https://www.instagram.com/viangloballlp/" target="_blank" rel="noopener" aria-label="Instagram">
-                <svg width="28" height="28" fill="none" viewBox="0 0 28 28">
+            <div className="footer-social scroll-fade-in" role="list" aria-label="Social media links">
+              <a 
+                href="https://www.instagram.com/viangloballlp/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Follow us on Instagram (opens in new tab)"
+                role="listitem"
+              >
+                <svg width="28" height="28" fill="none" viewBox="0 0 28 28" aria-hidden="true">
                   <rect width="28" height="28" rx="6" fill="#366a82"/>
                   <g transform="translate(6, 6)">
                     <rect x="0" y="0" width="16" height="16" rx="5.33" fill="none" stroke="#fff" strokeWidth="1.5"/>
@@ -619,18 +871,34 @@ function App() {
                   </g>
                 </svg>
               </a>
-              <a href="https://www.linkedin.com/company/vian-global-llp/" target="_blank" rel="noopener" aria-label="LinkedIn">
-                <svg width="28" height="28" fill="none" viewBox="0 0 28 28"><rect width="28" height="28" rx="6" fill="#366a82"/><path d="M8.5 11.5v7h2.25v-7H8.5zm1.125-3.5a1.312 1.312 0 1 0 0 2.625 1.312 1.312 0 0 0 0-2.625zM12.25 11.5v7h2.25v-3.5c0-.966.784-1.75 1.75-1.75s1.75.784 1.75 1.75v3.5H20.5v-4.25c0-2.071-1.679-3.75-3.75-3.75s-3.75 1.679-3.75 3.75z" fill="#fff"/></svg>
+              <a 
+                href="https://www.linkedin.com/company/vian-global-llp/" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Connect with us on LinkedIn (opens in new tab)"
+                role="listitem"
+              >
+                <svg width="28" height="28" fill="none" viewBox="0 0 28 28" aria-hidden="true">
+                  <rect width="28" height="28" rx="6" fill="#366a82"/>
+                  <path d="M8.5 11.5v7h2.25v-7H8.5zm1.125-3.5a1.312 1.312 0 1 0 0 2.625 1.312 1.312 0 0 0 0-2.625zM12.25 11.5v7h2.25v-3.5c0-.966.784-1.75 1.75-1.75s1.75.784 1.75 1.75v3.5H20.5v-4.25c0-2.071-1.679-3.75-3.75-3.75s-3.75 1.679-3.75 3.75z" fill="#fff"/>
+                </svg>
               </a>
-              <a href="mailto:vianglobal@icloud.com" aria-label="Email">
-                <svg width="28" height="28" fill="none" viewBox="0 0 28 28"><rect width="28" height="28" rx="6" fill="#366a82"/><path d="M7.5 9.5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2v-9zm2.25.25v.01l4.25 3.25 4.25-3.25v-.01a.75.75 0 0 0-.75-.75h-7a.75.75 0 0 0-.75.75zm8.5 1.82-3.98 3.05a1 1 0 0 1-1.24 0l-3.98-3.05V18a.75.75 0 0 0 .75.75h7a.75.75 0 0 0 .75-.75v-6.43z" fill="#fff"/></svg>
-        </a>
-      </div>
+              <a 
+                href="mailto:vianglobal@icloud.com" 
+                aria-label="Send us an email"
+                role="listitem"
+              >
+                <svg width="28" height="28" fill="none" viewBox="0 0 28 28" aria-hidden="true">
+                  <rect width="28" height="28" rx="6" fill="#366a82"/>
+                  <path d="M7.5 9.5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2v-9zm2.25.25v.01l4.25 3.25 4.25-3.25v-.01a.75.75 0 0 0-.75-.75h-7a.75.75 0 0 0-.75.75zm8.5 1.82-3.98 3.05a1 1 0 0 1-1.24 0l-3.98-3.05V18a.75.75 0 0 0 .75.75h7a.75.75 0 0 0 .75-.75v-6.43z" fill="#fff"/>
+                </svg>
+              </a>
+            </div>
           </div>
           <div className="footer-bottom scroll-fade-in">
             <span>&copy; {new Date().getFullYear()} Vian Global LLP. All rights reserved.</span>
           </div>
-      </div>
+        </div>
       </footer>
     </>
   )
