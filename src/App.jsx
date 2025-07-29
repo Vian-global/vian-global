@@ -805,235 +805,195 @@ function App() {
         .hamburger {
           display: none;
         }
-        
-        /* MOBILE RESPONSIVE FIXES */
         @media (max-width: 768px) {
-          /* Enhanced Hamburger Menu */
           .hamburger {
-            display: flex !important;
-            flex-direction: column !important;
-            justify-content: center !important;
-            align-items: center !important;
-            width: 48px !important;
-            height: 48px !important;
-            border-radius: 12px !important;
-            background: rgba(255, 255, 255, 0.15) !important;
-            backdrop-filter: blur(10px) !important;
-            -webkit-backdrop-filter: blur(10px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            position: fixed !important;
-            top: 1rem !important;
-            right: 1rem !important;
-            z-index: 1003 !important;
-            cursor: pointer !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(54,106,130,0.15);
+            position: relative;
+            z-index: 1201;
+            cursor: pointer;
+            margin-left: auto;
+            margin-right: 0.5rem;
+            box-shadow: 0 2px 8px rgba(54,106,130,0.08);
+            transition: background 0.3s;
           }
-          
-          .hamburger:hover {
-            background: rgba(255, 255, 255, 0.25) !important;
-            transform: scale(1.05) !important;
-            border-color: rgba(255, 255, 255, 0.4) !important;
-            box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2) !important;
-          }
-          
-          .hamburger:active {
-            transform: scale(0.95) !important;
-          }
-          
           .hamburger .bar {
-            width: 24px !important;
-            height: 3px !important;
-            background: #fff !important;
-            margin: 3px 0 !important;
-            border-radius: 3px !important;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            transform-origin: center !important;
+            width: 24px;
+            height: 3px;
+            background: #366a82;
+            margin: 3px 0;
+            border-radius: 2px;
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
           }
-          
-          /* Enhanced X icon animation */
           .hamburger.active .bar:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px) !important;
-            background: #fff !important;
+            transform: rotate(45deg) translate(6px, 6px);
           }
-          
           .hamburger.active .bar:nth-child(2) {
-            opacity: 0 !important;
-            transform: translateX(20px) !important;
+            opacity: 0;
           }
-          
           .hamburger.active .bar:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px) !important;
-            background: #fff !important;
+            transform: rotate(-45deg) translate(6px, -6px);
           }
-          
-          /* Enhanced Off-Canvas Mobile Navigation */
+          /* Nav drawer styles */
           .nav {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 300px !important;
-            height: 100vh !important;
-            background: linear-gradient(135deg, rgba(54, 106, 130, 0.98) 0%, rgba(24, 26, 27, 0.98) 100%) !important;
-            backdrop-filter: blur(30px) !important;
-            -webkit-backdrop-filter: blur(30px) !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: flex-start !important;
-            justify-content: flex-start !important;
-            z-index: 1002 !important;
-            transform: translateX(-100%) !important;
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-            box-shadow: 4px 0 30px rgba(0, 0, 0, 0.3) !important;
-            padding: 0 !important;
-            overflow-y: auto !important;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 260px;
+            height: 100vh;
+            background: linear-gradient(135deg, #366a82 0%, #18201b 100%);
+            box-shadow: 4px 0 24px rgba(0,0,0,0.18);
+            z-index: 1200;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
           }
-          
           .nav.nav-open {
-            transform: translateX(0) !important;
+            transform: translateX(0);
           }
-          
-          /* Navigation header with close button */
-          .nav-header {
-            width: 100% !important;
-            padding: 1.5rem 2rem !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: space-between !important;
-            background: rgba(0, 0, 0, 0.1) !important;
-          }
-          
-          .nav-title {
-            color: #fff !important;
-            font-size: 1.2rem !important;
-            font-weight: 700 !important;
-            font-family: 'Orbitron', Arial, sans-serif !important;
-            margin: 0 !important;
-            letter-spacing: 0.5px !important;
-          }
-          
-          /* Close button for mobile nav */
-          .nav-close-btn {
-            width: 40px !important;
-            height: 40px !important;
-            background: rgba(255, 255, 255, 0.1) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            border-radius: 50% !important;
-            display: flex !important;
-            align-items: center !important;
-            justify-content: center !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-            z-index: 1003 !important;
-          }
-          
-          .nav-close-btn:hover {
-            background: rgba(255, 255, 255, 0.2) !important;
-            transform: scale(1.1) !important;
-          }
-          
-          .nav-close-btn::before,
-          .nav-close-btn::after {
-            content: '' !important;
-            position: absolute !important;
-            width: 20px !important;
-            height: 2px !important;
-            background: #fff !important;
-            border-radius: 1px !important;
-            transition: all 0.3s ease !important;
-          }
-          
-          .nav-close-btn::before {
-            transform: rotate(45deg) !important;
-          }
-          
-          .nav-close-btn::after {
-            transform: rotate(-45deg) !important;
-          }
-          
-          /* Navigation links container */
-          .nav-links {
-            width: 100% !important;
-            padding: 1rem 0 !important;
-            display: flex !important;
-            flex-direction: column !important;
-          }
-          
           .nav a {
-            color: #fff !important;
-            font-size: 1.2rem !important;
-            font-family: 'Orbitron', Arial, sans-serif !important;
-            font-weight: 600 !important;
-            padding: 1.2rem 2rem !important;
-            margin: 0 !important;
-            text-align: left !important;
-            border-radius: 0 !important;
-            background: transparent !important;
-            border: none !important;
-            border-left: 3px solid transparent !important;
-            width: 100% !important;
-            min-width: auto !important;
-            transition: all 0.3s ease !important;
-            letter-spacing: 0.5px !important;
-            text-decoration: none !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
-            position: relative !important;
-            overflow: hidden !important;
-            touch-action: manipulation !important;
-            -webkit-tap-highlight-color: transparent !important;
-            display: block !important;
-            box-sizing: border-box !important;
+            color: #fff;
+            font-size: 1.2rem;
+            font-family: 'Orbitron', Arial, sans-serif;
+            font-weight: 700;
+            padding: 1rem 0;
+            margin: 0.2rem 0;
+            text-align: left;
+            border-radius: 0;
+            background: none;
+            border: none;
+            width: 100%;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            display: block;
           }
-          
-          .nav a:hover, .nav a:active, .nav a:focus {
-            background: rgba(255, 255, 255, 0.1) !important;
-            border-left-color: var(--accent) !important;
-            color: var(--accent) !important;
-            transform: translateX(10px) !important;
-            box-shadow: none !important;
+          .nav a:hover {
+            color: var(--accent);
+            background: rgba(255,255,255,0.08);
           }
-          
-          .nav a::before {
-            content: '' !important;
-            position: absolute !important;
-            top: 0 !important;
-            left: -100% !important;
-            width: 100% !important;
-            height: 100% !important;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent) !important;
-            transition: left 0.5s ease !important;
-          }
-          
-          .nav a:hover::before {
-            left: 100% !important;
-          }
-          
-          /* Navigation overlay */
           .nav-overlay {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            background: rgba(0, 0, 0, 0.6) !important;
-            z-index: 1001 !important;
-            backdrop-filter: blur(2px) !important;
-            -webkit-backdrop-filter: blur(2px) !important;
-            cursor: pointer !important;
-            transition: opacity 0.3s ease !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
-            display: none !important;
+            display: none;
           }
-          
           .nav-overlay.active {
-            opacity: 1 !important;
-            visibility: visible !important;
-            display: block !important;
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.45);
+            z-index: 1199;
+            transition: opacity 0.3s;
+          }
+          /* Hide nav on desktop */
+          @media (min-width: 769px) {
+            .hamburger { display: none !important; }
+            .nav, .nav.nav-open { position: static; transform: none; height: auto; flex-direction: row; align-items: center; background: none; box-shadow: none; padding: 0; width: auto; }
+            .nav a { display: inline-block; padding: 0.8rem 1.5rem; font-size: 1rem; color: #fff; background: none; border-radius: 8px; margin: 0 0.5rem; }
+            .nav-overlay { display: none !important; }
           }
 
+        /* Replace hamburger button with SVG icon */
+        .hamburger-icon {
+          display: none;
+        }
+        @media (max-width: 768px) {
+          .hamburger-icon {
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1201;
+          }
+          .nav-modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.45);
+            z-index: 1200;
+            animation: fadeIn 0.3s;
+          }
+          .nav-modal {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #fff;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px 0 rgba(54, 106, 130, 0.18);
+            padding: 2.2rem 1.5rem 1.5rem 1.5rem;
+            z-index: 1202;
+            min-width: 80vw;
+            max-width: 95vw;
+            min-height: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: popIn 0.35s cubic-bezier(0.4,0,0.2,1);
+          }
+          .nav-modal-close {
+            position: absolute;
+            top: 1.1rem;
+            right: 1.1rem;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1203;
+            padding: 0.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+          .nav-modal-menu {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.2rem;
+            margin-top: 1.5rem;
+            width: 100%;
+          }
+          .nav-modal-menu a {
+            color: #366a82;
+            font-size: 1.25rem;
+            font-family: 'Orbitron', Arial, sans-serif;
+            font-weight: 700;
+            padding: 0.9rem 0;
+            border-radius: 12px;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            background: rgba(54,106,130,0.07);
+            transition: background 0.2s, color 0.2s;
+          }
+          .nav-modal-menu a:hover {
+            background: #366a82;
+            color: #fff;
+          }
+          @keyframes fadeIn {
+            from { opacity: 0; } to { opacity: 1; }
+          }
+          @keyframes popIn {
+            0% { opacity: 0; transform: translate(-50%, -60%) scale(0.95); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+          }
+        }
+        @media (min-width: 769px) {
+          .hamburger-icon, .nav-modal, .nav-modal-overlay { display: none !important; }
+        }
       `}</style>
       <header className="header simple-header">
         <div className="header-logo">
@@ -1046,19 +1006,49 @@ function App() {
             height="200"
           />
         </div>
-        {/* Hamburger menu for mobile only */}
+        {/* Replace hamburger button with SVG icon */}
         <button 
-          className={`hamburger${navOpen ? ' active' : ''}`}
-          onClick={() => setNavOpen(!navOpen)}
+          className="hamburger-icon"
+          onClick={() => setNavOpen(true)}
           aria-label={navOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={navOpen}
           aria-controls="main-navigation"
           type="button"
+          style={{ display: 'flex', background: 'none', border: 'none', padding: 0, marginLeft: 'auto', zIndex: 1201 }}
         >
-          <div className="bar"></div>
-          <div className="bar"></div>
-          <div className="bar"></div>
+          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect y="7" width="32" height="3.5" rx="1.75" fill="#366a82"/>
+            <rect y="14" width="32" height="3.5" rx="1.75" fill="#366a82"/>
+            <rect y="21" width="32" height="3.5" rx="1.75" fill="#366a82"/>
+          </svg>
         </button>
+
+        {/* Pop-up modal menu for mobile */}
+        {navOpen && (
+          <>
+            <div 
+              className="nav-modal-overlay" 
+              onClick={() => setNavOpen(false)}
+              aria-hidden="true"
+              tabIndex={-1}
+            ></div>
+            <div className="nav-modal" role="dialog" aria-modal="true" tabIndex={0}>
+              <button className="nav-modal-close" onClick={() => setNavOpen(false)} aria-label="Close menu">
+                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <line x1="7" y1="7" x2="21" y2="21" stroke="#366a82" strokeWidth="2.5" strokeLinecap="round"/>
+                  <line x1="21" y1="7" x2="7" y2="21" stroke="#366a82" strokeWidth="2.5" strokeLinecap="round"/>
+                </svg>
+              </button>
+              <nav className="nav-modal-menu" id="main-navigation">
+                <a href="#home" onClick={handleNavClick} role="menuitem">Home</a>
+                <a href="#about" onClick={handleNavClick} role="menuitem">About</a>
+                <a href="#services" onClick={handleNavClick} role="menuitem">Services</a>
+                <a href="#projects" onClick={handleNavClick} role="menuitem">Projects</a>
+                <a href="#contact" onClick={handleNavClick} role="menuitem">Contact</a>
+              </nav>
+            </div>
+          </>
+        )}
         {/* Navigation drawer for mobile */}
         <nav 
           className={`nav${navOpen ? ' nav-open' : ''}`}
@@ -1066,22 +1056,11 @@ function App() {
           role="navigation"
           aria-label="Main navigation"
         >
-          <div className="nav-header">
-            <h3 className="nav-title">Menu</h3>
-            <button 
-              className="nav-close-btn" 
-              onClick={() => setNavOpen(false)}
-              aria-label="Close navigation menu"
-              type="button"
-            ></button>
-          </div>
-          <div className="nav-links">
-            <a href="#home" onClick={handleNavClick} role="menuitem">Home</a>
-            <a href="#about" onClick={handleNavClick} role="menuitem">About</a>
-            <a href="#services" onClick={handleNavClick} role="menuitem">Services</a>
-            <a href="#projects" onClick={handleNavClick} role="menuitem">Projects</a>
-            <a href="#contact" onClick={handleNavClick} role="menuitem">Contact</a>
-          </div>
+          <a href="#home" onClick={handleNavClick} role="menuitem">Home</a>
+          <a href="#about" onClick={handleNavClick} role="menuitem">About</a>
+          <a href="#services" onClick={handleNavClick} role="menuitem">Services</a>
+          <a href="#projects" onClick={handleNavClick} role="menuitem">Projects</a>
+          <a href="#contact" onClick={handleNavClick} role="menuitem">Contact</a>
         </nav>
         {/* Overlay for mobile nav */}
         {navOpen && (
