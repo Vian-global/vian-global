@@ -45,7 +45,6 @@ const projectImages = [
 function App() {
   const [heroCurrent, setHeroCurrent] = useState(0)
   const [galleryCurrent, setGalleryCurrent] = useState(0)
-  const [navOpen, setNavOpen] = useState(false)
   const galleryRef = useRef(null)
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -95,25 +94,7 @@ function App() {
     return () => window.removeEventListener('scroll', onScroll)
   }, [])
 
-  // Handle body scroll lock when menu is open
-  useEffect(() => {
-    if (navOpen) {
-      document.body.style.overflow = 'hidden'
-      document.body.style.position = 'fixed'
-      document.body.style.width = '100%'
-    } else {
-      document.body.style.overflow = ''
-      document.body.style.position = ''
-      document.body.style.width = ''
-    }
-    
-    // Cleanup on component unmount
-    return () => {
-      document.body.style.overflow = ''
-      document.body.style.position = ''
-      document.body.style.width = ''
-    }
-  }, [navOpen])
+
 
   // Handle form submission
   const handleFormSubmit = async (e) => {
@@ -154,11 +135,6 @@ function App() {
     }
   };
 
-  // Handle navigation close
-  const handleNavClose = () => {
-    setNavOpen(false)
-  }
-
   // Handle navigation link click
   const handleNavClick = (e) => {
     e.preventDefault()
@@ -169,7 +145,6 @@ function App() {
         element.scrollIntoView({ behavior: 'smooth' })
       }
     }
-    setNavOpen(false)
   }
 
   return (
@@ -194,177 +169,93 @@ function App() {
           padding: 0 !important;
         }
         
-        /* MOBILE RESPONSIVE FIXES */
-        @media (max-width: 768px) {
-          /* Enhanced Hamburger Menu */
-          .hamburger {
-            width: 48px !important;
-            height: 48px !important;
-            border-radius: 12px !important;
-            background: rgba(255, 255, 255, 0.15) !important;
-            backdrop-filter: blur(10px) !important;
-            -webkit-backdrop-filter: blur(10px) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            position: relative !important;
-            z-index: 1003 !important;
-            cursor: pointer !important;
-          }
-          
-          .hamburger:hover {
-            background: rgba(255, 255, 255, 0.25) !important;
-            transform: scale(1.05) !important;
-            border-color: rgba(255, 255, 255, 0.4) !important;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15) !important;
-          }
-          
-          .hamburger:active {
-            transform: scale(0.95) !important;
-          }
-          
-          .hamburger .bar {
-            width: 24px !important;
-            height: 3px !important;
-            background: #fff !important;
-            margin: 3px 0 !important;
-            border-radius: 3px !important;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            transform-origin: center !important;
-          }
-          
-          /* Enhanced X icon animation */
-          .hamburger.active .bar:nth-child(1) {
-            transform: rotate(45deg) translate(7px, 7px) !important;
-            background: #fff !important;
-          }
-          
-          .hamburger.active .bar:nth-child(2) {
-            opacity: 0 !important;
-            transform: translateX(20px) !important;
-          }
-          
-          .hamburger.active .bar:nth-child(3) {
-            transform: rotate(-45deg) translate(7px, -7px) !important;
-            background: #fff !important;
-          }
-          
-          /* Enhanced Off-Canvas Mobile Navigation */
+        /* DESKTOP NAVIGATION */
           .nav {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 280px !important;
-            height: 100vh !important;
-            background: linear-gradient(135deg, rgba(54, 106, 130, 0.98) 0%, rgba(24, 26, 27, 0.98) 100%) !important;
-            backdrop-filter: blur(30px) !important;
-            -webkit-backdrop-filter: blur(30px) !important;
             display: flex !important;
-            flex-direction: column !important;
-            align-items: flex-start !important;
-            justify-content: flex-start !important;
-            z-index: 1002 !important;
-            transform: translateX(-100%) !important;
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
-            box-shadow: 4px 0 20px rgba(0, 0, 0, 0.3) !important;
-            padding: 2rem 0 !important;
-            overflow-y: auto !important;
-          }
-          
-          .nav.nav-open {
-            transform: translateX(0) !important;
-          }
-          
-          /* Close button for mobile nav */
-          .nav-close-btn {
-            position: absolute !important;
-            top: 1rem !important;
-            right: 1rem !important;
-            width: 40px !important;
-            height: 40px !important;
+          flex-direction: row !important;
+          align-items: center !important;
+          gap: 1rem !important;
+        }
+        
+        .nav a {
+          color: #fff !important;
+          font-size: 1rem !important;
+          font-family: 'Orbitron', Arial, sans-serif !important;
+          font-weight: 600 !important;
+          padding: 0.8rem 1.5rem !important;
+          text-decoration: none !important;
+          border-radius: 8px !important;
             background: rgba(255, 255, 255, 0.1) !important;
             border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            border-radius: 50% !important;
+          backdrop-filter: blur(10px) !important;
+          -webkit-backdrop-filter: blur(10px) !important;
+            transition: all 0.3s ease !important;
+          letter-spacing: 0.5px !important;
+          }
+          
+        .nav a:hover {
+            background: rgba(255, 255, 255, 0.2) !important;
+          border-color: var(--accent) !important;
+          color: var(--accent) !important;
+          transform: translateY(-2px) !important;
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+        }
+        
+        /* MOBILE RESPONSIVE FIXES */
+        @media (max-width: 768px) {
+          /* Enhanced Mobile Navigation */
+          .nav {
+            position: static !important;
+            width: 100% !important;
+            height: auto !important;
+            background: rgba(54, 106, 130, 0.95) !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
             display: flex !important;
+            flex-direction: column !important;
             align-items: center !important;
             justify-content: center !important;
-            cursor: pointer !important;
-            transition: all 0.3s ease !important;
-            z-index: 1003 !important;
+            z-index: 1002 !important;
+            transform: none !important;
+            transition: none !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
+            padding: 1rem 0 !important;
+            overflow: visible !important;
           }
           
-          .nav-close-btn:hover {
-            background: rgba(255, 255, 255, 0.2) !important;
-            transform: scale(1.1) !important;
-          }
-          
-          .nav-close-btn::before,
-          .nav-close-btn::after {
-            content: '' !important;
-            position: absolute !important;
-            width: 20px !important;
-            height: 2px !important;
-            background: #fff !important;
-            border-radius: 1px !important;
-            transition: all 0.3s ease !important;
-          }
-          
-          .nav-close-btn::before {
-            transform: rotate(45deg) !important;
-          }
-          
-          .nav-close-btn::after {
-            transform: rotate(-45deg) !important;
-          }
           
           .nav a {
             color: #fff !important;
-            font-size: 1.2rem !important;
+            font-size: 1.1rem !important;
             font-family: 'Orbitron', Arial, sans-serif !important;
             font-weight: 600 !important;
-            padding: 1rem 2rem !important;
-            margin: 0.5rem 0 !important;
-            text-align: left !important;
-            border-radius: 0 !important;
-            background: transparent !important;
-            border: none !important;
-            border-left: 3px solid transparent !important;
-            width: 100% !important;
-            min-width: auto !important;
+            padding: 0.8rem 1.5rem !important;
+            margin: 0.2rem 0.5rem !important;
+            text-align: center !important;
+            border-radius: 8px !important;
+            background: rgba(255, 255, 255, 0.1) !important;
+            border: 1px solid rgba(255, 255, 255, 0.2) !important;
+            width: auto !important;
+            min-width: 120px !important;
             transition: all 0.3s ease !important;
             letter-spacing: 0.5px !important;
             text-decoration: none !important;
-            backdrop-filter: none !important;
-            -webkit-backdrop-filter: none !important;
+            backdrop-filter: blur(5px) !important;
+            -webkit-backdrop-filter: blur(5px) !important;
             position: relative !important;
             overflow: hidden !important;
             touch-action: manipulation !important;
             -webkit-tap-highlight-color: transparent !important;
-            display: block !important;
+            display: inline-block !important;
             box-sizing: border-box !important;
           }
           
           .nav a:hover, .nav a:active, .nav a:focus {
-            background: rgba(255, 255, 255, 0.1) !important;
-            border-left-color: var(--accent) !important;
+            background: rgba(255, 255, 255, 0.2) !important;
+            border-color: var(--accent) !important;
             color: var(--accent) !important;
-            transform: translateX(10px) !important;
-            box-shadow: none !important;
-          }
-          
-          /* Navigation header */
-          .nav-header {
-            width: 100% !important;
-            padding: 0 2rem 1rem 2rem !important;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
-            margin-bottom: 1rem !important;
-          }
-          
-          .nav-header h3 {
-            color: #fff !important;
-            font-size: 1.1rem !important;
-            font-weight: 600 !important;
-            margin: 0 !important;
-            opacity: 0.8 !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
           }
           
           .nav a::before {
@@ -382,29 +273,6 @@ function App() {
             left: 100% !important;
           }
           
-          /* Navigation overlay */
-          .nav-overlay {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            background: rgba(0, 0, 0, 0.6) !important;
-            z-index: 1001 !important;
-            backdrop-filter: blur(2px) !important;
-            -webkit-backdrop-filter: blur(2px) !important;
-            cursor: pointer !important;
-            transition: opacity 0.3s ease !important;
-            opacity: 0 !important;
-            visibility: hidden !important;
-            display: none !important;
-          }
-          
-          .nav-overlay.active {
-            opacity: 1 !important;
-            visibility: visible !important;
-            display: block !important;
-          }
           
           /* Enhanced animations */
           @keyframes slideInNavLink {
@@ -572,15 +440,7 @@ function App() {
             font-size: 1.7rem !important;
           }
           
-          .hamburger {
-            width: 44px !important;
-            height: 44px !important;
-          }
           
-          .hamburger .bar {
-            width: 20px !important;
-            height: 2px !important;
-          }
         }
         
         /* Enhanced Project Gallery for Mobile */
@@ -621,32 +481,58 @@ function App() {
           /* Enhanced Contact Form Layout */
           .contact-container {
             flex-direction: column !important;
-            gap: 2rem !important;
-            padding: 0 1rem !important;
+            gap: 1.5rem !important;
+            padding: 0 1.2rem !important;
             max-width: 100% !important;
+            align-items: center !important;
           }
           
-          .contact-form-area, .contact-info-area {
+          .contact-form-area {
             width: 100% !important;
             max-width: 100% !important;
             margin: 0 !important;
-            padding: 2.5rem 2rem !important;
-            border-radius: 20px !important;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15) !important;
-            background: #fff !important;
-            border: 2px solid #e8f4f8 !important;
+            padding: 2rem 1.8rem !important;
+            border-radius: 24px !important;
+            box-shadow: 0 12px 48px rgba(54, 106, 130, 0.12), 0 4px 24px rgba(54, 106, 130, 0.08) !important;
+            background: linear-gradient(145deg, #ffffff 0%, #f8fcff 100%) !important;
+            border: 1px solid rgba(54, 106, 130, 0.1) !important;
             position: relative !important;
             overflow: hidden !important;
           }
           
-          .contact-form-area::before, .contact-info-area::before {
+          .contact-info-area {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 2rem 1.8rem !important;
+            border-radius: 24px !important;
+            box-shadow: 0 8px 32px rgba(54, 106, 130, 0.08), 0 2px 16px rgba(54, 106, 130, 0.04) !important;
+            background: linear-gradient(145deg, #f0f9ff 0%, #e0f2fe 100%) !important;
+            border: 1px solid rgba(54, 106, 130, 0.08) !important;
+            position: relative !important;
+            overflow: hidden !important;
+          }
+          
+          .contact-form-area::before {
             content: '' !important;
             position: absolute !important;
             top: 0 !important;
             left: 0 !important;
             right: 0 !important;
-            height: 4px !important;
-            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%) !important;
+            height: 3px !important;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 50%, var(--secondary) 100%) !important;
+            border-radius: 24px 24px 0 0 !important;
+          }
+          
+          .contact-info-area::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            height: 3px !important;
+            background: linear-gradient(90deg, var(--accent) 0%, var(--primary) 100%) !important;
+            border-radius: 24px 24px 0 0 !important;
           }
           
           .contact-form {
@@ -654,94 +540,171 @@ function App() {
           }
           
           .form-row {
-            margin-bottom: 1.5rem !important;
+            margin-bottom: 1.8rem !important;
             width: 100% !important;
+            position: relative !important;
           }
           
           .contact-form input, .contact-form textarea {
             width: 100% !important;
             box-sizing: border-box !important;
             font-size: 16px !important;
-            padding: 1.3rem 1.8rem !important;
-            border-radius: 12px !important;
-            border: 2px solid #e8f4f8 !important;
-            background: #f8fcff !important;
+            padding: 1.4rem 1.6rem !important;
+            border-radius: 16px !important;
+            border: 2px solid rgba(54, 106, 130, 0.12) !important;
+            background: rgba(255, 255, 255, 0.8) !important;
             margin-bottom: 0 !important;
             font-family: 'Montserrat', Arial, sans-serif !important;
-            color: var(--dark) !important;
-            transition: all 0.3s ease !important;
+            color: #1e293b !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
             outline: none !important;
+            backdrop-filter: blur(10px) !important;
+            -webkit-backdrop-filter: blur(10px) !important;
+            font-weight: 500 !important;
+            box-shadow: 0 2px 8px rgba(54, 106, 130, 0.04) !important;
           }
           
           .contact-form input:focus, .contact-form textarea:focus {
             border-color: var(--primary) !important;
-            background: #fff !important;
-            box-shadow: 0 0 0 4px rgba(54, 106, 130, 0.1) !important;
-            transform: translateY(-1px) !important;
+            background: rgba(255, 255, 255, 0.95) !important;
+            box-shadow: 0 0 0 4px rgba(54, 106, 130, 0.12), 0 4px 20px rgba(54, 106, 130, 0.08) !important;
+            transform: translateY(-2px) scale(1.01) !important;
           }
           
           .contact-form input::placeholder, .contact-form textarea::placeholder {
-            color: #94a3b8 !important;
+            color: #64748b !important;
             font-weight: 500 !important;
+            opacity: 0.8 !important;
           }
           
           .contact-form textarea {
-            min-height: 120px !important;
+            min-height: 140px !important;
             resize: vertical !important;
+            font-family: 'Montserrat', Arial, sans-serif !important;
+            line-height: 1.6 !important;
           }
           
           .contact-form button {
             width: 100% !important;
-            padding: 1.2rem 2rem !important;
+            padding: 1.3rem 2rem !important;
             font-size: 1.1rem !important;
             font-weight: 700 !important;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%) !important;
-            color: #fff !important;
+            background: linear-gradient(135deg, var(--primary) 0%, #4a90a4 50%, var(--secondary) 100%) !important;
+            color: #ffffff !important;
             border: none !important;
-            border-radius: 16px !important;
+            border-radius: 18px !important;
             cursor: pointer !important;
-            transition: all 0.3s ease !important;
-            margin-top: 1rem !important;
-            min-height: 56px !important;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            margin-top: 1.2rem !important;
+            min-height: 58px !important;
+            font-family: 'Montserrat', Arial, sans-serif !important;
+            letter-spacing: 0.5px !important;
+            text-transform: uppercase !important;
+            position: relative !important;
+            overflow: hidden !important;
+            box-shadow: 0 4px 20px rgba(54, 106, 130, 0.15), 0 2px 10px rgba(54, 106, 130, 0.1) !important;
+          }
+          
+          .contact-form button::before {
+            content: '' !important;
+            position: absolute !important;
+            top: 0 !important;
+            left: -100% !important;
+            width: 100% !important;
+            height: 100% !important;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent) !important;
+            transition: left 0.6s ease !important;
+          }
+          
+          .contact-form button:hover::before {
+            left: 100% !important;
           }
           
           .contact-form button:hover {
-            transform: translateY(-2px) !important;
-            box-shadow: 0 8px 25px rgba(54, 106, 130, 0.3) !important;
+            transform: translateY(-3px) scale(1.02) !important;
+            box-shadow: 0 8px 35px rgba(54, 106, 130, 0.25), 0 4px 20px rgba(54, 106, 130, 0.15) !important;
+            background: linear-gradient(135deg, #4a90a4 0%, var(--primary) 50%, var(--secondary) 100%) !important;
+          }
+          
+          .contact-form button:active {
+            transform: translateY(-1px) scale(1.01) !important;
+            transition: all 0.1s ease !important;
           }
           
           .contact-info-area {
-            margin-top: 1rem !important;
+            margin-top: 0 !important;
           }
           
           .contact-info-area h3 {
-            font-size: 1.3rem !important;
-            margin-top: 1.5rem !important;
-            margin-bottom: 0.8rem !important;
+            font-size: 1.4rem !important;
+            margin-top: 2rem !important;
+            margin-bottom: 1rem !important;
             color: var(--primary) !important;
-            font-weight: 700 !important;
+            font-weight: 800 !important;
+            font-family: 'Orbitron', Arial, sans-serif !important;
+            letter-spacing: 0.5px !important;
+            position: relative !important;
+            padding-left: 2rem !important;
           }
           
           .contact-info-area h3:first-child {
             margin-top: 0 !important;
           }
           
+          .contact-info-area h3::before {
+            content: '•' !important;
+            position: absolute !important;
+            left: 0 !important;
+            top: 50% !important;
+            transform: translateY(-50%) !important;
+            color: var(--accent) !important;
+            font-size: 1.5rem !important;
+            font-weight: 900 !important;
+          }
+          
           .contact-info-area p {
-            font-size: 1.1rem !important;
-            line-height: 1.6 !important;
-            margin-bottom: 1rem !important;
-            color: var(--dark) !important;
+            font-size: 1.05rem !important;
+            line-height: 1.7 !important;
+            margin-bottom: 1.5rem !important;
+            color: #334155 !important;
+            font-weight: 500 !important;
+            padding-left: 2rem !important;
+            position: relative !important;
           }
           
           .contact-info-area a {
             color: var(--primary) !important;
             text-decoration: none !important;
-            font-weight: 600 !important;
-            transition: color 0.3s ease !important;
+            font-weight: 700 !important;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            position: relative !important;
+            display: inline-block !important;
+            padding: 0.2rem 0.5rem !important;
+            border-radius: 8px !important;
+            background: rgba(54, 106, 130, 0.05) !important;
+          }
+          
+          .contact-info-area a::after {
+            content: '' !important;
+            position: absolute !important;
+            bottom: 0 !important;
+            left: 50% !important;
+            width: 0 !important;
+            height: 2px !important;
+            background: var(--accent) !important;
+            transition: all 0.3s ease !important;
+            transform: translateX(-50%) !important;
+            border-radius: 1px !important;
           }
           
           .contact-info-area a:hover {
             color: var(--accent) !important;
+            background: rgba(54, 106, 130, 0.1) !important;
+            transform: translateY(-1px) !important;
+          }
+          
+          .contact-info-area a:hover::after {
+            width: 80% !important;
           }
           
           /* Enhanced Footer for Mobile */
@@ -830,46 +793,20 @@ function App() {
             height="200"
           />
         </div>
-        <button 
-          className={`hamburger ${navOpen ? 'active' : ''}`} 
-          onClick={() => setNavOpen(!navOpen)} 
-          aria-label={navOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          aria-expanded={navOpen}
-          aria-controls="main-navigation"
-          type="button"
-        >
-          <span className="bar" aria-hidden="true"></span>
-          <span className="bar" aria-hidden="true"></span>
-          <span className="bar" aria-hidden="true"></span>
-        </button>
+
         <nav 
-          className={`nav${navOpen ? ' nav-open' : ''}`}
+          className="nav"
           id="main-navigation"
           role="navigation"
           aria-label="Main navigation"
         >
-          <button 
-            className="nav-close-btn" 
-            onClick={handleNavClose}
-            aria-label="Close navigation menu"
-            type="button"
-          ></button>
-          <div className="nav-header">
-            <h3>Navigation Menu</h3>
-          </div>
+          {/* Navigation header removed */}
           <a href="#home" onClick={handleNavClick} role="menuitem">Home</a>
           <a href="#about" onClick={handleNavClick} role="menuitem">About</a>
           <a href="#services" onClick={handleNavClick} role="menuitem">Services</a>
           <a href="#projects" onClick={handleNavClick} role="menuitem">Projects</a>
           <a href="#contact" onClick={handleNavClick} role="menuitem">Contact</a>
         </nav>
-        {navOpen && (
-          <div 
-            className={`nav-overlay ${navOpen ? 'active' : ''}`} 
-            onClick={handleNavClose}
-            aria-hidden="true"
-          ></div>
-        )}
       </header>
       <main role="main">
         <section className="hero-section" id="home">

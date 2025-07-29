@@ -165,6 +165,14 @@ html, body {
   flex: 1 1 auto;
   justify-content: flex-end;
 }
+.header .hamburger,
+.simple-header .hamburger,
+.header .nav-title,
+.simple-header .nav-title {
+  display: none !important;
+  visibility: hidden;
+  opacity: 0;
+}
 .nav a {
   text-decoration: none;
   color: #f3f3f3;
@@ -1630,50 +1638,31 @@ html, body {
   }
 }
 
-/* Modern Hamburger Menu */
-.hamburger {
-  display: none;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 48px;
-  height: 48px;
-  background: rgba(255, 255, 255, 0.1);
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  z-index: 1002;
-  transition: all 0.3s ease;
-  position: relative;
+/* Navigation styles */
+/* Hide hamburger menu in desktop */
+@media screen and (min-width: 769px) {
+  .hamburger,
+  .nav-toggle {
+    display: none !important;
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+  }
 }
 
-.hamburger:hover {
-  background: rgba(255, 255, 255, 0.2);
-  transform: scale(1.05);
-}
-
-.hamburger .bar {
-  width: 22px;
-  height: 2px;
-  background: #fff;
-  margin: 2px 0;
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-.hamburger.active .bar:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.hamburger.active .bar:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger.active .bar:nth-child(3) {
-  transform: rotate(-45deg) translate(7px, -6px);
-}
 /* === MODERN MOBILE DESIGN === */
 @media (max-width: 768px) {
+  /* Show hamburger only on mobile */
+  .hamburger {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    position: relative !important;
+    width: auto !important;
+    height: auto !important;
+  }
+
   /* Modern Mobile Header */
   .header, .simple-header {
     flex-direction: row;
@@ -1714,15 +1703,31 @@ html, body {
     filter: brightness(1.1) contrast(1.05);
   }
   
-  .hamburger {
-    display: flex;
-    z-index: 1002;
-    position: relative;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 8px;
-  }
-  
+  /* Mobile-only hamburger menu */
+.hamburger {
+  display: none !important;
+}
 
+/* Ensure hamburger is hidden on desktop */
+@media screen and (min-width: 769px) {
+  .hamburger, 
+  button.hamburger,
+  .nav-toggle,
+  .menu-toggle {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    position: absolute !important;
+    width: 0 !important;
+    height: 0 !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    margin: -1px !important;
+    padding: 0 !important;
+    border: 0 !important;
+  }
+}
   
   /* Modern Mobile Navigation */
   .nav {
