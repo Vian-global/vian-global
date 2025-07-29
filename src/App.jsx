@@ -146,7 +146,22 @@ function App() {
         element.scrollIntoView({ behavior: 'smooth' })
       }
     }
+    // Close mobile nav when link is clicked
+    setNavOpen(false)
   }
+
+  // Handle body scroll lock when mobile nav is open
+  useEffect(() => {
+    if (navOpen) {
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    
+    return () => {
+      document.body.style.overflow = ''
+    }
+  }, [navOpen])
 
   return (
     <>
@@ -485,7 +500,10 @@ function App() {
             gap: 1.5rem !important;
             padding: 0 1.2rem !important;
             max-width: 100% !important;
-            align-items: center !important;
+            align-items: stretch !important;
+            display: flex !important;
+            align-items: stretch !important;
+            display: flex !important;
           }
           
           .contact-form-area {
@@ -498,7 +516,8 @@ function App() {
             background: linear-gradient(145deg, #ffffff 0%, #f8fcff 100%) !important;
             border: 1px solid rgba(54, 106, 130, 0.1) !important;
             position: relative !important;
-            overflow: hidden !important;
+            overflow: visible !important;
+            display: block !important;
           }
           
           .contact-info-area {
@@ -511,7 +530,8 @@ function App() {
             background: linear-gradient(145deg, #f0f9ff 0%, #e0f2fe 100%) !important;
             border: 1px solid rgba(54, 106, 130, 0.08) !important;
             position: relative !important;
-            overflow: hidden !important;
+            overflow: visible !important;
+            display: block !important;
           }
           
           .contact-form-area::before {
@@ -717,42 +737,41 @@ function App() {
             padding: 0 !important;
           }
           
+          /* Footer navigation - plain text, vertical on mobile */
           .footer-nav {
             flex-direction: column !important;
-            gap: 0.8rem !important;
             align-items: flex-start !important;
+            gap: 0.8rem !important;
             width: 100% !important;
-            margin: 0 !important;
             padding: 0 !important;
+            margin: 0 !important;
           }
           
           .footer-nav a {
             background: none !important;
             border: none !important;
-            padding: 0.6rem 0 !important;
+            color: #f0f0f0 !important;
+            font-size: 1rem !important;
+            font-weight: 400 !important;
+            padding: 0.5rem 0 !important;
             margin: 0 !important;
-            font-size: 1.1rem !important;
-            color: #f3f3f3 !important;
-            text-decoration: none !important;
-            font-weight: 500 !important;
-            letter-spacing: 0.5px !important;
-            min-width: auto !important;
-            min-height: auto !important;
             border-radius: 0 !important;
             box-shadow: none !important;
-            transition: color 0.3s ease !important;
-            display: block !important;
-            width: 100% !important;
             text-align: left !important;
-            position: relative !important;
+            width: auto !important;
+            display: block !important;
+            text-decoration: none !important;
+            font-family: 'Montserrat', Arial, sans-serif !important;
+            transition: color 0.3s ease !important;
+            min-height: auto !important;
+            min-width: auto !important;
           }
           
           .footer-nav a:hover {
-            background: none !important;
             color: var(--accent) !important;
+            background: none !important;
             transform: none !important;
             box-shadow: none !important;
-            padding-left: 5px !important;
           }
           
           .footer-nav a::before {
@@ -884,81 +903,7 @@ function App() {
             .nav a { display: inline-block; padding: 0.8rem 1.5rem; font-size: 1rem; color: #fff; background: none; border-radius: 8px; margin: 0 0.5rem; }
             .nav-overlay { display: none !important; }
           }
-          /* Footer nav vertical plain text on mobile */
-          @media (max-width: 768px) {
-            .footer-nav {
-              flex-direction: column !important;
-              align-items: flex-start !important;
-              gap: 0.5rem !important;
-              width: 100% !important;
-              padding: 0 !important;
-              margin: 0 !important;
-            }
-            .footer-nav a {
-              background: none !important;
-              border: none !important;
-              color: #fff !important;
-              font-size: 1.1rem !important;
-              padding: 0.7rem 0 !important;
-              margin: 0 !important;
-              border-radius: 0 !important;
-              box-shadow: none !important;
-              text-align: left !important;
-              width: 100% !important;
-              display: block !important;
-            }
-          }
-        @media (max-width: 768px) {
-          .contact-container {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: stretch !important;
-            gap: 2rem !important;
-            width: 100% !important;
-            max-width: 100vw !important;
-            margin: 0 auto !important;
-            padding: 0 0.5rem !important;
-          }
-          .contact-form-area, .contact-info-area {
-            width: 100% !important;
-            max-width: 100% !important;
-            margin: 0 !important;
-            padding: 2rem 1rem !important;
-            border-radius: 20px !important;
-            box-shadow: 0 8px 32px rgba(54, 106, 130, 0.08), 0 2px 16px rgba(54, 106, 130, 0.04) !important;
-            background: #fff !important;
-            border: 1px solid #e8f4f8 !important;
-            position: relative !important;
-            overflow: hidden !important;
-          }
-          .contact-form-area {
-            margin-bottom: 0 !important;
-          }
-          .contact-info-area {
-            margin-top: 0 !important;
-          }
-          .footer-nav {
-            flex-direction: column !important;
-            align-items: flex-start !important;
-            gap: 0 !important;
-            width: 100% !important;
-            padding: 0 !important;
-            margin: 0 !important;
-          }
-          .footer-nav a {
-            background: none !important;
-            border: none !important;
-            color: #fff !important;
-            font-size: 1.1rem !important;
-            padding: 0.7rem 0 !important;
-            margin: 0 !important;
-            border-radius: 0 !important;
-            box-shadow: none !important;
-            text-align: left !important;
-            width: 100% !important;
-            display: block !important;
-          }
-        }
+
       `}</style>
       <header className="header simple-header">
         <div className="header-logo">
