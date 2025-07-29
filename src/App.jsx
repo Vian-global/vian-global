@@ -908,6 +908,57 @@ function App() {
               display: block !important;
             }
           }
+        @media (max-width: 768px) {
+          .contact-container {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: stretch !important;
+            gap: 2rem !important;
+            width: 100% !important;
+            max-width: 100vw !important;
+            margin: 0 auto !important;
+            padding: 0 0.5rem !important;
+          }
+          .contact-form-area, .contact-info-area {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 2rem 1rem !important;
+            border-radius: 20px !important;
+            box-shadow: 0 8px 32px rgba(54, 106, 130, 0.08), 0 2px 16px rgba(54, 106, 130, 0.04) !important;
+            background: #fff !important;
+            border: 1px solid #e8f4f8 !important;
+            position: relative !important;
+            overflow: hidden !important;
+          }
+          .contact-form-area {
+            margin-bottom: 0 !important;
+          }
+          .contact-info-area {
+            margin-top: 0 !important;
+          }
+          .footer-nav {
+            flex-direction: column !important;
+            align-items: flex-start !important;
+            gap: 0 !important;
+            width: 100% !important;
+            padding: 0 !important;
+            margin: 0 !important;
+          }
+          .footer-nav a {
+            background: none !important;
+            border: none !important;
+            color: #fff !important;
+            font-size: 1.1rem !important;
+            padding: 0.7rem 0 !important;
+            margin: 0 !important;
+            border-radius: 0 !important;
+            box-shadow: none !important;
+            text-align: left !important;
+            width: 100% !important;
+            display: block !important;
+          }
+        }
       `}</style>
       <header className="header simple-header">
         <div className="header-logo">
