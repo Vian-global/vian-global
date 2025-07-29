@@ -48,6 +48,7 @@ function App() {
   const galleryRef = useRef(null)
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [navOpen, setNavOpen] = useState(false)
 
   // Hero slider interval
   useEffect(() => {
@@ -781,6 +782,132 @@ function App() {
             width: 100% !important;
           }
         }
+        /* Hamburger styles */
+        .hamburger {
+          display: none;
+        }
+        @media (max-width: 768px) {
+          .hamburger {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(54,106,130,0.15);
+            position: relative;
+            z-index: 1201;
+            cursor: pointer;
+            margin-left: auto;
+            margin-right: 0.5rem;
+            box-shadow: 0 2px 8px rgba(54,106,130,0.08);
+            transition: background 0.3s;
+          }
+          .hamburger .bar {
+            width: 24px;
+            height: 3px;
+            background: #366a82;
+            margin: 3px 0;
+            border-radius: 2px;
+            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+          }
+          .hamburger.active .bar:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+          }
+          .hamburger.active .bar:nth-child(2) {
+            opacity: 0;
+          }
+          .hamburger.active .bar:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+          }
+          /* Nav drawer styles */
+          .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 260px;
+            height: 100vh;
+            background: linear-gradient(135deg, #366a82 0%, #18201b 100%);
+            box-shadow: 4px 0 24px rgba(0,0,0,0.18);
+            z-index: 1200;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 2.5rem 1.5rem 1.5rem 1.5rem;
+            transform: translateX(-100%);
+            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+          }
+          .nav.nav-open {
+            transform: translateX(0);
+          }
+          .nav a {
+            color: #fff;
+            font-size: 1.2rem;
+            font-family: 'Orbitron', Arial, sans-serif;
+            font-weight: 700;
+            padding: 1rem 0;
+            margin: 0.2rem 0;
+            text-align: left;
+            border-radius: 0;
+            background: none;
+            border: none;
+            width: 100%;
+            transition: color 0.3s;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            display: block;
+          }
+          .nav a:hover {
+            color: var(--accent);
+            background: rgba(255,255,255,0.08);
+          }
+          .nav-overlay {
+            display: none;
+          }
+          .nav-overlay.active {
+            display: block;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0,0,0,0.45);
+            z-index: 1199;
+            transition: opacity 0.3s;
+          }
+          /* Hide nav on desktop */
+          @media (min-width: 769px) {
+            .hamburger { display: none !important; }
+            .nav, .nav.nav-open { position: static; transform: none; height: auto; flex-direction: row; align-items: center; background: none; box-shadow: none; padding: 0; width: auto; }
+            .nav a { display: inline-block; padding: 0.8rem 1.5rem; font-size: 1rem; color: #fff; background: none; border-radius: 8px; margin: 0 0.5rem; }
+            .nav-overlay { display: none !important; }
+          }
+          /* Footer nav vertical plain text on mobile */
+          @media (max-width: 768px) {
+            .footer-nav {
+              flex-direction: column !important;
+              align-items: flex-start !important;
+              gap: 0.5rem !important;
+              width: 100% !important;
+              padding: 0 !important;
+              margin: 0 !important;
+            }
+            .footer-nav a {
+              background: none !important;
+              border: none !important;
+              color: #fff !important;
+              font-size: 1.1rem !important;
+              padding: 0.7rem 0 !important;
+              margin: 0 !important;
+              border-radius: 0 !important;
+              box-shadow: none !important;
+              text-align: left !important;
+              width: 100% !important;
+              display: block !important;
+            }
+          }
       `}</style>
       <header className="header simple-header">
         <div className="header-logo">
@@ -793,20 +920,40 @@ function App() {
             height="200"
           />
         </div>
-
+        {/* Hamburger menu for mobile only */}
+        <button 
+          className={`hamburger${navOpen ? ' active' : ''}`}
+          onClick={() => setNavOpen(!navOpen)}
+          aria-label={navOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={navOpen}
+          aria-controls="main-navigation"
+          type="button"
+        >
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </button>
+        {/* Navigation drawer for mobile */}
         <nav 
-          className="nav"
+          className={`nav${navOpen ? ' nav-open' : ''}`}
           id="main-navigation"
           role="navigation"
           aria-label="Main navigation"
         >
-          {/* Navigation header removed */}
           <a href="#home" onClick={handleNavClick} role="menuitem">Home</a>
           <a href="#about" onClick={handleNavClick} role="menuitem">About</a>
           <a href="#services" onClick={handleNavClick} role="menuitem">Services</a>
           <a href="#projects" onClick={handleNavClick} role="menuitem">Projects</a>
           <a href="#contact" onClick={handleNavClick} role="menuitem">Contact</a>
         </nav>
+        {/* Overlay for mobile nav */}
+        {navOpen && (
+          <div 
+            className="nav-overlay active" 
+            onClick={() => setNavOpen(false)}
+            aria-hidden="true"
+          ></div>
+        )}
       </header>
       <main role="main">
         <section className="hero-section" id="home">
