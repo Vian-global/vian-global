@@ -913,24 +913,32 @@ function App() {
         }
         
         @media (max-width: 768px) {
+          .header {
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            padding: 1rem 1.5rem !important;
+          }
+          
           .hamburger-menu {
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 48px;
-            height: 48px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 12px;
+            width: 52px;
+            height: 52px;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 16px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            margin-left: auto;
-            margin-right: 1rem;
-            position: relative;
+            position: fixed;
+            top: 1.2rem;
+            right: 1.5rem;
             z-index: 1001;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
           }
           
           .hamburger-menu:hover {
@@ -940,13 +948,14 @@ function App() {
           }
           
           .hamburger-line {
-            width: 24px;
-            height: 3px;
+            width: 28px;
+            height: 3.5px;
             background: #fff;
-            margin: 3px 0;
-            border-radius: 2px;
+            margin: 4px 0;
+            border-radius: 3px;
             transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             transform-origin: center;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
           }
           
           .hamburger-menu.active .hamburger-line:nth-child(1) {
@@ -976,32 +985,37 @@ function App() {
           
           .mobile-nav {
             position: fixed;
-            top: 0;
-            right: 0;
-            width: 300px;
-            height: 100vh;
+            top: 5rem;
+            right: 1.5rem;
+            width: 280px;
+            max-height: 400px;
             background: linear-gradient(135deg, #366a82 0%, #18201b 100%);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
-            transform: translateX(100%);
-            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: -4px 0 30px rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
             display: flex;
             flex-direction: column;
+            transform: translateY(-20px) scale(0.95);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid rgba(255, 255, 255, 0.1);
           }
           
           .mobile-nav-overlay.active + .mobile-nav,
           .mobile-nav-overlay + .mobile-nav {
-            transform: translateX(0);
+            transform: translateY(0) scale(1);
+            opacity: 1;
           }
           
           .mobile-nav-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 2rem 1.5rem 1rem 1.5rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+            margin-bottom: 0.5rem;
           }
           
           .mobile-nav-header h3 {
@@ -1033,27 +1047,26 @@ function App() {
           }
           
           .mobile-nav-links {
-            flex: 1;
-            padding: 1.5rem;
+            padding: 0.5rem 1.5rem 1.5rem 1.5rem;
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
+            gap: 0.3rem;
           }
           
           .mobile-nav-link {
             display: flex;
             align-items: center;
-            gap: 1rem;
-            padding: 1rem 1.2rem;
+            gap: 0.8rem;
+            padding: 0.8rem 1rem;
             color: #fff;
             text-decoration: none;
-            border-radius: 12px;
+            border-radius: 10px;
             transition: all 0.3s ease;
             font-family: 'Montserrat', Arial, sans-serif;
             font-weight: 600;
-            font-size: 1.1rem;
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
           }
           
           .mobile-nav-link:hover {
@@ -1063,14 +1076,25 @@ function App() {
           }
           
           .nav-icon {
-            font-size: 1.2rem;
-            width: 24px;
+            font-size: 1.1rem;
+            width: 20px;
             text-align: center;
+            opacity: 0.9;
           }
           
           @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
+          }
+        }
+        
+        @media (max-width: 768px) {
+          /* Hide the old navigation drawer on mobile */
+          .nav {
+            display: none !important;
+          }
+          .nav-overlay {
+            display: none !important;
           }
         }
         
@@ -1112,11 +1136,11 @@ function App() {
         {/* Mobile Navigation Modal */}
         {navOpen && (
           <>
-            <div 
-              className="mobile-nav-overlay" 
-              onClick={() => setNavOpen(false)}
-              aria-hidden="true"
-            ></div>
+                         <div 
+               className="mobile-nav-overlay active" 
+               onClick={() => setNavOpen(false)}
+               aria-hidden="true"
+             ></div>
             <nav className="mobile-nav" id="mobile-navigation" role="navigation">
               <div className="mobile-nav-header">
                 <h3>Menu</h3>
