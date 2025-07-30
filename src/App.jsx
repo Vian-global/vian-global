@@ -920,6 +920,13 @@ function App() {
             padding: 1rem 1.5rem !important;
           }
           
+          .header-logo-img {
+            width: 180px !important;
+            height: 180px !important;
+            max-width: 180px !important;
+            max-height: 180px !important;
+          }
+          
           .hamburger-menu {
             display: flex;
             flex-direction: column;
@@ -980,14 +987,17 @@ function App() {
             bottom: 0;
             background: rgba(0, 0, 0, 0.5);
             z-index: 999;
-            animation: fadeIn 0.3s ease;
+            opacity: 1;
+            display: block;
           }
           
           .mobile-nav {
             position: fixed;
             top: 5rem;
-            right: 1.5rem;
-            width: 280px;
+            right: 1rem;
+            left: 1rem;
+            max-width: 320px;
+            margin-left: auto;
             max-height: 400px;
             background: linear-gradient(135deg, #366a82 0%, #18201b 100%);
             backdrop-filter: blur(20px);
@@ -997,16 +1007,10 @@ function App() {
             box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
             display: flex;
             flex-direction: column;
-            transform: translateY(-20px) scale(0.95);
-            opacity: 0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid rgba(255, 255, 255, 0.1);
-          }
-          
-          .mobile-nav-overlay.active + .mobile-nav,
-          .mobile-nav-overlay + .mobile-nav {
-            transform: translateY(0) scale(1);
             opacity: 1;
+            transform: translateY(0) scale(1);
+            animation: menuSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           }
           
           .mobile-nav-header {
@@ -1086,6 +1090,17 @@ function App() {
             from { opacity: 0; }
             to { opacity: 1; }
           }
+          
+          @keyframes menuSlideIn {
+            0% { 
+              opacity: 0; 
+              transform: translateY(-20px) scale(0.95); 
+            }
+            100% { 
+              opacity: 1; 
+              transform: translateY(0) scale(1); 
+            }
+          }
         }
         
         @media (max-width: 768px) {
@@ -1095,6 +1110,29 @@ function App() {
           }
           .nav-overlay {
             display: none !important;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .header-logo-img {
+            width: 160px !important;
+            height: 160px !important;
+            max-width: 160px !important;
+            max-height: 160px !important;
+          }
+          
+          .hamburger-menu {
+            width: 48px !important;
+            height: 48px !important;
+            top: 1rem !important;
+            right: 1rem !important;
+          }
+          
+          .mobile-nav {
+            top: 4.5rem !important;
+            right: 0.5rem !important;
+            left: 0.5rem !important;
+            max-width: calc(100vw - 1rem) !important;
           }
         }
         
@@ -1118,7 +1156,7 @@ function App() {
             height="200"
           />
         </div>
-        
+
         {/* Professional Hamburger Menu for Mobile */}
         <button 
           className={`hamburger-menu${navOpen ? ' active' : ''}`}
