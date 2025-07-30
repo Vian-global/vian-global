@@ -155,12 +155,24 @@ function App() {
   useEffect(() => {
     if (navOpen) {
       document.body.style.overflow = 'hidden'
+      document.body.style.position = 'fixed'
+      document.body.style.width = '100%'
+      document.body.style.height = '100%'
+      document.body.classList.add('nav-open')
     } else {
       document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.width = ''
+      document.body.style.height = ''
+      document.body.classList.remove('nav-open')
     }
     
     return () => {
       document.body.style.overflow = ''
+      document.body.style.position = ''
+      document.body.style.width = ''
+      document.body.style.height = ''
+      document.body.classList.remove('nav-open')
     }
   }, [navOpen])
 
@@ -910,9 +922,14 @@ function App() {
         /* Professional Mobile Hamburger Menu Styles */
         .hamburger-menu {
           display: none !important;
-          visibility: hidden;
-          opacity: 0;
-          pointer-events: none;
+          visibility: hidden !important;
+          opacity: 0 !important;
+          pointer-events: none !important;
+          position: absolute !important;
+          left: -9999px !important;
+          width: 0 !important;
+          height: 0 !important;
+          overflow: hidden !important;
         }
         
         @media (max-width: 768px) {
@@ -921,6 +938,32 @@ function App() {
             justify-content: space-between !important;
             align-items: center !important;
             padding: 1rem 1.5rem !important;
+            position: relative !important;
+            z-index: 1 !important;
+          }
+          
+          /* Ensure full-screen mobile nav overlays everything */
+          body.nav-open {
+            overflow: hidden !important;
+            position: fixed !important;
+            width: 100% !important;
+            height: 100% !important;
+          }
+          
+          /* Ensure mobile nav breaks out of any container restrictions */
+          .mobile-nav-overlay,
+          .mobile-nav {
+            position: fixed !important;
+            z-index: 9999 !important;
+          }
+          
+          /* Override any parent container positioning that might interfere */
+          .mobile-nav-overlay {
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
           }
           
           .header-logo-img {
@@ -935,20 +978,22 @@ function App() {
             visibility: visible !important;
             opacity: 1 !important;
             pointer-events: auto !important;
+            position: fixed !important;
+            left: auto !important;
+            width: 52px !important;
+            height: 52px !important;
+            overflow: visible !important;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 52px;
-            height: 52px;
             background: rgba(255, 255, 255, 0.2);
             border: 2px solid rgba(255, 255, 255, 0.3);
             border-radius: 16px;
             cursor: pointer;
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            position: fixed;
             top: 1.2rem;
             right: 1.5rem;
-            z-index: 1001;
+            z-index: 10000;
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
@@ -986,35 +1031,43 @@ function App() {
           
           /* Mobile Navigation Modal */
           .mobile-nav-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.5);
-            z-index: 999;
-            opacity: 1;
-            display: block;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            background: rgba(0, 0, 0, 0.6) !important;
+            z-index: 9998 !important;
+            opacity: 1 !important;
+            display: block !important;
+            margin: 0 !important;
+            padding: 0 !important;
           }
           
           .mobile-nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100vw;
-            height: 100vh;
-            background: linear-gradient(135deg, #366a82 0%, #18201b 100%);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            z-index: 1000;
-            display: flex;
-            flex-direction: column;
-            opacity: 1;
-            transform: translateX(0);
-            animation: menuSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            padding-top: 2rem;
+            position: fixed !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            bottom: 0 !important;
+            width: 100vw !important;
+            height: 100vh !important;
+            max-width: 100vw !important;
+            max-height: 100vh !important;
+            background: linear-gradient(135deg, #366a82 0%, #18201b 100%) !important;
+            backdrop-filter: blur(20px) !important;
+            -webkit-backdrop-filter: blur(20px) !important;
+            z-index: 9999 !important;
+            display: flex !important;
+            flex-direction: column !important;
+            opacity: 1 !important;
+            transform: translateX(0) !important;
+            animation: menuSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            padding-top: 2rem !important;
+            margin: 0 !important;
+            box-sizing: border-box !important;
           }
           
           .mobile-nav-header {
@@ -1163,6 +1216,19 @@ function App() {
             visibility: hidden !important;
             opacity: 0 !important;
             pointer-events: none !important;
+            position: absolute !important;
+            left: -9999px !important;
+            top: -9999px !important;
+            width: 0 !important;
+            height: 0 !important;
+            overflow: hidden !important;
+            z-index: -1 !important;
+            transform: scale(0) !important;
+          }
+          
+          /* Ensure header doesn't show any hamburger-related elements */
+          .header .hamburger-menu {
+            display: none !important;
           }
         }
         
