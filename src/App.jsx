@@ -909,7 +909,10 @@ function App() {
 
         /* Professional Mobile Hamburger Menu Styles */
         .hamburger-menu {
-          display: none;
+          display: none !important;
+          visibility: hidden;
+          opacity: 0;
+          pointer-events: none;
         }
         
         @media (max-width: 768px) {
@@ -921,14 +924,17 @@ function App() {
           }
           
           .header-logo-img {
-            width: 180px !important;
-            height: 180px !important;
-            max-width: 180px !important;
-            max-height: 180px !important;
+            width: 120px !important;
+            height: 120px !important;
+            max-width: 120px !important;
+            max-height: 120px !important;
           }
           
           .hamburger-menu {
-            display: flex;
+            display: flex !important;
+            visibility: visible !important;
+            opacity: 1 !important;
+            pointer-events: auto !important;
             flex-direction: column;
             justify-content: center;
             align-items: center;
@@ -993,33 +999,31 @@ function App() {
           
           .mobile-nav {
             position: fixed;
-            top: 5rem;
-            right: 1rem;
-            left: 1rem;
-            max-width: 320px;
-            margin-left: auto;
-            max-height: 400px;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100vw;
+            height: 100vh;
             background: linear-gradient(135deg, #366a82 0%, #18201b 100%);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             z-index: 1000;
-            border-radius: 20px;
-            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.25);
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(255, 255, 255, 0.1);
             opacity: 1;
-            transform: translateY(0) scale(1);
+            transform: translateX(0);
             animation: menuSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            padding-top: 2rem;
           }
           
           .mobile-nav-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem 1.5rem 0.5rem 1.5rem;
+            padding: 2rem 2rem 1rem 2rem;
             border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            margin-bottom: 0.5rem;
+            margin-bottom: 2rem;
           }
           
           .mobile-nav-header h3 {
@@ -1051,39 +1055,49 @@ function App() {
           }
           
           .mobile-nav-links {
-            padding: 0.5rem 1.5rem 1.5rem 1.5rem;
+            flex: 1;
+            padding: 0 2rem;
             display: flex;
             flex-direction: column;
-            gap: 0.3rem;
+            justify-content: center;
+            align-items: center;
+            gap: 1.5rem;
+            max-width: 400px;
+            margin: 0 auto;
           }
           
           .mobile-nav-link {
             display: flex;
             align-items: center;
-            gap: 0.8rem;
-            padding: 0.8rem 1rem;
+            justify-content: center;
+            gap: 1rem;
+            padding: 1.2rem 2rem;
             color: #fff;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 16px;
             transition: all 0.3s ease;
             font-family: 'Montserrat', Arial, sans-serif;
-            font-weight: 600;
-            font-size: 1rem;
-            background: rgba(255, 255, 255, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.12);
+            font-weight: 700;
+            font-size: 1.3rem;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            width: 100%;
+            min-height: 60px;
+            text-align: center;
           }
           
           .mobile-nav-link:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: translateX(5px);
-            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.05);
+            border-color: rgba(255, 196, 24, 0.4);
+            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
           }
           
           .nav-icon {
-            font-size: 1.1rem;
-            width: 20px;
+            font-size: 1.4rem;
+            width: 24px;
             text-align: center;
-            opacity: 0.9;
+            opacity: 1;
           }
           
           @keyframes fadeIn {
@@ -1094,11 +1108,11 @@ function App() {
           @keyframes menuSlideIn {
             0% { 
               opacity: 0; 
-              transform: translateY(-20px) scale(0.95); 
+              transform: translateX(100%); 
             }
             100% { 
               opacity: 1; 
-              transform: translateY(0) scale(1); 
+              transform: translateX(0); 
             }
           }
         }
@@ -1115,10 +1129,10 @@ function App() {
         
         @media (max-width: 480px) {
           .header-logo-img {
-            width: 160px !important;
-            height: 160px !important;
-            max-width: 160px !important;
-            max-height: 160px !important;
+            width: 100px !important;
+            height: 100px !important;
+            max-width: 100px !important;
+            max-height: 100px !important;
           }
           
           .hamburger-menu {
@@ -1128,19 +1142,27 @@ function App() {
             right: 1rem !important;
           }
           
-          .mobile-nav {
-            top: 4.5rem !important;
-            right: 0.5rem !important;
-            left: 0.5rem !important;
-            max-width: calc(100vw - 1rem) !important;
+          .mobile-nav-links {
+            padding: 0 1.5rem !important;
+            gap: 1.2rem !important;
+          }
+          
+          .mobile-nav-link {
+            font-size: 1.2rem !important;
+            padding: 1rem 1.5rem !important;
+            min-height: 55px !important;
           }
         }
         
+        /* Desktop - Hide mobile navigation completely */
         @media (min-width: 769px) {
           .hamburger-menu,
           .mobile-nav-overlay,
           .mobile-nav {
             display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
           }
         }
         
