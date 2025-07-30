@@ -48,7 +48,7 @@ function App() {
   const galleryRef = useRef(null)
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [navOpen, setNavOpen] = useState(false);
+
 
 
   // Hero slider interval
@@ -147,34 +147,7 @@ function App() {
         element.scrollIntoView({ behavior: 'smooth' })
       }
     }
-    // Close mobile nav when link is clicked
-    setNavOpen(false)
   }
-
-  // Handle body scroll lock when mobile nav is open
-  useEffect(() => {
-    if (navOpen) {
-      document.body.style.overflow = 'hidden'
-      document.body.style.position = 'fixed'
-      document.body.style.width = '100%'
-      document.body.style.height = '100%'
-      document.body.classList.add('nav-open')
-    } else {
-      document.body.style.overflow = ''
-      document.body.style.position = ''
-      document.body.style.width = ''
-      document.body.style.height = ''
-      document.body.classList.remove('nav-open')
-    }
-    
-    return () => {
-      document.body.style.overflow = ''
-      document.body.style.position = ''
-      document.body.style.width = ''
-      document.body.style.height = ''
-      document.body.classList.remove('nav-open')
-    }
-  }, [navOpen])
 
 
 
@@ -919,18 +892,7 @@ function App() {
             .nav-overlay { display: none !important; }
           }
 
-        /* Professional Mobile Hamburger Menu Styles */
-        .hamburger-menu {
-          display: none !important;
-          visibility: hidden !important;
-          opacity: 0 !important;
-          pointer-events: none !important;
-          position: absolute !important;
-          left: -9999px !important;
-          width: 0 !important;
-          height: 0 !important;
-          overflow: hidden !important;
-        }
+
         
         @media (max-width: 768px) {
           .header {
@@ -942,29 +904,7 @@ function App() {
             z-index: 1 !important;
           }
           
-          /* Ensure full-screen mobile nav overlays everything */
-          body.nav-open {
-            overflow: hidden !important;
-            position: fixed !important;
-            width: 100% !important;
-            height: 100% !important;
-          }
-          
-          /* Ensure mobile nav breaks out of any container restrictions */
-          .mobile-nav-overlay,
-          .mobile-nav {
-            position: fixed !important;
-            z-index: 9999 !important;
-          }
-          
-          /* Override any parent container positioning that might interfere */
-          .mobile-nav-overlay {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-          }
+
           
           .header-logo-img {
             width: 120px !important;
@@ -973,212 +913,14 @@ function App() {
             max-height: 120px !important;
           }
           
-          .hamburger-menu {
-            display: flex !important;
-            visibility: visible !important;
-            opacity: 1 !important;
-            pointer-events: auto !important;
-            position: fixed !important;
-            left: auto !important;
-            width: 52px !important;
-            height: 52px !important;
-            overflow: visible !important;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.2);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-            border-radius: 16px;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            top: 1.2rem;
-            right: 1.5rem;
-            z-index: 10000;
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-          }
+
           
-          .hamburger-menu:hover {
-            background: rgba(255, 255, 255, 0.15);
-            transform: scale(1.05);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-          }
+
           
-          .hamburger-line {
-            width: 28px;
-            height: 3.5px;
-            background: #fff;
-            margin: 4px 0;
-            border-radius: 3px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            transform-origin: center;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-          }
-          
-          .hamburger-menu.active .hamburger-line:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
-          }
-          
-          .hamburger-menu.active .hamburger-line:nth-child(2) {
-            opacity: 0;
-            transform: translateX(-20px);
-          }
-          
-          .hamburger-menu.active .hamburger-line:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-          }
-          
-          /* Mobile Navigation Modal */
-          .mobile-nav-overlay {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            background: rgba(0, 0, 0, 0.6) !important;
-            z-index: 9998 !important;
-            opacity: 1 !important;
-            display: block !important;
-            margin: 0 !important;
-            padding: 0 !important;
-          }
-          
-          .mobile-nav {
-            position: fixed !important;
-            top: 0 !important;
-            left: 0 !important;
-            right: 0 !important;
-            bottom: 0 !important;
-            width: 100vw !important;
-            height: 100vh !important;
-            max-width: 100vw !important;
-            max-height: 100vh !important;
-            background: linear-gradient(135deg, #366a82 0%, #18201b 100%) !important;
-            backdrop-filter: blur(20px) !important;
-            -webkit-backdrop-filter: blur(20px) !important;
-            z-index: 9999 !important;
-            display: flex !important;
-            flex-direction: column !important;
-            opacity: 1 !important;
-            transform: translateX(0) !important;
-            animation: menuSlideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
-            padding-top: 2rem !important;
-            margin: 0 !important;
-            box-sizing: border-box !important;
-          }
-          
-          .mobile-nav-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 2rem 2rem 1rem 2rem;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.15);
-            margin-bottom: 2rem;
-          }
-          
-          .mobile-nav-header h3 {
-            color: #fff;
-            font-family: 'Orbitron', Arial, sans-serif;
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin: 0;
-            letter-spacing: 0.5px;
-          }
-          
-          .mobile-nav-close {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            width: 40px;
-            height: 40px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            color: #fff;
-          }
-          
-          .mobile-nav-close:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.1);
-          }
-          
-          .mobile-nav-links {
-            flex: 1;
-            padding: 0 2rem;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            gap: 1.5rem;
-            max-width: 400px;
-            margin: 0 auto;
-          }
-          
-          .mobile-nav-link {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 1rem;
-            padding: 1.2rem 2rem;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 16px;
-            transition: all 0.3s ease;
-            font-family: 'Montserrat', Arial, sans-serif;
-            font-weight: 700;
-            font-size: 1.3rem;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            width: 100%;
-            min-height: 60px;
-            text-align: center;
-          }
-          
-          .mobile-nav-link:hover {
-            background: rgba(255, 255, 255, 0.2);
-            transform: scale(1.05);
-            border-color: rgba(255, 196, 24, 0.4);
-            box-shadow: 0 4px 20px rgba(255, 255, 255, 0.1);
-          }
-          
-          .nav-icon {
-            font-size: 1.4rem;
-            width: 24px;
-            text-align: center;
-            opacity: 1;
-          }
-          
-          @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-          }
-          
-          @keyframes menuSlideIn {
-            0% { 
-              opacity: 0; 
-              transform: translateX(100%); 
-            }
-            100% { 
-              opacity: 1; 
-              transform: translateX(0); 
-            }
-          }
+
         }
         
-        @media (max-width: 768px) {
-          /* Hide the old navigation drawer on mobile */
-          .nav {
-            display: none !important;
-          }
-          .nav-overlay {
-            display: none !important;
-          }
-        }
+
         
         @media (max-width: 480px) {
           .header-logo-img {
@@ -1187,50 +929,9 @@ function App() {
             max-width: 100px !important;
             max-height: 100px !important;
           }
-          
-          .hamburger-menu {
-            width: 48px !important;
-            height: 48px !important;
-            top: 1rem !important;
-            right: 1rem !important;
-          }
-          
-          .mobile-nav-links {
-            padding: 0 1.5rem !important;
-            gap: 1.2rem !important;
-          }
-          
-          .mobile-nav-link {
-            font-size: 1.2rem !important;
-            padding: 1rem 1.5rem !important;
-            min-height: 55px !important;
-          }
         }
         
-        /* Desktop - Hide mobile navigation completely */
-        @media (min-width: 769px) {
-          .hamburger-menu,
-          .mobile-nav-overlay,
-          .mobile-nav {
-            display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            pointer-events: none !important;
-            position: absolute !important;
-            left: -9999px !important;
-            top: -9999px !important;
-            width: 0 !important;
-            height: 0 !important;
-            overflow: hidden !important;
-            z-index: -1 !important;
-            transform: scale(0) !important;
-          }
-          
-          /* Ensure header doesn't show any hamburger-related elements */
-          .header .hamburger-menu {
-            display: none !important;
-          }
-        }
+
         
       `}</style>
       <header className="header simple-header">
@@ -1245,70 +946,11 @@ function App() {
           />
         </div>
 
-        {/* Professional Hamburger Menu for Mobile */}
-        <button 
-          className={`hamburger-menu${navOpen ? ' active' : ''}`}
-          onClick={() => setNavOpen(!navOpen)}
-          aria-label={navOpen ? 'Close navigation menu' : 'Open navigation menu'}
-          aria-expanded={navOpen}
-          aria-controls="mobile-navigation"
-          type="button"
-        >
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-          <span className="hamburger-line"></span>
-        </button>
 
-        {/* Mobile Navigation Modal */}
-        {navOpen && (
-          <>
-                         <div 
-               className="mobile-nav-overlay active" 
-               onClick={() => setNavOpen(false)}
-               aria-hidden="true"
-             ></div>
-            <nav className="mobile-nav" id="mobile-navigation" role="navigation">
-              <div className="mobile-nav-header">
-                <h3>Menu</h3>
-                <button 
-                  className="mobile-nav-close"
-                  onClick={() => setNavOpen(false)}
-                  aria-label="Close menu"
-                >
-                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </button>
-              </div>
-              <div className="mobile-nav-links">
-                <a href="#home" onClick={handleNavClick} className="mobile-nav-link">
-                  <span className="nav-icon">🏠</span>
-                  <span>Home</span>
-                </a>
-                <a href="#about" onClick={handleNavClick} className="mobile-nav-link">
-                  <span className="nav-icon">ℹ️</span>
-                  <span>About</span>
-                </a>
-                <a href="#services" onClick={handleNavClick} className="mobile-nav-link">
-                  <span className="nav-icon">⚙️</span>
-                  <span>Services</span>
-                </a>
-                <a href="#projects" onClick={handleNavClick} className="mobile-nav-link">
-                  <span className="nav-icon">📁</span>
-                  <span>Projects</span>
-                </a>
-                <a href="#contact" onClick={handleNavClick} className="mobile-nav-link">
-                  <span className="nav-icon">📞</span>
-                  <span>Contact</span>
-                </a>
-              </div>
-            </nav>
-          </>
-        )}
         
-        {/* Navigation drawer for mobile */}
+        {/* Navigation */}
         <nav 
-          className={`nav${navOpen ? ' nav-open' : ''}`}
+          className="nav"
           id="main-navigation"
           role="navigation"
           aria-label="Main navigation"
@@ -1319,14 +961,6 @@ function App() {
           <a href="#projects" onClick={handleNavClick} role="menuitem">Projects</a>
           <a href="#contact" onClick={handleNavClick} role="menuitem">Contact</a>
         </nav>
-        {/* Overlay for mobile nav */}
-        {navOpen && (
-          <div 
-            className="nav-overlay active" 
-            onClick={() => setNavOpen(false)}
-            aria-hidden="true"
-          ></div>
-        )}
       </header>
       <main role="main">
         <section className="hero-section" id="home">
