@@ -716,6 +716,44 @@ function App() {
             width: 80% !important;
           }
           
+          /* Mobile font optimization for contact info */
+          .contact-info-area h3 {
+            font-size: 1.3rem !important;
+            font-family: 'Montserrat', Arial, sans-serif !important;
+            font-weight: 700 !important;
+            color: #366a82 !important;
+            margin-top: 1.8rem !important;
+            margin-bottom: 0.8rem !important;
+            letter-spacing: 0.3px !important;
+          }
+          
+          .contact-info-area p {
+            font-size: 1.1rem !important;
+            font-family: 'Montserrat', Arial, sans-serif !important;
+            font-weight: 500 !important;
+            line-height: 1.6 !important;
+            color: #4a5568 !important;
+            margin-bottom: 1.2rem !important;
+          }
+          
+          .contact-info-area a {
+            font-size: 1.1rem !important;
+            font-family: 'Montserrat', Arial, sans-serif !important;
+            font-weight: 600 !important;
+            color: #366a82 !important;
+            text-decoration: none !important;
+            transition: all 0.3s ease !important;
+            padding: 0.3rem 0.6rem !important;
+            border-radius: 6px !important;
+            background: rgba(54, 106, 130, 0.08) !important;
+          }
+          
+          .contact-info-area a:hover {
+            color: #18201b !important;
+            background: rgba(54, 106, 130, 0.15) !important;
+            transform: translateY(-1px) !important;
+          }
+          
           /* Enhanced Footer for Mobile */
           .footer-menus {
             flex-direction: column !important;
