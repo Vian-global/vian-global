@@ -48,7 +48,8 @@ function App() {
   const galleryRef = useRef(null)
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [navOpen, setNavOpen] = useState(false)
+  const [navOpen, setNavOpen] = useState(false);
+
 
   // Hero slider interval
   useEffect(() => {
@@ -162,6 +163,8 @@ function App() {
       document.body.style.overflow = ''
     }
   }, [navOpen])
+
+
 
   return (
     <>
@@ -904,96 +907,181 @@ function App() {
             .nav-overlay { display: none !important; }
           }
 
-        /* Replace hamburger button with SVG icon */
-        .hamburger-icon {
+        /* Professional Mobile Hamburger Menu Styles */
+        .hamburger-menu {
           display: none;
         }
+        
         @media (max-width: 768px) {
-          .hamburger-icon {
-            display: flex !important;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            background: none;
-            border: none;
-            cursor: pointer;
-            z-index: 1201;
-          }
-          .nav-modal-overlay {
-            position: fixed;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: rgba(0,0,0,0.45);
-            z-index: 1200;
-            animation: fadeIn 0.3s;
-          }
-          .nav-modal {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background: #fff;
-            border-radius: 20px;
-            box-shadow: 0 8px 40px 0 rgba(54, 106, 130, 0.18);
-            padding: 2.2rem 1.5rem 1.5rem 1.5rem;
-            z-index: 1202;
-            min-width: 80vw;
-            max-width: 95vw;
-            min-height: 320px;
+          .hamburger-menu {
             display: flex;
             flex-direction: column;
-            align-items: center;
-            animation: popIn 0.35s cubic-bezier(0.4,0,0.2,1);
-          }
-          .nav-modal-close {
-            position: absolute;
-            top: 1.1rem;
-            right: 1.1rem;
-            background: none;
-            border: none;
-            cursor: pointer;
-            z-index: 1203;
-            padding: 0.2rem;
-            display: flex;
-            align-items: center;
             justify-content: center;
-          }
-          .nav-modal-menu {
-            display: flex;
-            flex-direction: column;
             align-items: center;
-            gap: 1.2rem;
-            margin-top: 1.5rem;
-            width: 100%;
-          }
-          .nav-modal-menu a {
-            color: #366a82;
-            font-size: 1.25rem;
-            font-family: 'Orbitron', Arial, sans-serif;
-            font-weight: 700;
-            padding: 0.9rem 0;
+            width: 48px;
+            height: 48px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 12px;
-            width: 100%;
-            text-align: center;
-            text-decoration: none;
-            background: rgba(54,106,130,0.07);
-            transition: background 0.2s, color 0.2s;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-left: auto;
+            margin-right: 1rem;
+            position: relative;
+            z-index: 1001;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
           }
-          .nav-modal-menu a:hover {
-            background: #366a82;
+          
+          .hamburger-menu:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.05);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+          }
+          
+          .hamburger-line {
+            width: 24px;
+            height: 3px;
+            background: #fff;
+            margin: 3px 0;
+            border-radius: 2px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-origin: center;
+          }
+          
+          .hamburger-menu.active .hamburger-line:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+          }
+          
+          .hamburger-menu.active .hamburger-line:nth-child(2) {
+            opacity: 0;
+            transform: translateX(-20px);
+          }
+          
+          .hamburger-menu.active .hamburger-line:nth-child(3) {
+            transform: rotate(-45deg) translate(6px, -6px);
+          }
+          
+          /* Mobile Navigation Modal */
+          .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+            animation: fadeIn 0.3s ease;
+          }
+          
+          .mobile-nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 100vh;
+            background: linear-gradient(135deg, #366a82 0%, #18201b 100%);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 1000;
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: -4px 0 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+          }
+          
+          .mobile-nav-overlay.active + .mobile-nav,
+          .mobile-nav-overlay + .mobile-nav {
+            transform: translateX(0);
+          }
+          
+          .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2rem 1.5rem 1rem 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          }
+          
+          .mobile-nav-header h3 {
+            color: #fff;
+            font-family: 'Orbitron', Arial, sans-serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0;
+            letter-spacing: 0.5px;
+          }
+          
+          .mobile-nav-close {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
             color: #fff;
           }
+          
+          .mobile-nav-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+          }
+          
+          .mobile-nav-links {
+            flex: 1;
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+          }
+          
+          .mobile-nav-link {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem 1.2rem;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-family: 'Montserrat', Arial, sans-serif;
+            font-weight: 600;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+          }
+          
+          .mobile-nav-link:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateX(5px);
+            border-color: rgba(255, 255, 255, 0.3);
+          }
+          
+          .nav-icon {
+            font-size: 1.2rem;
+            width: 24px;
+            text-align: center;
+          }
+          
           @keyframes fadeIn {
-            from { opacity: 0; } to { opacity: 1; }
-          }
-          @keyframes popIn {
-            0% { opacity: 0; transform: translate(-50%, -60%) scale(0.95); }
-            100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+            from { opacity: 0; }
+            to { opacity: 1; }
           }
         }
+        
         @media (min-width: 769px) {
-          .hamburger-icon, .nav-modal, .nav-modal-overlay { display: none !important; }
+          .hamburger-menu,
+          .mobile-nav-overlay,
+          .mobile-nav {
+            display: none !important;
+          }
         }
+        
       `}</style>
       <header className="header simple-header">
         <div className="header-logo">
@@ -1006,49 +1094,68 @@ function App() {
             height="200"
           />
         </div>
-        {/* Replace hamburger button with SVG icon */}
+        
+        {/* Professional Hamburger Menu for Mobile */}
         <button 
-          className="hamburger-icon"
-          onClick={() => setNavOpen(true)}
+          className={`hamburger-menu${navOpen ? ' active' : ''}`}
+          onClick={() => setNavOpen(!navOpen)}
           aria-label={navOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={navOpen}
-          aria-controls="main-navigation"
+          aria-controls="mobile-navigation"
           type="button"
-          style={{ display: 'flex', background: 'none', border: 'none', padding: 0, marginLeft: 'auto', zIndex: 1201 }}
         >
-          <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <rect y="7" width="32" height="3.5" rx="1.75" fill="#366a82"/>
-            <rect y="14" width="32" height="3.5" rx="1.75" fill="#366a82"/>
-            <rect y="21" width="32" height="3.5" rx="1.75" fill="#366a82"/>
-          </svg>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
+          <span className="hamburger-line"></span>
         </button>
 
-        {/* Pop-up modal menu for mobile */}
+        {/* Mobile Navigation Modal */}
         {navOpen && (
           <>
             <div 
-              className="nav-modal-overlay" 
+              className="mobile-nav-overlay" 
               onClick={() => setNavOpen(false)}
               aria-hidden="true"
-              tabIndex={-1}
             ></div>
-            <div className="nav-modal" role="dialog" aria-modal="true" tabIndex={0}>
-              <button className="nav-modal-close" onClick={() => setNavOpen(false)} aria-label="Close menu">
-                <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <line x1="7" y1="7" x2="21" y2="21" stroke="#366a82" strokeWidth="2.5" strokeLinecap="round"/>
-                  <line x1="21" y1="7" x2="7" y2="21" stroke="#366a82" strokeWidth="2.5" strokeLinecap="round"/>
-                </svg>
-              </button>
-              <nav className="nav-modal-menu" id="main-navigation">
-                <a href="#home" onClick={handleNavClick} role="menuitem">Home</a>
-                <a href="#about" onClick={handleNavClick} role="menuitem">About</a>
-                <a href="#services" onClick={handleNavClick} role="menuitem">Services</a>
-                <a href="#projects" onClick={handleNavClick} role="menuitem">Projects</a>
-                <a href="#contact" onClick={handleNavClick} role="menuitem">Contact</a>
-              </nav>
-            </div>
+            <nav className="mobile-nav" id="mobile-navigation" role="navigation">
+              <div className="mobile-nav-header">
+                <h3>Menu</h3>
+                <button 
+                  className="mobile-nav-close"
+                  onClick={() => setNavOpen(false)}
+                  aria-label="Close menu"
+                >
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  </svg>
+                </button>
+              </div>
+              <div className="mobile-nav-links">
+                <a href="#home" onClick={handleNavClick} className="mobile-nav-link">
+                  <span className="nav-icon">🏠</span>
+                  <span>Home</span>
+                </a>
+                <a href="#about" onClick={handleNavClick} className="mobile-nav-link">
+                  <span className="nav-icon">ℹ️</span>
+                  <span>About</span>
+                </a>
+                <a href="#services" onClick={handleNavClick} className="mobile-nav-link">
+                  <span className="nav-icon">⚙️</span>
+                  <span>Services</span>
+                </a>
+                <a href="#projects" onClick={handleNavClick} className="mobile-nav-link">
+                  <span className="nav-icon">📁</span>
+                  <span>Projects</span>
+                </a>
+                <a href="#contact" onClick={handleNavClick} className="mobile-nav-link">
+                  <span className="nav-icon">📞</span>
+                  <span>Contact</span>
+                </a>
+              </div>
+            </nav>
           </>
         )}
+        
         {/* Navigation drawer for mobile */}
         <nav 
           className={`nav${navOpen ? ' nav-open' : ''}`}
