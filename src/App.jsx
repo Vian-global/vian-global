@@ -922,6 +922,21 @@ function App() {
         
 
         
+        @media (max-width: 768px) {
+          /* Hide navigation on mobile */
+          .nav {
+            display: none !important;
+            visibility: hidden !important;
+            opacity: 0 !important;
+            pointer-events: none !important;
+            position: absolute !important;
+            left: -9999px !important;
+            width: 0 !important;
+            height: 0 !important;
+            overflow: hidden !important;
+          }
+        }
+        
         @media (max-width: 480px) {
           .header-logo-img {
             width: 100px !important;
