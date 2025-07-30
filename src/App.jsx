@@ -730,10 +730,15 @@ function App() {
           .contact-info-area p {
             font-size: 1.1rem !important;
             font-family: 'Montserrat', Arial, sans-serif !important;
-            font-weight: 500 !important;
+            font-weight: 600 !important;
             line-height: 1.6 !important;
-            color: #4a5568 !important;
+            color: #366a82 !important;
             margin-bottom: 1.2rem !important;
+            padding: 0.3rem 0.6rem !important;
+            border-radius: 6px !important;
+            background: rgba(54, 106, 130, 0.08) !important;
+            display: inline-block !important;
+            transition: all 0.3s ease !important;
           }
           
           .contact-info-area a {
