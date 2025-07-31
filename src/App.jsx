@@ -221,75 +221,6 @@ function App() {
         
         /* MOBILE RESPONSIVE FIXES */
         @media (max-width: 768px) {
-          /* Enhanced Mobile Navigation */
-          .nav {
-            position: static !important;
-            width: 100% !important;
-            height: auto !important;
-            background: rgba(54, 106, 130, 0.95) !important;
-            backdrop-filter: blur(10px) !important;
-            -webkit-backdrop-filter: blur(10px) !important;
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
-            z-index: 1002 !important;
-            transform: none !important;
-            transition: none !important;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2) !important;
-            padding: 1rem 0 !important;
-            overflow: visible !important;
-          }
-          
-          
-          .nav a {
-            color: #fff !important;
-            font-size: 1.1rem !important;
-            font-family: 'Orbitron', Arial, sans-serif !important;
-            font-weight: 600 !important;
-            padding: 0.8rem 1.5rem !important;
-            margin: 0.2rem 0.5rem !important;
-            text-align: center !important;
-            border-radius: 8px !important;
-            background: rgba(255, 255, 255, 0.1) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-            width: auto !important;
-            min-width: 120px !important;
-            transition: all 0.3s ease !important;
-            letter-spacing: 0.5px !important;
-            text-decoration: none !important;
-            backdrop-filter: blur(5px) !important;
-            -webkit-backdrop-filter: blur(5px) !important;
-            position: relative !important;
-            overflow: hidden !important;
-            touch-action: manipulation !important;
-            -webkit-tap-highlight-color: transparent !important;
-            display: inline-block !important;
-            box-sizing: border-box !important;
-          }
-          
-          .nav a:hover, .nav a:active, .nav a:focus {
-            background: rgba(255, 255, 255, 0.2) !important;
-            border-color: var(--accent) !important;
-            color: var(--accent) !important;
-            transform: translateY(-2px) !important;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
-          }
-          
-          .nav a::before {
-            content: '' !important;
-            position: absolute !important;
-            top: 0 !important;
-            left: -100% !important;
-            width: 100% !important;
-            height: 100% !important;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent) !important;
-            transition: left 0.5s ease !important;
-          }
-          
-          .nav a:hover::before {
-            left: 100% !important;
-          }
           
           
           /* Enhanced animations */
@@ -941,12 +872,56 @@ function App() {
             z-index: 1199;
             transition: opacity 0.3s;
           }
-          /* Hide nav on desktop */
+          /* Hide hamburger on desktop, show standard nav */
           @media (min-width: 769px) {
-            .hamburger { display: none !important; }
-            .nav, .nav.nav-open { position: static; transform: none; height: auto; flex-direction: row; align-items: center; background: none; box-shadow: none; padding: 0; width: auto; }
-            .nav a { display: inline-block; padding: 0.8rem 1.5rem; font-size: 1rem; color: #fff; background: none; border-radius: 8px; margin: 0 0.5rem; }
-            .nav-overlay { display: none !important; }
+            .hamburger { 
+              display: none !important; 
+              visibility: hidden !important;
+              opacity: 0 !important;
+              pointer-events: none !important;
+            }
+            .nav, .nav.nav-open { 
+              position: static !important; 
+              transform: none !important; 
+              height: auto !important; 
+              flex-direction: row !important; 
+              align-items: center !important; 
+              background: none !important; 
+              box-shadow: none !important; 
+              padding: 0 !important; 
+              width: auto !important;
+              display: flex !important;
+            }
+            .nav a { 
+              display: inline-block !important; 
+              padding: 0.8rem 1.5rem !important; 
+              font-size: 1rem !important; 
+              color: #fff !important; 
+              background: rgba(255, 255, 255, 0.1) !important;
+              border: 1px solid rgba(255, 255, 255, 0.2) !important;
+              border-radius: 8px !important; 
+              margin: 0 0.5rem !important;
+              backdrop-filter: blur(10px) !important;
+              -webkit-backdrop-filter: blur(10px) !important;
+              transition: all 0.3s ease !important;
+              letter-spacing: 0.5px !important;
+              font-family: 'Orbitron', Arial, sans-serif !important;
+              font-weight: 600 !important;
+              text-decoration: none !important;
+            }
+            .nav a:hover {
+              background: rgba(255, 255, 255, 0.2) !important;
+              border-color: var(--accent) !important;
+              color: var(--accent) !important;
+              transform: translateY(-2px) !important;
+              box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
+            }
+            .nav-overlay { 
+              display: none !important; 
+              visibility: hidden !important;
+              opacity: 0 !important;
+              pointer-events: none !important;
+            }
           }
 
 
@@ -979,20 +954,7 @@ function App() {
         
 
         
-        @media (max-width: 768px) {
-          /* Hide navigation on mobile */
-          .nav {
-            display: none !important;
-            visibility: hidden !important;
-            opacity: 0 !important;
-            pointer-events: none !important;
-            position: absolute !important;
-            left: -9999px !important;
-            width: 0 !important;
-            height: 0 !important;
-            overflow: hidden !important;
-          }
-        }
+        /* This CSS was conflicting with hamburger menu - removed */
         
         @media (max-width: 480px) {
           .header-logo-img {
@@ -1018,11 +980,29 @@ function App() {
           />
         </div>
 
+        {/* Hamburger Menu Button */}
+        <button 
+          className={`hamburger ${navOpen ? 'active' : ''}`}
+          onClick={() => setNavOpen(!navOpen)}
+          aria-label={navOpen ? 'Close navigation menu' : 'Open navigation menu'}
+          aria-expanded={navOpen}
+          type="button"
+        >
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
+        </button>
 
+        {/* Navigation Overlay */}
+        <div 
+          className={`nav-overlay ${navOpen ? 'active' : ''}`}
+          onClick={() => setNavOpen(false)}
+          aria-hidden="true"
+        ></div>
         
         {/* Navigation */}
         <nav 
-          className="nav"
+          className={`nav ${navOpen ? 'nav-open' : ''}`}
           id="main-navigation"
           role="navigation"
           aria-label="Main navigation"
