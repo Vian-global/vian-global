@@ -48,6 +48,7 @@ function App() {
   const galleryRef = useRef(null)
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [navOpen, setNavOpen] = useState(false);
 
 
 
@@ -147,7 +148,20 @@ function App() {
         element.scrollIntoView({ behavior: 'smooth' })
       }
     }
+    setNavOpen(false);
   }
+  
+  // Handle body scroll lock when mobile nav is open
+  useEffect(() => {
+    if (navOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [navOpen]);
 
 
 
