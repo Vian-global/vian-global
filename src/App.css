@@ -84,9 +84,7 @@ html, body {
   right: 0;
   z-index: 100;
 }
-.simple-header {
-  /* already inherits position: fixed from above */
-}
+/* .simple-header already inherits position: fixed from above */
 .simple-header .nav a, .nav a {
   font-weight: 900;
 }
@@ -165,14 +163,7 @@ html, body {
   flex: 1 1 auto;
   justify-content: flex-end;
 }
-.header .hamburger,
-.simple-header .hamburger,
-.header .nav-title,
-.simple-header .nav-title {
-  display: none !important;
-  visibility: hidden;
-  opacity: 0;
-}
+/* Hamburger visibility managed by responsive CSS below */
 .nav a {
   text-decoration: none;
   color: #f3f3f3;
@@ -1659,8 +1650,41 @@ html, body {
     opacity: 1 !important;
     pointer-events: auto !important;
     position: relative !important;
-    width: auto !important;
-    height: auto !important;
+    width: 44px !important;
+    height: 44px !important;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid rgba(54,106,130,0.15);
+    z-index: 1201;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: 0.5rem;
+    box-shadow: 0 2px 8px rgba(54,106,130,0.08);
+    transition: background 0.3s;
+  }
+  
+  .hamburger .bar {
+    width: 24px;
+    height: 3px;
+    background: #366a82;
+    margin: 3px 0;
+    border-radius: 2px;
+    transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+  }
+  
+  .hamburger.active .bar:nth-child(1) {
+    transform: rotate(45deg) translate(6px, 6px);
+  }
+  
+  .hamburger.active .bar:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger.active .bar:nth-child(3) {
+    transform: rotate(-45deg) translate(6px, -6px);
   }
 
   /* Modern Mobile Header */
@@ -1704,9 +1728,6 @@ html, body {
   }
   
   /* Mobile-only hamburger menu */
-.hamburger {
-  display: none !important;
-}
 
 /* Ensure hamburger is hidden on desktop */
 @media screen and (min-width: 769px) {
@@ -1714,18 +1735,7 @@ html, body {
   button.hamburger,
   .nav-toggle,
   .menu-toggle {
-    display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
-    pointer-events: none !important;
-    position: absolute !important;
-    width: 0 !important;
-    height: 0 !important;
-    overflow: hidden !important;
-    clip: rect(0, 0, 0, 0) !important;
-    margin: -1px !important;
-    padding: 0 !important;
-    border: 0 !important;
+    display: none;
   }
 }
   
