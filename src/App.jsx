@@ -5,6 +5,7 @@ import conditionEvaluationImg from './assets/Condition Evalution.jpeg'
 import businessProcessImg from './assets/business process.jpeg'
 import businessDigitalizationImg from './assets/business digitalization.jpeg'
 import newVianLogo from './assets/new-vian-logo.png'
+import tradooImg from './assets/Tradoo.jpeg'
 
 const heroImages = [
   '/hero.jpg',
@@ -174,50 +175,20 @@ function App() {
         }
         html, body {
           overflow-x: hidden !important;
-          max-width: 100vw !important;
+          max-width: 100% !important;
           width: 100% !important;
           margin: 0 !important;
           padding: 0 !important;
         }
         #root {
           overflow-x: hidden !important;
-          max-width: 100vw !important;
+          max-width: 100% !important;
           width: 100% !important;
           margin: 0 !important;
           padding: 0 !important;
         }
         
-        /* DESKTOP NAVIGATION */
-          .nav {
-            display: flex !important;
-          flex-direction: row !important;
-          align-items: center !important;
-          gap: 1rem !important;
-        }
-        
-        .nav a {
-          color: #fff !important;
-          font-size: 1rem !important;
-          font-family: 'Orbitron', Arial, sans-serif !important;
-          font-weight: 600 !important;
-          padding: 0.8rem 1.5rem !important;
-          text-decoration: none !important;
-          border-radius: 8px !important;
-            background: rgba(255, 255, 255, 0.1) !important;
-            border: 1px solid rgba(255, 255, 255, 0.2) !important;
-          backdrop-filter: blur(10px) !important;
-          -webkit-backdrop-filter: blur(10px) !important;
-            transition: all 0.3s ease !important;
-          letter-spacing: 0.5px !important;
-          }
-          
-        .nav a:hover {
-            background: rgba(255, 255, 255, 0.2) !important;
-          border-color: var(--accent) !important;
-          color: var(--accent) !important;
-          transform: translateY(-2px) !important;
-          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2) !important;
-        }
+
         
         /* MOBILE RESPONSIVE FIXES */
         @media (max-width: 768px) {
@@ -275,9 +246,9 @@ function App() {
           }
           
           .hero-content h1 {
-            font-size: 2.2rem !important;
-            line-height: 1.3 !important;
-            margin-bottom: 2rem !important;
+            font-size: clamp(1.8rem, 8vw, 2.5rem) !important;
+            line-height: 1.2 !important;
+            margin-bottom: 1.5rem !important;
             text-align: center !important;
             font-weight: 800 !important;
             text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
@@ -308,10 +279,10 @@ function App() {
           /* Enhanced section spacing */
           .vian-way-section, .our-portals-section, .navigator-section, 
           .services-section, .projects-section, .contact-section {
-            padding: 4rem 1.5rem !important;
+            padding: 3rem 1rem !important;
             position: relative !important;
             width: 100% !important;
-            max-width: 100vw !important;
+            max-width: 100% !important;
             overflow-x: hidden !important;
             margin: 0 !important;
             left: 0 !important;
@@ -321,8 +292,8 @@ function App() {
           /* Enhanced typography */
           .services-title, .our-portals-title, .projects-title, 
           .contact-title, .navigator-title, .vian-way-header h2 {
-            font-size: 2.2rem !important;
-            margin-bottom: 2.5rem !important;
+            font-size: clamp(1.6rem, 6vw, 2.2rem) !important;
+            margin-bottom: 2rem !important;
             text-align: center !important;
             line-height: 1.2 !important;
             font-weight: 800 !important;
@@ -331,7 +302,7 @@ function App() {
           
           /* Enhanced touch targets and interactions */
           .cta-btn, .our-portals-link, .navigator-link, 
-          .contact-form button, .footer-nav a, .nav a {
+          .contact-form button, .footer-nav a {
             min-height: 48px !important;
             min-width: 48px !important;
             display: inline-flex !important;
@@ -362,18 +333,9 @@ function App() {
             min-width: 250px !important;
           }
           
-          .hero-content h1 {
-            font-size: 1.9rem !important;
-          }
-          
           .hero-content .cta-btn {
             font-size: 1.1rem !important;
             padding: 1.1rem 2.3rem !important;
-          }
-          
-          .services-title, .our-portals-title, .projects-title, 
-          .contact-title, .navigator-title, .vian-way-header h2 {
-            font-size: 1.9rem !important;
           }
         }
         
@@ -384,12 +346,6 @@ function App() {
             padding: 0.9rem 1.8rem !important;
             min-width: 220px !important;
           }
-          
-          .hero-content h1 {
-            font-size: 1.7rem !important;
-          }
-          
-          
         }
         
         /* Enhanced Project Gallery for Mobile */
@@ -401,7 +357,7 @@ function App() {
             overflow: hidden !important;
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15) !important;
             background: #fff !important;
-            margin: 0 1rem !important;
+            margin: 0 !important;
           }
           
           .project-image-card img {
@@ -503,8 +459,8 @@ function App() {
             width: 100% !important;
             box-sizing: border-box !important;
             font-size: 16px !important;
-            padding: 1.4rem 1.6rem !important;
-            border-radius: 16px !important;
+            padding: 1rem 1.2rem !important;
+            border-radius: 12px !important;
             border: 2px solid rgba(54, 106, 130, 0.12) !important;
             background: rgba(255, 255, 255, 0.8) !important;
             margin-bottom: 0 !important;
@@ -777,86 +733,78 @@ function App() {
             width: 100% !important;
           }
         }
-        /* Hamburger styles */
-        .hamburger {
+        /* Mobile Menu Toggle */
+        .mobile-menu-btn {
           display: none;
         }
         @media (max-width: 768px) {
-          .hamburger {
+          .mobile-menu-btn {
             display: flex;
-            flex-direction: column;
             justify-content: center;
             align-items: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: rgba(255,255,255,0.15);
-            border: 1px solid rgba(54,106,130,0.15);
+            width: 48px;
+            height: 48px;
+            background: transparent;
+            border: none;
             position: relative;
             z-index: 1201;
             cursor: pointer;
             margin-left: auto;
-            margin-right: 0.5rem;
-            box-shadow: 0 2px 8px rgba(54,106,130,0.08);
-            transition: background 0.3s;
+            color: #ffffff;
+            padding: 0;
           }
-          .hamburger .bar {
-            width: 24px;
-            height: 3px;
-            background: #366a82;
-            margin: 3px 0;
-            border-radius: 2px;
-            transition: all 0.4s cubic-bezier(0.4,0,0.2,1);
+          .mobile-menu-btn svg {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
           }
-          .hamburger.active .bar:nth-child(1) {
-            transform: rotate(45deg) translate(6px, 6px);
+          .mobile-menu-btn:active svg {
+            transform: scale(0.9);
           }
-          .hamburger.active .bar:nth-child(2) {
-            opacity: 0;
-          }
-          .hamburger.active .bar:nth-child(3) {
-            transform: rotate(-45deg) translate(6px, -6px);
-          }
-          /* Nav drawer styles */
+          /* Nav full screen overlay styles */
           .nav {
             position: fixed;
             top: 0;
             left: 0;
-            width: 260px;
+            width: 100%;
             height: 100vh;
-            background: linear-gradient(135deg, #366a82 0%, #18201b 100%);
-            box-shadow: 4px 0 24px rgba(0,0,0,0.18);
+            background: rgba(24, 32, 27, 0.98);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
             z-index: 1200;
             display: flex;
             flex-direction: column;
-            align-items: flex-start;
-            padding: 2.5rem 1.5rem 1.5rem 1.5rem;
-            transform: translateX(-100%);
-            transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            transform: translateY(-100%);
+            transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1);
+            opacity: 0;
           }
           .nav.nav-open {
-            transform: translateX(0);
+            transform: translateY(0);
+            opacity: 1;
           }
           .nav a {
             color: #fff;
-            font-size: 1.2rem;
+            font-size: 2rem;
             font-family: 'Orbitron', Arial, sans-serif;
             font-weight: 700;
             padding: 1rem 0;
-            margin: 0.2rem 0;
-            text-align: left;
+            margin: 0.5rem 0;
+            text-align: center;
             border-radius: 0;
             background: none;
             border: none;
             width: 100%;
-            transition: color 0.3s;
-            letter-spacing: 0.5px;
+            transition: color 0.3s, transform 0.3s;
+            letter-spacing: 2px;
             text-decoration: none;
             display: block;
+            text-transform: uppercase;
           }
           .nav a:hover {
             color: var(--accent);
-            background: rgba(255,255,255,0.08);
+            background: transparent;
+            transform: scale(1.05);
           }
           .nav-overlay {
             display: none;
@@ -866,15 +814,16 @@ function App() {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100vw;
+            width: 100%;
             height: 100vh;
-            background: rgba(0,0,0,0.45);
+            background: rgba(0,0,0,0.5);
             z-index: 1199;
             transition: opacity 0.3s;
           }
+        }
           /* Hide hamburger on desktop, show standard nav */
           @media (min-width: 769px) {
-            .hamburger { 
+            .mobile-menu-btn { 
               display: none !important; 
               visibility: hidden !important;
               opacity: 0 !important;
@@ -891,6 +840,8 @@ function App() {
               padding: 0 !important; 
               width: auto !important;
               display: flex !important;
+              opacity: 1 !important;
+              pointer-events: auto !important;
             }
             .nav a { 
               display: inline-block !important; 
@@ -932,8 +883,12 @@ function App() {
             justify-content: space-between !important;
             align-items: center !important;
             padding: 1rem 1.5rem !important;
-            position: relative !important;
-            z-index: 1 !important;
+            position: fixed !important;
+            top: 0 !important;
+            width: 100% !important;
+            z-index: 1100 !important;
+            backdrop-filter: none !important;
+            -webkit-backdrop-filter: none !important;
           }
           
 
@@ -980,17 +935,26 @@ function App() {
           />
         </div>
 
-        {/* Hamburger Menu Button */}
+        {/* Mobile Menu Button */}
         <button 
-          className={`hamburger ${navOpen ? 'active' : ''}`}
+          className={`mobile-menu-btn ${navOpen ? 'active' : ''}`}
           onClick={() => setNavOpen(!navOpen)}
           aria-label={navOpen ? 'Close navigation menu' : 'Open navigation menu'}
           aria-expanded={navOpen}
           type="button"
         >
-          <div className="bar"></div>
-          <div className="bar"></div>
-          <div className="bar"></div>
+          {navOpen ? (
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"></line>
+              <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+          ) : (
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          )}
         </button>
 
         {/* Navigation Overlay */}
@@ -1067,44 +1031,14 @@ function App() {
           </div>
         </section>
         
-        <section className="our-portals-section" id="portals">
-          <div className="our-portals-container">
-            <h2 className="our-portals-title scroll-fade-in">Our Products</h2>
-            <div className="our-portals-content">
-              <div className="our-portals-img-wrapper scroll-fade-in">
-                <img 
-                  src="/sqaress.com.jpeg" 
-                  alt="Sparess.com Portal - Marine & Offshore parts marketplace" 
-                  className="our-portals-img"
-                  loading="lazy"
-                  width="320"
-                  height="240"
-                />
-              </div>
-              <div className="our-portals-info scroll-fade-in">
-                <h3>Sparess.com Portal</h3>
-                <p>Designed and launched by Vian Global for marketing, buying, and selling new or used parts and services applicable for the Marine & Offshore industries. The online portal is easy to access and available across website and mobile platforms.</p>
-                <a 
-                  className="our-portals-link" 
-                  href="https://sparess.com" 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  aria-label="Visit Sparess.com portal (opens in new tab)"
-                >
-                  Visit Our Portal
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-        
         <section className="navigator-section" id="navigator">
           <div className="our-portals-container">
+            <h2 className="our-portals-title scroll-fade-in">Our Products</h2>
             <div className="navigator-content">
               <div className="our-portals-img-wrapper scroll-fade-in">
                 <img 
-                  src="/navigator.jpeg" 
-                  alt="NavigatorsRus - Global marketing portal" 
+                  src={tradooImg} 
+                  alt="Tradoo.ae - Online Marketplace" 
                   className="navigator-img"
                   loading="lazy"
                   width="320"
@@ -1112,16 +1046,16 @@ function App() {
                 />
               </div>
               <div className="navigator-info scroll-fade-in">
-                <h3>NavigatorsRus</h3>
-                <p>NavigatorsRus online marketing portal is fully developed by Vian Global for UAE client. The portal is a gateway for effortlessly marketing products and services to a global audience. It connects buyers and sellers from every corner of the globe enabling boosting sales.<br/><br/>VIAN developed the concept, finalized UI, designed the portal and integrated third party services necessary for a fully functional portal. The portal operates as website and mobile app.</p>
+                <h3>Tradoo.ae</h3>
+                <p>Tradoo.ae is an online marketplace developed by Vian Global LLP for UAE client.  VIAN developed the concept , designed the  logics and managed the online portal development project. The portal has been successful in the UAE and operates on website and on Google and Apple Play stores.</p>
                 <a 
                   className="our-portals-link" 
-                  href="https://navigatorsrus.com/" 
+                  href="https://www.tradoo.ae" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  aria-label="Visit NavigatorsRus portal (opens in new tab)"
+                  aria-label="Visit Tradoo.ae portal (opens in new tab)"
                 >
-                  Visit NavigatorsRus
+                  Visit WWW.TRADOO.AE
                 </a>
               </div>
             </div>

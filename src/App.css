@@ -13,8 +13,8 @@
 
 body, html, #root {
   overflow-x: hidden !important;
-  width: 100vw;
-  max-width: 100vw;
+  width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
 }
 
@@ -90,12 +90,12 @@ html, body {
 }
 
 .header {
-  width: 100vw;
-  min-width: 100vw;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
+  width: 100%;
+  min-width: 100%;
+  left: 0;
+  right: 0;
+  margin-left: 0;
+  margin-right: 0;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -749,6 +749,8 @@ html, body {
     width: 100%;
     max-width: 100%;
     height: auto;
+    max-height: 250px;
+    object-fit: cover;
   }
 }
 
@@ -866,6 +868,8 @@ html, body {
     width: 100%;
     max-width: 100%;
     height: auto;
+    max-height: 250px;
+    object-fit: cover;
   }
 }
 
@@ -1306,9 +1310,8 @@ html, body {
 .projects-title-bold {
   font-weight: 900;
   color: var(--primary);
-  font-size: 2.5rem;
+  font-size: inherit;
   letter-spacing: 1px;
-  display: inline-block;
 }
 .projects-gallery {
   overflow-x: auto;
