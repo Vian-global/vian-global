@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Important pages
-Sitemap: https://vianglobal.com/sitemap.xml
+Sitemap: https://vianglobal.co/sitemap.xml
 
 # Block access to development files
 Disallow: /src/
