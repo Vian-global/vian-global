@@ -111,7 +111,7 @@ function App() {
     try {
       // IMPORTANT: Replace the template ID placeholder with your actual Template ID
       const SERVICE_ID = 'service_kmr8pmn';
-      const TEMPLATE_ID = 'your_template_id'; // Please provide your template ID
+      const TEMPLATE_ID = 'template_b1mvcu9';
       const PUBLIC_KEY = 'IGJCApvi5xnmFHPPf';
 
       const result = await emailjs.send(
