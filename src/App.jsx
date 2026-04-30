@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react'
+import emailjs from '@emailjs/browser'
 import './App.css'
 import projectManagementImg from './assets/project management.jpeg'
 import conditionEvaluationImg from './assets/Condition Evalution.jpeg'
@@ -106,34 +107,32 @@ function App() {
     setIsSubmitting(true);
 
     const formData = new FormData(e.target);
-    const formValues = {
-      name: formData.get('name'),
-      email: formData.get('email'),
-      message: formData.get('message')
-    };
 
     try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
+      // IMPORTANT: Replace the template ID placeholder with your actual Template ID
+      const SERVICE_ID = 'service_kmr8pmn';
+      const TEMPLATE_ID = 'your_template_id'; // Please provide your template ID
+      const PUBLIC_KEY = 'IGJCApvi5xnmFHPPf';
+
+      const result = await emailjs.send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          name: formData.get('name'),
+          email: formData.get('email'),
+          message: formData.get('message'),
+          date_time: new Date().toLocaleString(),
         },
-        body: JSON.stringify(formValues)
-      });
+        PUBLIC_KEY
+      );
 
-      const result = await response.json();
-
-      if (response.ok && result.success) {
+      if (result.status === 200) {
         setFormSubmitted(true);
-        // Optional: Reset form
-        e.target.reset
-      } else {
-        // Handle error
-        alert(result.message || 'Something went wrong. Please try again.');
+        e.target.reset();
       }
     } catch (error) {
-      console.error('Form submission error:', error);
-      alert('Network error. Please check your connection and try again.');
+      console.error('EmailJS error:', error);
+      alert('Failed to send message. Please try again later.');
     } finally {
       setIsSubmitting(false);
     }
