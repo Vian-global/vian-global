@@ -4,9 +4,9 @@
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
   
-  <!-- Canonical homepage (non-www is the preferred version) -->
+  <!-- Canonical homepage (www version matches server redirects) -->
   <url>
-    <loc>https://vianglobal.co/</loc>
+    <loc>https://www.vianglobal.co/</loc>
     <lastmod>2026-04-30</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
