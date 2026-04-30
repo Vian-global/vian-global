@@ -1157,7 +1157,7 @@ function App() {
             <div className="contact-form-area scroll-fade-in">
               <h2 className="contact-title">Contact Us</h2>
               {formSubmitted ? (
-                <div className="thank-you-message scroll-fade-in">
+                <div className="thank-you-message">
                   <h3>Thank you!</h3>
                   <p>Your message has been sent. We appreciate your interest and will get back to you soon.</p>
                 </div>
