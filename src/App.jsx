@@ -1258,13 +1258,15 @@ function App() {
                 </svg>
               </a>
               <a 
-                href="mailto:vianglobal@icloud.com" 
-                aria-label="Send us an email"
+                href="https://www.tiktok.com/@vianglobal?_r=1&_t=ZS-961XpEmcH6D" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                aria-label="Follow us on TikTok (opens in new tab)"
                 role="listitem"
               >
                 <svg width="28" height="28" fill="none" viewBox="0 0 28 28" aria-hidden="true">
                   <rect width="28" height="28" rx="6" fill="#366a82"/>
-                  <path d="M7.5 9.5a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-9a2 2 0 0 1-2-2v-9zm2.25.25v.01l4.25 3.25 4.25-3.25v-.01a.75.75 0 0 0-.75-.75h-7a.75.75 0 0 0-.75.75zm8.5 1.82-3.98 3.05a1 1 0 0 1-1.24 0l-3.98-3.05V18a.75.75 0 0 0 .75.75h7a.75.75 0 0 0 .75-.75v-6.43z" fill="#fff"/>
+                  <path d="M19.5 9.5c-1.5 0-2.5-1-2.5-2.5h-2v9.5c0 1.5-1 2.5-2.5 2.5s-2.5-1-2.5-2.5 1-2.5 2.5-2.5v-2c-2.5 0-4.5 2-4.5 4.5s2 4.5 4.5 4.5 4.5-2 4.5-4.5v-4.5c1 1 2.5 1.5 4.5 1.5v-2.5z" fill="#fff"/>
                 </svg>
               </a>
             </div>
