@@ -1212,7 +1212,7 @@ function App() {
               <h3>Phone</h3>
               <p><a href="tel:+919884026978" aria-label="Call us at +91 9884 026 978">+91 9884 026 978</a></p>
               <h3>Email</h3>
-              <p><a href="mailto:vianglobal@icloud.com" aria-label="Send email to vianglobal@icloud.com">vianglobal@icloud.com</a></p>
+              <p><a href="mailto:sales@vianglobal.co" aria-label="Send email to sales@vianglobal.co">sales@vianglobal.co</a></p>
             </div>
           </div>
         </section>

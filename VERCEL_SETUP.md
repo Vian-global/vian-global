@@ -40,7 +40,7 @@ To receive emails when someone submits the form:
      ```
      EMAIL_USER = your-email@gmail.com
      EMAIL_PASS = your-app-password
-     BUSINESS_EMAIL = vianglobal@icloud.com
+     BUSINESS_EMAIL = sales@vianglobal.co
      ```
 
 2. **For Gmail Setup:**
