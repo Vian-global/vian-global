@@ -5,7 +5,7 @@ import projectManagementImg from './assets/project management.jpeg'
 import conditionEvaluationImg from './assets/Condition Evalution.jpeg'
 import businessProcessImg from './assets/business process.jpeg'
 import businessDigitalizationImg from './assets/business digitalization.jpeg'
-import newVianLogo from './assets/new-vian-logo.png'
+import vianLogo from './assets/Vian logo.png'
 import tradooImg from './assets/Tradoo.jpeg'
 
 const heroImages = [
@@ -925,7 +925,7 @@ function App() {
       <header className="header simple-header">
         <div className="header-logo">
           <img 
-            src={newVianLogo} 
+            src={vianLogo} 
             alt="Vian Global Logo" 
             className="header-logo-img"
             loading="eager"
