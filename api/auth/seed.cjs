@@ -1,5 +1,5 @@
-const dbConnect = require('../_utils/db');
-const User = require('../_models/User');
+const dbConnect = require('../_utils/db.cjs');
+const User = require('../_models/User.cjs');
 const bcrypt = require('bcryptjs');
 
 module.exports = async function handler(req, res) {

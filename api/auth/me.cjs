@@ -1,4 +1,4 @@
-const { verifyToken } = require('../_utils/auth');
+const { verifyToken } = require('../_utils/auth.cjs');
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'GET') {

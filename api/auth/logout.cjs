@@ -1,4 +1,4 @@
-const { clearCookie } = require('../_utils/auth');
+const { clearCookie } = require('../_utils/auth.cjs');
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {

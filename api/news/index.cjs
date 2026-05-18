@@ -1,6 +1,6 @@
-const dbConnect = require('../_utils/db');
-const News = require('../_models/News');
-const { verifyToken } = require('../_utils/auth');
+const dbConnect = require('../_utils/db.cjs');
+const News = require('../_models/News.cjs');
+const { verifyToken } = require('../_utils/auth.cjs');
 const sanitizeHtml = require('sanitize-html');
 
 module.exports = async function handler(req, res) {
