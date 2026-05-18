@@ -1,4 +1,4 @@
-import { clearCookie } from '../_utils/auth';
+import { clearCookie } from '../_utils/auth.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {

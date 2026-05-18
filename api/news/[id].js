@@ -1,6 +1,6 @@
-import dbConnect from '../_utils/db';
-import News from '../_models/News';
-import { verifyToken } from '../_utils/auth';
+import dbConnect from '../_utils/db.js';
+import News from '../_models/News.js';
+import { verifyToken } from '../_utils/auth.js';
 import mongoose from 'mongoose';
 import sanitizeHtml from 'sanitize-html';
 

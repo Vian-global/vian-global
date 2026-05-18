@@ -1,5 +1,5 @@
-import dbConnect from '../_utils/db';
-import User from '../_models/User';
+import dbConnect from '../_utils/db.js';
+import User from '../_models/User.js';
 import bcrypt from 'bcryptjs';
 
 export default async function handler(req, res) {

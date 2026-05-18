@@ -1,8 +1,8 @@
-import dbConnect from '../_utils/db';
-import User from '../_models/User';
-import LoginAttempt from '../_models/LoginAttempt';
+import dbConnect from '../_utils/db.js';
+import User from '../_models/User.js';
+import LoginAttempt from '../_models/LoginAttempt.js';
 import bcrypt from 'bcryptjs';
-import { signToken, setCookie } from '../_utils/auth';
+import { signToken, setCookie } from '../_utils/auth.js';
 
 export default async function handler(req, res) {
   if (req.method !== 'POST') {

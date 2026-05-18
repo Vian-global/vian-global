@@ -1,5 +1,5 @@
 import { v2 as cloudinary } from 'cloudinary';
-import { verifyToken } from '../_utils/auth';
+import { verifyToken } from '../_utils/auth.js';
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
