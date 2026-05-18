@@ -65,6 +65,8 @@ function clearCookie(res) {
     path: '/',
   });
   res.setHeader('Set-Cookie', serializedCookie);
+}
+
 module.exports = {
   signToken,
   verifyToken,
