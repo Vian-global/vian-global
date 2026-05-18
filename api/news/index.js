@@ -1,9 +1,9 @@
-import dbConnect from '../_utils/db.js';
-import News from '../_models/News.js';
-import { verifyToken } from '../_utils/auth.js';
-import sanitizeHtml from 'sanitize-html';
+const dbConnect = require('../_utils/db');
+const News = require('../_models/News');
+const { verifyToken } = require('../_utils/auth');
+const sanitizeHtml = require('sanitize-html');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   await dbConnect();
 
   const method = req.method;

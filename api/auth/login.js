@@ -1,10 +1,10 @@
-import dbConnect from '../_utils/db.js';
-import User from '../_models/User.js';
-import LoginAttempt from '../_models/LoginAttempt.js';
-import bcrypt from 'bcryptjs';
-import { signToken, setCookie } from '../_utils/auth.js';
+const dbConnect = require('../_utils/db');
+const User = require('../_models/User');
+const LoginAttempt = require('../_models/LoginAttempt');
+const bcrypt = require('bcryptjs');
+const { signToken, setCookie } = require('../_utils/auth');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method Not Allowed' });
   }

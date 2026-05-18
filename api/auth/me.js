@@ -1,6 +1,6 @@
-import { verifyToken } from '../_utils/auth.js';
+const { verifyToken } = require('../_utils/auth');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'GET') {
     return res.status(405).json({ success: false, message: 'Method Not Allowed' });
   }

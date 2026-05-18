@@ -1,5 +1,5 @@
-import { v2 as cloudinary } from 'cloudinary';
-import { verifyToken } from '../_utils/auth.js';
+const cloudinary = require('cloudinary').v2;
+const { verifyToken } = require('../_utils/auth');
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
@@ -7,7 +7,7 @@ cloudinary.config({
   api_secret: process.env.CLOUDINARY_API_SECRET,
 });
 
-export default async function handler(req, res) {
+const handler = async function (req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method Not Allowed' });
   }
@@ -45,10 +45,11 @@ export default async function handler(req, res) {
     console.error('Image Upload Error:', error);
     return res.status(500).json({ success: false, error: error.message });
   }
-}
+};
 
-// Config to override Vercel serverless body parser size limits
-export const config = {
+module.exports = handler;
+
+module.exports.config = {
   api: {
     bodyParser: {
       sizeLimit: '10mb', // Supports larger base64 images securely

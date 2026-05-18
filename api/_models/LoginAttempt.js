@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+const mongoose = require('mongoose');
 
 const LoginAttemptSchema = new mongoose.Schema({
   ip: {
@@ -13,4 +13,4 @@ const LoginAttemptSchema = new mongoose.Schema({
   },
 });
 
-export default mongoose.models.LoginAttempt || mongoose.model('LoginAttempt', LoginAttemptSchema);
+module.exports = mongoose.models.LoginAttempt || mongoose.model('LoginAttempt', LoginAttemptSchema);

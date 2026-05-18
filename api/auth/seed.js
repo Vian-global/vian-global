@@ -1,8 +1,8 @@
-import dbConnect from '../_utils/db.js';
-import User from '../_models/User.js';
-import bcrypt from 'bcryptjs';
+const dbConnect = require('../_utils/db');
+const User = require('../_models/User');
+const bcrypt = require('bcryptjs');
 
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method Not Allowed' });
   }

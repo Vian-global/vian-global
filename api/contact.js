@@ -1,4 +1,4 @@
-export default async function handler(req, res) {
+module.exports = async function handler(req, res) {
   // Set CORS headers
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
@@ -76,10 +76,9 @@ export default async function handler(req, res) {
 
 // Email sending function (optional - requires environment variables)
 async function sendEmailNotification({ name, email, message }) {
-  // Dynamic import for nodemailer (install: npm install nodemailer)
-  const nodemailer = await import('nodemailer');
+  const nodemailer = require('nodemailer');
   
-  const transporter = nodemailer.default.createTransporter({
+  const transporter = nodemailer.createTransport({
     service: 'gmail',
     auth: {
       user: process.env.EMAIL_USER,

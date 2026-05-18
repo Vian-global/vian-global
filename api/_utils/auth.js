@@ -1,5 +1,5 @@
-import jwt from 'jsonwebtoken';
-import cookie from 'cookie';
+const jwt = require('jsonwebtoken');
+const cookie = require('cookie');
 
 const JWT_SECRET = process.env.JWT_SECRET;
 const COOKIE_NAME = 'vian_admin_token';
@@ -11,7 +11,7 @@ if (!JWT_SECRET) {
 /**
  * Generate a JWT token for the admin user
  */
-export function signToken(user) {
+function signToken(user) {
   return jwt.sign(
     { id: user._id, username: user.username, role: user.role },
     JWT_SECRET,
@@ -22,7 +22,7 @@ export function signToken(user) {
 /**
  * Parse the cookie and verify the JWT token
  */
-export function verifyToken(req) {
+function verifyToken(req) {
   try {
     const cookiesHeader = req.headers.cookie || '';
     const cookies = cookie.parse(cookiesHeader);
@@ -42,7 +42,7 @@ export function verifyToken(req) {
 /**
  * Set HttpOnly secure cookie on the response
  */
-export function setCookie(res, token) {
+function setCookie(res, token) {
   const serializedCookie = cookie.serialize(COOKIE_NAME, token, {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
@@ -56,7 +56,7 @@ export function setCookie(res, token) {
 /**
  * Clear the admin token cookie on logout
  */
-export function clearCookie(res) {
+function clearCookie(res) {
   const serializedCookie = cookie.serialize(COOKIE_NAME, '', {
     httpOnly: true,
     secure: process.env.NODE_ENV === 'production',
@@ -65,4 +65,10 @@ export function clearCookie(res) {
     path: '/',
   });
   res.setHeader('Set-Cookie', serializedCookie);
-}
+module.exports = {
+  signToken,
+  verifyToken,
+  setCookie,
+  clearCookie
+};
+
