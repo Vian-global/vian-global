@@ -1,5 +1,5 @@
 const cloudinary = require('cloudinary').v2;
-const { verifyToken } = require('../_utils/auth.cjs');
+const { verifyToken } = require('../_utils/auth.js');
 
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,

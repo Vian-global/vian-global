@@ -1,8 +1,8 @@
-const dbConnect = require('../_utils/db.cjs');
-const User = require('../_models/User.cjs');
-const LoginAttempt = require('../_models/LoginAttempt.cjs');
+const dbConnect = require('../_utils/db.js');
+const User = require('../_models/User.js');
+const LoginAttempt = require('../_models/LoginAttempt.js');
 const bcrypt = require('bcryptjs');
-const { signToken, setCookie } = require('../_utils/auth.cjs');
+const { signToken, setCookie } = require('../_utils/auth.js');
 
 module.exports = async function handler(req, res) {
   if (req.method !== 'POST') {
