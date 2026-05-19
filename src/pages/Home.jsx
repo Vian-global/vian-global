@@ -248,7 +248,7 @@ function Home() {
           <div className="news-container">
             <div className="news-header scroll-fade-in">
               <span className="news-eyebrow">Latest Updates</span>
-              <h2 className="news-title">Vian News</h2>
+              <h2 className="news-title">World Vian News</h2>
               <p className="news-subtitle">Stay informed with our latest projects, company updates, and industry insights.</p>
             </div>
 

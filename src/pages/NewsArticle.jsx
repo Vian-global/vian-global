@@ -222,7 +222,7 @@ function NewsArticle() {
           {/* ── MORE ARTICLES ─────────────── */}
           {moreArticles.length > 0 && (
             <section className="article-more" aria-label="More articles">
-              <h2 className="article-more-title">More from Vian News</h2>
+              <h2 className="article-more-title">More from World Vian News</h2>
               <div className="article-more-grid">
                 {moreArticles.map(a => (
                   <Link to={`/news/${a.slug}`} key={a._id} className="article-more-card">

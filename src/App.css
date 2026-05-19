@@ -2590,7 +2590,7 @@ html, body {
   font-family: 'Orbitron', Arial, sans-serif;
   font-size: clamp(2rem, 5vw, 2.8rem);
   font-weight: 800;
-  color: #14283c;
+  color: var(--primary);
   margin: 0 0 1rem;
   letter-spacing: 1px;
 }
@@ -3013,7 +3013,7 @@ html, body {
   font-family: 'Orbitron', Arial, sans-serif;
   font-size: 1.3rem;
   font-weight: 800;
-  color: #14283c;
+  color: var(--primary);
   margin-bottom: 1.5rem;
   letter-spacing: 0.5px;
 }
