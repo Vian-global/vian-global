@@ -151,20 +151,40 @@ const AdminArticlesEditor = () => {
   const handleSave = async (e) => {
     e.preventDefault();
 
-    if (!title.trim() || !slug.trim() || !excerpt.trim() || !content.trim() || !image.trim()) {
-      setErrorMessage('Please fill in all core fields (Title, Slug, Excerpt, Image, and Content).');
+    if (!title.trim() || !excerpt.trim() || !image.trim() || !author.trim()) {
+      setErrorMessage('Please fill in all required fields (Title, Description, Author, and Image).');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
+    }
+
+    // Auto-generate slug if empty
+    if (!slug.trim()) {
+      const autoSlug = title
+        .toLowerCase()
+        .replace(/[^a-z0-9\s-]/g, '')
+        .trim()
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-');
+      setSlug(autoSlug);
     }
 
     setSaving(true);
     setErrorMessage('');
     setSuccessMessage('');
 
+    const finalSlug = slug.trim() || title
+      .toLowerCase()
+      .replace(/[^a-z0-9\s-]/g, '')
+      .trim()
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-');
+
+    const finalContent = content.trim() || `<p>${excerpt}</p>`;
+
     const payload = {
       title,
-      slug,
-      content,
+      slug: finalSlug,
+      content: finalContent,
       excerpt,
       image,
       status,
@@ -336,9 +356,9 @@ const AdminArticlesEditor = () => {
               </div>
             </div>
 
-            {/* Cloudinary Image Manager */}
+            {/* Featured Image Manager */}
             <div className="form-group-glass">
-              <label>Featured Image</label>
+              <label>Featured Image *</label>
               <div className="image-uploader-container">
                 {image ? (
                   <div className="uploader-preview-wrapper">
@@ -352,27 +372,37 @@ const AdminArticlesEditor = () => {
                     </button>
                   </div>
                 ) : (
-                  <label className="image-upload-clickable-box">
+                  <>
+                    <label className="image-upload-clickable-box">
+                      <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        style={{ display: 'none' }}
+                        disabled={uploading}
+                      />
+                      {uploading ? (
+                        <div className="uploader-loader-flex">
+                          <div className="uploader-spinner" />
+                          <span>Uploading...</span>
+                        </div>
+                      ) : (
+                        <div className="uploader-placeholder-flex">
+                          <span className="upload-icon">📸</span>
+                          <span className="upload-text">Upload Featured Image</span>
+                          <span className="upload-limit">PNG, JPG, WEBP (Max 8MB)</span>
+                        </div>
+                      )}
+                    </label>
+                    <div className="image-url-divider">or paste image URL</div>
                     <input
-                      type="file"
-                      accept="image/*"
-                      onChange={handleImageUpload}
-                      style={{ display: 'none' }}
-                      disabled={uploading}
+                      type="url"
+                      className="image-url-input"
+                      value={image}
+                      onChange={(e) => setImage(e.target.value)}
+                      placeholder="https://example.com/image.jpg"
                     />
-                    {uploading ? (
-                      <div className="uploader-loader-flex">
-                        <div className="uploader-spinner" />
-                        <span>Uploading to Cloudinary...</span>
-                      </div>
-                    ) : (
-                      <div className="uploader-placeholder-flex">
-                        <span className="upload-icon">📸</span>
-                        <span className="upload-text">Upload Featured Image</span>
-                        <span className="upload-limit">PNG, JPG, WEBP (Max 8MB)</span>
-                      </div>
-                    )}
-                  </label>
+                  </>
                 )}
               </div>
             </div>
@@ -400,13 +430,14 @@ const AdminArticlesEditor = () => {
             </div>
 
             <div className="form-group-glass">
-              <label htmlFor="article-author">Author Override</label>
+              <label htmlFor="article-author">Author *</label>
               <input
                 type="text"
                 id="article-author"
                 value={author}
                 onChange={(e) => setAuthor(e.target.value)}
                 placeholder="e.g. Vian Team"
+                required
               />
             </div>
 
@@ -474,7 +505,7 @@ const AdminArticlesEditor = () => {
           {/* Main Save Bar */}
           <button
             type="submit"
-            className="editor-submit-main-btn-premium"
+            className="editor-submit-main-btn-premium publish-highlight"
             disabled={saving}
           >
             {saving ? (
@@ -483,7 +514,7 @@ const AdminArticlesEditor = () => {
                 Saving Changes...
               </span>
             ) : (
-              isEditMode ? '💾 Update & Publish' : '🚀 Save Article'
+              isEditMode ? '💾 Update & Publish' : '🚀 Publish Article'
             )}
           </button>
         </div>
