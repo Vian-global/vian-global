@@ -49,7 +49,7 @@ function Home() {
     return () => clearInterval(interval)
   }, [])
 
-  // Scroll fade-in observer
+  // Scroll fade-in observer (re-run when articles load)
   useEffect(() => {
     const fadeEls = document.querySelectorAll('.scroll-fade-in')
     const onScroll = () => {
@@ -63,7 +63,7 @@ function Home() {
     window.addEventListener('scroll', onScroll)
     onScroll()
     return () => window.removeEventListener('scroll', onScroll)
-  }, [])
+  }, [articles])
 
   // Scroll to hash on page load (if navigated from another page)
   useEffect(() => {
