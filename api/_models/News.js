@@ -78,9 +78,8 @@ const NewsSchema = new mongoose.Schema({
 });
 
 // Update the dateUpdated field automatically on saving updates
-NewsSchema.pre('save', function (next) {
+NewsSchema.pre('save', function () {
   this.dateUpdated = Date.now();
-  next();
 });
 
 module.exports = mongoose.models.News || mongoose.model('News', NewsSchema);

@@ -219,7 +219,7 @@ const AdminArticlesEditor = () => {
           navigate('/admin/articles');
         }, 1500);
       } else {
-        setErrorMessage(data.message || 'Failed to save article.');
+        setErrorMessage(data.message || data.error || 'Failed to save article.');
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }
     } catch (error) {
