@@ -222,7 +222,7 @@ const AdminArticlesEditor = () => {
 
   return (
     <div className="editor-page-wrapper">
-      <div className="articles-header-flex scroll-fade-in">
+      <div className="articles-header-flex">
         <div className="header-meta">
           <h1 className="dashboard-title">{isEditMode ? 'Edit Article' : 'Create Article'}</h1>
           <p className="dashboard-subtitle">
@@ -250,18 +250,18 @@ const AdminArticlesEditor = () => {
 
       {/* ── NOTIFICATION BANNERS ────────────────────────── */}
       {errorMessage && (
-        <div className="editor-banner error scroll-fade-in" role="alert">
+        <div className="editor-banner error" role="alert">
           <span>⚠️ {errorMessage}</span>
         </div>
       )}
       {successMessage && (
-        <div className="editor-banner success scroll-fade-in" role="alert">
+        <div className="editor-banner success" role="alert">
           <span>✅ {successMessage}</span>
         </div>
       )}
 
       {/* ── FORM CONTAINER ──────────────────────────────── */}
-      <form onSubmit={handleSave} className="editor-form-grid scroll-fade-in">
+      <form onSubmit={handleSave} className="editor-form-grid">
         
         {/* Left Column: Editor Core */}
         <div className="editor-left-pane">

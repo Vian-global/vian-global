@@ -57,7 +57,7 @@ const AdminArticles = () => {
 
   return (
     <div className="articles-manager-wrapper">
-      <div className="articles-header-flex scroll-fade-in">
+      <div className="articles-header-flex">
         <div className="header-meta">
           <h1 className="dashboard-title">Blog Publications</h1>
           <p className="dashboard-subtitle">Manage, edit, publish, or delete your content pieces</p>
@@ -73,7 +73,7 @@ const AdminArticles = () => {
       </div>
 
       {/* ── SEARCH & FILTERS BAR ────────────────────────── */}
-      <div className="articles-filters-bar scroll-fade-in">
+      <div className="articles-filters-bar">
         <div className="search-input-wrapper-glass">
           <span className="search-icon">🔍</span>
           <input
@@ -93,7 +93,7 @@ const AdminArticles = () => {
           <p className="manager-loading-text">Loading Publications...</p>
         </div>
       ) : (
-        <div className="articles-table-container scroll-fade-in">
+        <div className="articles-table-container">
           {filteredArticles.length === 0 ? (
             <div className="table-empty-state">
               <span className="empty-icon">📁</span>

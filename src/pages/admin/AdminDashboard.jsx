@@ -43,7 +43,7 @@ const AdminDashboard = () => {
 
   return (
     <div className="dashboard-wrapper">
-      <div className="dashboard-header scroll-fade-in">
+      <div className="dashboard-header">
         <h1 className="dashboard-title">System Overview</h1>
         <p className="dashboard-subtitle">Real-time status of your website publications and drafts</p>
       </div>
