@@ -1,15 +1,5 @@
 const mongoose = require('mongoose');
 
-const MONGODB_URI = process.env.MONGODB_URI;
-
-if (!MONGODB_URI) {
-  throw new Error('Please define the MONGODB_URI environment variable');
-}
-
-/**
- * Global is used here to maintain a cached connection across hot reloads
- * in development and serverless function invocations in production.
- */
 let cached = global.mongoose;
 
 if (!cached) {
@@ -17,6 +7,15 @@ if (!cached) {
 }
 
 async function dbConnect() {
+  const MONGODB_URI = process.env.MONGODB_URI;
+  
+  console.log("MONGODB_URI exists?", !!MONGODB_URI);
+  
+  if (!MONGODB_URI) {
+    console.error("CRITICAL ERROR: MONGODB_URI is undefined in the environment.");
+    throw new Error('Please define the MONGODB_URI environment variable');
+  }
+
   if (cached.conn) {
     return cached.conn;
   }

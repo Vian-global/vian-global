@@ -1,16 +1,16 @@
 const cloudinary = require('cloudinary').v2;
 const { verifyToken } = require('../_utils/auth.js');
 
-cloudinary.config({
-  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
-  api_key: process.env.CLOUDINARY_API_KEY,
-  api_secret: process.env.CLOUDINARY_API_SECRET,
-});
-
 const handler = async function (req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ success: false, message: 'Method Not Allowed' });
   }
+
+  cloudinary.config({
+    cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+    api_key: process.env.CLOUDINARY_API_KEY,
+    api_secret: process.env.CLOUDINARY_API_SECRET,
+  });
 
   // Increase the payload size limit config for Vercel serverless
   // (Vercel allows body limit configs for large base64 uploads)

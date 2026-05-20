@@ -1,17 +1,12 @@
 const jwt = require('jsonwebtoken');
 const cookie = require('cookie');
 
-const JWT_SECRET = process.env.JWT_SECRET;
 const COOKIE_NAME = 'vian_admin_token';
 
-if (!JWT_SECRET) {
-  throw new Error('Please define the JWT_SECRET environment variable');
-}
-
-/**
- * Generate a JWT token for the admin user
- */
 function signToken(user) {
+  const JWT_SECRET = process.env.JWT_SECRET;
+  if (!JWT_SECRET) throw new Error('JWT_SECRET is missing');
+  
   return jwt.sign(
     { id: user._id, username: user.username, role: user.role },
     JWT_SECRET,
@@ -32,6 +27,8 @@ function verifyToken(req) {
       return null;
     }
 
+    const JWT_SECRET = process.env.JWT_SECRET;
+    if (!JWT_SECRET) return null;
     return jwt.verify(token, JWT_SECRET);
   } catch (error) {
     console.error('JWT Verification Error:', error);
