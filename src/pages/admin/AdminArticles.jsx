@@ -51,6 +51,35 @@ const AdminArticles = () => {
     }
   };
 
+  const handleToggleStatus = async (id, currentStatus, title) => {
+    const newStatus = currentStatus === 'published' ? 'draft' : 'published';
+    const action = newStatus === 'published' ? 'publish' : 'unpublish';
+
+    if (!window.confirm(`Are you sure you want to ${action} "${title}"?`)) return;
+
+    const originalArticles = [...articles];
+    setArticles(prev =>
+      prev.map(a => a._id === id ? { ...a, status: newStatus } : a)
+    );
+
+    try {
+      const response = await fetch(`/api/news/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status: newStatus }),
+      });
+      const data = await response.json();
+
+      if (!response.ok || !data.success) {
+        throw new Error(data.message || data.error || `Failed to ${action} article`);
+      }
+    } catch (error) {
+      console.error('Toggle status error:', error);
+      alert(`Failed to ${action} article: ${error.message}`);
+      setArticles(originalArticles);
+    }
+  };
+
   const filteredArticles = articles.filter(article =>
     article.title.toLowerCase().includes(searchQuery.toLowerCase())
   );
@@ -144,6 +173,14 @@ const AdminArticles = () => {
                     </td>
                     <td className="text-right">
                       <div className="table-actions-flex">
+                        <button
+                          type="button"
+                          className={`table-action-btn ${article.status === 'published' ? 'unpublish' : 'publish'}`}
+                          onClick={() => handleToggleStatus(article._id, article.status, article.title)}
+                          title={article.status === 'published' ? 'Unpublish Article' : 'Publish Article'}
+                        >
+                          {article.status === 'published' ? '⏸️ Unpublish' : '🚀 Publish'}
+                        </button>
                         <button
                           type="button"
                           className="table-action-btn edit"
