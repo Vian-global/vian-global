@@ -2901,6 +2901,20 @@ html, body {
   margin-bottom: 2.5rem;
 }
 
+.article-featured-image {
+  margin: 0 0 2.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(20, 40, 60, 0.12);
+}
+
+.article-featured-image img {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
 .article-rich-content {
   font-family: 'Montserrat', Arial, sans-serif;
   font-size: 1.1rem;

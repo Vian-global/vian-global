@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import heroImg from '../assets/hero.jpg'
 
 function NewsArticle() {
   const { slug } = useParams()
@@ -142,10 +143,10 @@ function NewsArticle() {
       <Header />
       <main className="article-page" role="main">
 
-        {/* ── HERO ─────────────────────────── */}
+        {/* ── HERO (static image) ───────────── */}
         <div className="article-hero">
           <img
-            src={article.image}
+            src={heroImg}
             alt=""
             className="article-hero-img"
             loading="eager"
@@ -182,6 +183,12 @@ function NewsArticle() {
               <p className="article-lead">{article.excerpt}</p>
               <div className="article-divider" aria-hidden="true" />
             </header>
+
+            {article.image && (
+              <figure className="article-featured-image">
+                <img src={article.image} alt={article.title} loading="lazy" />
+              </figure>
+            )}
 
             <div
               className="article-rich-content"

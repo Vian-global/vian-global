@@ -23,7 +23,7 @@ const Footer = () => {
     <footer className="site-footer" role="contentinfo">
       <div className="footer-container">
         <div className="footer-menus">
-          <nav className="footer-nav scroll-fade-in" role="navigation" aria-label="Footer navigation">
+          <nav className="footer-nav" role="navigation" aria-label="Footer navigation">
             <NavLink href="#home">Home</NavLink>
             <NavLink href="#about">About</NavLink>
             <NavLink href="#navigator">Our Products</NavLink>
@@ -31,7 +31,7 @@ const Footer = () => {
             <NavLink href="#news">News</NavLink>
             <NavLink href="#contact">Contact</NavLink>
           </nav>
-          <div className="footer-social scroll-fade-in" role="list" aria-label="Social media links">
+          <div className="footer-social" role="list" aria-label="Social media links">
             <a href="https://www.instagram.com/viangloballlp/" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" role="listitem">
               <svg width="28" height="28" fill="none" viewBox="0 0 28 28" aria-hidden="true">
                 <rect width="28" height="28" rx="6" fill="#366a82"/>
@@ -56,7 +56,7 @@ const Footer = () => {
             </a>
           </div>
         </div>
-        <div className="footer-bottom scroll-fade-in">
+        <div className="footer-bottom">
           <span>&copy; {new Date().getFullYear()} Vian Global LLP. All rights reserved.</span>
         </div>
       </div>
