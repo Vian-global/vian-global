@@ -1623,7 +1623,7 @@ html, body {
   .service-card-custom, .service-card-custom.reverse {
     flex-direction: column !important;
     align-items: flex-start;
-    padding: 1.2rem 0.7rem;
+    padding: 2rem 1.5rem;
   }
   .service-card-custom .service-img, .service-card-custom.reverse .service-img {
     margin: 0 0 1.2rem 0;
@@ -2497,9 +2497,18 @@ html, body {
 @media (max-width: 480px) {
   .vian-way-card, .service-card-custom, .our-portals-content, .navigator-content {
     margin-bottom: 1.5rem;
+    padding: 1.75rem 1.25rem;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
   }
   .vian-way-card:last-child, .service-card-custom:last-child, .our-portals-content:last-child, .navigator-content:last-child {
     margin-bottom: 0;
+  }
+  .services-container, .our-portals-container, .vian-way-container, .navigator-container {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    box-sizing: border-box;
   }
 }
 
