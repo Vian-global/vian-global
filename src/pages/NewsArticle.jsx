@@ -190,6 +190,46 @@ function NewsArticle() {
               </figure>
             )}
 
+            {article.featuredVideo && (() => {
+              const url = article.featuredVideo.trim();
+              // YouTube
+              const ytMatch = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
+              if (ytMatch) {
+                return (
+                  <figure className="article-featured-video">
+                    <iframe
+                      src={`https://www.youtube.com/embed/${ytMatch[1]}`}
+                      title="Featured video"
+                      frameBorder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </figure>
+                );
+              }
+              // Vimeo
+              const vimeoMatch = url.match(/vimeo\.com\/(\d+)/);
+              if (vimeoMatch) {
+                return (
+                  <figure className="article-featured-video">
+                    <iframe
+                      src={`https://player.vimeo.com/video/${vimeoMatch[1]}`}
+                      title="Featured video"
+                      frameBorder="0"
+                      allow="autoplay; fullscreen; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </figure>
+                );
+              }
+              // Direct video file
+              return (
+                <figure className="article-featured-video">
+                  <video src={url} controls preload="metadata" />
+                </figure>
+              );
+            })()}
+
             <div
               className="article-rich-content"
               dangerouslySetInnerHTML={{ __html: article.content }}

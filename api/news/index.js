@@ -40,6 +40,7 @@ module.exports = async function handler(req, res) {
           content,
           excerpt,
           image,
+          featuredVideo,
           status,
           seo,
           category,
@@ -48,11 +49,20 @@ module.exports = async function handler(req, res) {
           isFeatured,
         } = req.body;
 
-        // Validations
-        if (!title || !slug || !content || !excerpt || !image) {
+        const articleStatus = status || 'draft';
+
+        // Drafts only need title + slug; published articles need full content
+        if (!title || !slug) {
           return res.status(400).json({
             success: false,
-            message: 'Title, unique slug, content, excerpt, and featured image are required',
+            message: 'Title and slug are required',
+          });
+        }
+
+        if (articleStatus === 'published' && (!content || !excerpt || !image)) {
+          return res.status(400).json({
+            success: false,
+            message: 'Published articles require content, excerpt, and a featured image',
           });
         }
 
@@ -73,7 +83,7 @@ module.exports = async function handler(req, res) {
         }
 
         // Secure Rich-Text XSS Sanitization
-        const sanitizedContent = sanitizeHtml(content, {
+        const sanitizedContent = sanitizeHtml(content || '', {
           allowedTags: sanitizeHtml.defaults.allowedTags.concat([
             'h1', 'h2', 'img', 'span', 'div', 'u', 's', 'pre', 'code'
           ]),
@@ -103,13 +113,14 @@ module.exports = async function handler(req, res) {
           title,
           slug: cleanSlug,
           content: sanitizedContent,
-          excerpt,
-          image,
-          status: status || 'draft',
+          excerpt: excerpt || '',
+          image: image || '',
+          featuredVideo: featuredVideo || '',
+          status: articleStatus,
           seo: {
             metaTitle: (seo && seo.metaTitle) || title,
-            metaDescription: (seo && seo.metaDescription) || excerpt,
-            ogImage: (seo && seo.ogImage) || image,
+            metaDescription: (seo && seo.metaDescription) || excerpt || '',
+            ogImage: (seo && seo.ogImage) || image || '',
             canonicalUrl: finalCanonical,
           },
           category: category || 'General',

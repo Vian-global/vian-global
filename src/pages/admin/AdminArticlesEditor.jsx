@@ -13,6 +13,7 @@ const AdminArticlesEditor = () => {
   const [excerpt, setExcerpt] = useState('');
   const [content, setContent] = useState('');
   const [image, setImage] = useState('');
+  const [featuredVideo, setFeaturedVideo] = useState('');
   const [status, setStatus] = useState('draft');
   const [category, setCategory] = useState('General');
   const [tags, setTags] = useState('');
@@ -49,6 +50,7 @@ const AdminArticlesEditor = () => {
           setExcerpt(art.excerpt);
           setContent(art.content);
           setImage(art.image);
+          setFeaturedVideo(art.featuredVideo || '');
           setStatus(art.status);
           setCategory(art.category || 'General');
           setTags(art.tags ? art.tags.join(', ') : '');
@@ -148,38 +150,39 @@ const AdminArticlesEditor = () => {
     };
   };
 
-  const handleSave = async (e) => {
-    e.preventDefault();
+  const handleSave = async (e, overrideStatus) => {
+    if (e && e.preventDefault) e.preventDefault();
 
-    if (!title.trim() || !excerpt.trim() || !image.trim() || !author.trim()) {
-      setErrorMessage('Please fill in all required fields (Title, Description, Author, and Image).');
+    const targetStatus = overrideStatus || status;
+    const isDraft = targetStatus === 'draft';
+
+    // Title is always required; everything else only required for publish
+    if (!title.trim()) {
+      setErrorMessage('A title is required to save the article.');
       window.scrollTo({ top: 0, behavior: 'smooth' });
       return;
     }
 
-    // Auto-generate slug if empty
-    if (!slug.trim()) {
-      const autoSlug = title
-        .toLowerCase()
-        .replace(/[^a-z0-9\s-]/g, '')
-        .trim()
-        .replace(/\s+/g, '-')
-        .replace(/-+/g, '-');
-      setSlug(autoSlug);
+    if (!isDraft && (!excerpt.trim() || !image.trim() || !author.trim())) {
+      setErrorMessage('To publish, please fill in Description, Author, and Featured Image.');
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      return;
     }
 
     setSaving(true);
     setErrorMessage('');
     setSuccessMessage('');
 
-    const finalSlug = slug.trim() || title
+    const finalSlug = (slug.trim() || title)
       .toLowerCase()
       .replace(/[^a-z0-9\s-]/g, '')
       .trim()
       .replace(/\s+/g, '-')
       .replace(/-+/g, '-');
 
-    const finalContent = content.trim() || `<p>${excerpt}</p>`;
+    const finalContent = content.trim() || (excerpt.trim() ? `<p>${excerpt}</p>` : '');
+
+    setStatus(targetStatus);
 
     const payload = {
       title,
@@ -187,7 +190,8 @@ const AdminArticlesEditor = () => {
       content: finalContent,
       excerpt,
       image,
-      status,
+      featuredVideo,
+      status: targetStatus,
       category,
       tags: tags.split(',').map(t => t.trim()).filter(Boolean),
       author: author.trim() || undefined,
@@ -213,11 +217,22 @@ const AdminArticlesEditor = () => {
       const data = await response.json();
 
       if (response.ok && data.success) {
-        setSuccessMessage(isEditMode ? 'Article updated successfully!' : 'Article created successfully!');
+        const successMsg = isDraft
+          ? (isEditMode ? 'Draft updated. You can continue editing later.' : 'Draft saved. You can continue editing later.')
+          : (isEditMode ? 'Article updated and published!' : 'Article published successfully!');
+        setSuccessMessage(successMsg);
         window.scrollTo({ top: 0, behavior: 'smooth' });
-        setTimeout(() => {
-          navigate('/admin/articles');
-        }, 1500);
+
+        // If we just created a draft, switch into edit mode for the new article
+        if (!isEditMode && data.article && data.article._id) {
+          setTimeout(() => {
+            navigate(`/admin/articles/edit/${data.article._id}`);
+          }, 1200);
+        } else if (!isDraft) {
+          setTimeout(() => {
+            navigate('/admin/articles');
+          }, 1500);
+        }
       } else {
         setErrorMessage(data.message || data.error || 'Failed to save article.');
         window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -407,6 +422,21 @@ const AdminArticlesEditor = () => {
               </div>
             </div>
 
+            {/* Featured Video */}
+            <div className="form-group-glass">
+              <label htmlFor="article-featured-video">🎬 Featured Video (optional)</label>
+              <input
+                type="url"
+                id="article-featured-video"
+                value={featuredVideo}
+                onChange={(e) => setFeaturedVideo(e.target.value)}
+                placeholder="YouTube, Vimeo, or direct .mp4 URL"
+              />
+              <small style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.78rem', marginTop: '0.4rem', display: 'block' }}>
+                Paste a YouTube link (e.g. https://youtu.be/abc) or any video URL. Shown below the featured image.
+              </small>
+            </div>
+
             <div className="form-group-glass">
               <label htmlFor="article-category">Category</label>
               <input
@@ -502,21 +532,39 @@ const AdminArticlesEditor = () => {
             </div>
           </div>
 
-          {/* Main Save Bar */}
-          <button
-            type="submit"
-            className="editor-submit-main-btn-premium publish-highlight"
-            disabled={saving}
-          >
-            {saving ? (
-              <span className="btn-loading-flex">
-                <span className="btn-spinner" />
-                Saving Changes...
-              </span>
-            ) : (
-              isEditMode ? '💾 Update & Publish' : '🚀 Publish Article'
-            )}
-          </button>
+          {/* Save Buttons */}
+          <div className="editor-save-buttons">
+            <button
+              type="button"
+              className="editor-submit-main-btn-premium draft-btn"
+              disabled={saving}
+              onClick={(e) => handleSave(e, 'draft')}
+            >
+              {saving ? (
+                <span className="btn-loading-flex">
+                  <span className="btn-spinner" />
+                  Saving...
+                </span>
+              ) : (
+                '💾 Save as Draft'
+              )}
+            </button>
+            <button
+              type="submit"
+              className="editor-submit-main-btn-premium publish-highlight"
+              disabled={saving}
+              onClick={(e) => handleSave(e, 'published')}
+            >
+              {saving ? (
+                <span className="btn-loading-flex">
+                  <span className="btn-spinner" />
+                  Publishing...
+                </span>
+              ) : (
+                isEditMode ? '� Update & Publish' : '🚀 Publish Article'
+              )}
+            </button>
+          </div>
         </div>
       </form>
 

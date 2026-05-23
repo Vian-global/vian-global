@@ -15,16 +15,21 @@ const NewsSchema = new mongoose.Schema({
   },
   content: {
     type: String,
-    required: [true, 'Please provide content'],
+    default: '',
   },
   excerpt: {
     type: String,
-    required: [true, 'Please provide a short excerpt'],
+    default: '',
     trim: true,
   },
   image: {
     type: String, // Cloudinary URL
-    required: [true, 'Please provide a featured image URL'],
+    default: '',
+  },
+  featuredVideo: {
+    type: String, // YouTube/Vimeo embed URL or direct video URL
+    default: '',
+    trim: true,
   },
   status: {
     type: String,

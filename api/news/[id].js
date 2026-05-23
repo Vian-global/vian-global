@@ -57,6 +57,7 @@ module.exports = async function handler(req, res) {
           content,
           excerpt,
           image,
+          featuredVideo,
           status,
           seo,
           category,
@@ -124,7 +125,8 @@ module.exports = async function handler(req, res) {
         article.slug = finalSlug;
         if (content) article.content = sanitizedContent;
         if (excerpt) article.excerpt = excerpt;
-        if (image) article.image = image;
+        if (image !== undefined) article.image = image;
+        if (featuredVideo !== undefined) article.featuredVideo = featuredVideo;
         if (status) article.status = status;
         if (category) article.category = category;
         if (tags) article.tags = tags;

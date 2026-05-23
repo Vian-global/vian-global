@@ -2924,6 +2924,27 @@ html, body {
   object-fit: cover;
 }
 
+.article-featured-video {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 */
+  margin: 0 0 2.5rem;
+  border-radius: 12px;
+  overflow: hidden;
+  background: #000;
+  box-shadow: 0 10px 30px rgba(20, 40, 60, 0.18);
+}
+
+.article-featured-video iframe,
+.article-featured-video video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
 .article-rich-content {
   font-family: 'Montserrat', Arial, sans-serif;
   font-size: 1.1rem;
@@ -5177,6 +5198,34 @@ html, body {
   transform: translateY(-2px);
   box-shadow: 0 10px 25px rgba(54, 106, 130, 0.35);
   background: linear-gradient(135deg, #44809e 0%, #29546e 100%);
+}
+
+.editor-save-buttons {
+  display: flex;
+  gap: 0.75rem;
+  width: 100%;
+}
+
+.editor-save-buttons .editor-submit-main-btn-premium {
+  flex: 1;
+}
+
+.editor-submit-main-btn-premium.draft-btn {
+  background: linear-gradient(135deg, #475569 0%, #334155 100%);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.editor-submit-main-btn-premium.draft-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, #64748b 0%, #475569 100%);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .editor-save-buttons {
+    flex-direction: column;
+  }
 }
 
 .editor-submit-main-btn-premium.publish-highlight {
